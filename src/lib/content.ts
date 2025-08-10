@@ -146,19 +146,40 @@ export function getCategoryNameByLink(link: string): string {
 
 // 获取分类
 export function getCategoryByLink(categories: Category[], link?: string): Category | null {
-  const name = getCategoryNameByLink(link ?? '');
-  if (!name || !categories?.length) return null;
-  for (let i = 0; i < categories.length; ++i) {
-    const category = categories[i];
-    if (category.name === name) {
-      return category;
+  if (!link || !categories?.length) return null;
+
+  // 将链接分割为部分
+  const linkParts = link.split('/').filter((part) => part.length > 0);
+  if (linkParts.length === 0) return null;
+
+  // 将链接部分转换为分类名称
+  const categoryNames = linkParts.map((part) => {
+    return Object.keys(categoryMap).find((key) => categoryMap[key] === part) || part;
+  });
+
+  if (categoryNames.length === 0) return null;
+
+  // 递归查找分类
+  function findCategory(cats: Category[], names: string[]): Category | null {
+    if (names.length === 0) return null;
+
+    const firstName = names[0];
+    const category = cats.find((cat) => cat.name === firstName);
+
+    if (!category) return null;
+
+    // 如果这是最后一个名称，返回这个分类
+    if (names.length === 1) return category;
+
+    // 否则继续在子分类中查找
+    if (category.children?.length) {
+      return findCategory(category.children, names.slice(1));
     }
-    if (category?.children?.length) {
-      const res = getCategoryByLink(category.children, link);
-      if (res) return res;
-    }
+
+    return null;
   }
-  return null;
+
+  return findCategory(categories, categoryNames);
 }
 
 /**
@@ -174,12 +195,40 @@ export async function getPostsByCategory(categoryName: string): Promise<BlogPost
 
     // 处理两种分类格式
     if (Array.isArray(categories[0])) {
-      // ['笔记', '算法']
+      // ['笔记', '算法'] - 嵌套分类
       return categories[0].includes(categoryName);
     } else {
-      // '工具'
+      // '工具' - 单级分类
       return categories[0] === categoryName;
     }
+  });
+}
+
+/**
+ * 获取嵌套分类下的所有文章
+ * @param categoryPath 分类路径，例如 ['现金流乌托邦', '期权卖方策略']
+ * @returns 文章列表
+ */
+export async function getPostsByCategoryPath(categoryPath: string[]): Promise<BlogPost[]> {
+  const posts = await getSortedPosts();
+  return posts.filter((post) => {
+    const { categories } = post.data;
+    if (!categories?.length) return false;
+
+    // 只处理嵌套分类格式
+    if (Array.isArray(categories[0])) {
+      // 检查分类路径是否匹配
+      if (categories[0].length < categoryPath.length) return false;
+
+      // 检查路径的每个部分是否匹配
+      for (let i = 0; i < categoryPath.length; i++) {
+        if (categories[0][i] !== categoryPath[i]) return false;
+      }
+
+      return true;
+    }
+
+    return false;
   });
 }
 
@@ -222,5 +271,7 @@ export function getParentCategory(category: Category | null, categories: Categor
 // 传入 getCategoryArr 返回的数组, 返回分类链接
 export async function getCategoryLink(categories: string[]): Promise<string> {
   if (!categories?.length) return '';
-  return '/categories/' + categories.map((c) => categoryMap[c]).join('/');
+  const link = categories.map((c) => categoryMap[c]).join('/');
+  // 确保链接不以斜杠结尾，符合 trailingSlash: 'never' 的配置
+  return link.replace(/\/$/, '');
 }

@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   return links.map((link) => {
     const category = getCategoryByLink(categories, link);
     return {
-      params: { slug: link },
+      params: { slug: link }, // 将链接作为字符串传递
       props: { category },
     };
   });

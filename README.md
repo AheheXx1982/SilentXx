@@ -40,4 +40,4 @@ pnpm dev
 - [4ark.me](https://github.com/gd4Ark/gd4Ark.github.io)
 - ...
 
-更新文档：1.更新 Astro 至最新版本2.安装 react 支持3.增加页脚4.更新了站点地图
+更新文档：1.更新 Astro 至最新版本2.安装 react 支持3.增加页脚4.更新了站点地图5.更新了网站分类和链接

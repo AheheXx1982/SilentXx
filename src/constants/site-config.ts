@@ -43,6 +43,7 @@ type SocialConfig = {
   douban?: SocialPlatform;
   bilibili?: SocialPlatform;
   rss?: SocialPlatform;
+  Tiger?: SocialPlatform;
 };
 
 // TODO: change to backend
@@ -62,10 +63,28 @@ export const siteConfig: SiteConfig = {
   site: 'https://www.silentxx.com',
   featuredCategories: [
     {
-      link: 'life',
-      label: '随笔',
+      link: 'options',
+      label: '期权研究院',
       image: 'https://r2.cosine.ren/i/2025/01/04/9al5e-x5.webp',
-      description: '生活记录、年度总结等',
+      description: '期权策略研究、实战分析和课程分享',
+    },
+    {
+      link: 'crypto',
+      label: '加密实验室',
+      image: 'https://r2.cosine.ren/i/2025/01/04/9aorg-cc.webp',
+      description: '加密货币研究、交易策略和市场分析',
+    },
+    {
+      link: 'cashflow-utopia',
+      label: '现金流乌托邦',
+      image: 'https://r2.cosine.ren/i/2025/01/04/9aorj-k5.webp',
+      description: '构建稳定现金流的投资体系',
+    },
+    {
+      link: 'trading-journal',
+      label: '实盘分享',
+      image: 'https://r2.cosine.ren/i/2025/01/04/9al5e-x5.webp',
+      description: '实盘交易记录',
     },
     {
       link: 'note/front-end',
@@ -131,7 +150,7 @@ export const socialConfig: SocialConfig = {
     color: '#da708a',
   },
   music: {
-    url: 'https://music.163.com/#/user/home?id=361029804',
+    url: 'https://music.douyin.com/qishui/share/playlist?playlist_id=7310550250141696009',
     icon: 'ri:netease-cloud-music-line',
     color: '#e60026',
   },
