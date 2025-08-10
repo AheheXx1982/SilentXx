@@ -4,15 +4,32 @@ import { siteConfig } from '@constants/site-config';
 import { getSortedPosts } from '@lib/content';
 import { getSanitizeHtml } from '@lib/utils';
 import type { APIContext } from 'astro';
-import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 import type { BlogPost } from 'types/blog';
 
-const parser = new MarkdownIt();
+// 转义 XML 特殊字符
+const escapeXml = (unsafe: string): string => {
+  if (!unsafe) return '';
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '&':
+        return '&amp;';
+      case "'":
+        return '&apos;';
+      case '"':
+        return '&quot;';
+      default:
+        return c;
+    }
+  });
+};
 
 // 用于生成纯文本摘要的函数
 const generateTextSummary = (html?: string, length: number = 150): string => {
-  // 先将Markdown转换为HTML
   // 将HTML转换为纯文本（去除所有标签）
   const text = sanitizeHtml(html ?? '', {
     allowedTags: [], // 不允许任何标签
@@ -33,17 +50,24 @@ export async function GET(context: APIContext) {
   }
 
   return rss({
-    title: siteConfig.title,
-    description: siteConfig.subtitle || 'No description',
+    title: escapeXml(siteConfig.title),
+    description: escapeXml(siteConfig.subtitle || 'No description'),
     site,
     trailingSlash: false,
     stylesheet: '/rss/cos-feed.xsl', // https://docs.astro.build/en/recipes/rss/#adding-a-stylesheet
     items: posts
       .map((post: BlogPost) => {
+        // 生成描述信息
+        let description = post.data?.description ?? generateTextSummary(post.rendered?.html);
+
+        // 对标题和描述进行XML转义
+        const title = escapeXml(post.data.title);
+        description = escapeXml(description);
+
         return {
-          title: post.data.title,
+          title: title,
           pubDate: post.data.date,
-          description: post.data?.description ?? generateTextSummary(post.rendered?.html),
+          description: description,
           link: `/post/${post.data.link ?? post.slug}`,
           content: getSanitizeHtml(post.rendered?.html ?? ''),
         };

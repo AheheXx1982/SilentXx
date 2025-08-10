@@ -49,17 +49,17 @@ type SocialConfig = {
 
 // https://shoka.lostyu.me/computer-science/note/theme-shoka-doc/config/
 export const siteConfig: SiteConfig = {
-  title: '余弦の博客', // 网站名称
-  alternate: 'cosine', // 网站名称
-  subtitle: 'WA 的一声就哭了', // 副标题
-  name: 'cos',
-  description: '图片迁移完毕，博客待重构~', // 站点简介（一段话）
-  avatar: 'https://ysx.cosine.ren/img/avatar.jpg', // 站点头像 logo.png or url
+  title: '寂静猎手', // 网站名称
+  alternate: 'SilentXx', // 网站名称
+  subtitle: '期权加密实战 · 理性现金流系统', // 副标题
+  name: 'SilentXx',
+  description: '聚焦美股期权与加密货币交易，分享真实、低风险、可复制的现金流投资策略，带你走进理性与纪律构建的投资世界。', // 站点简介（一段话）
+  avatar: '/public/img/SilentXx.webp', // 站点头像 logo.png or url
   showLogo: true, // 是否显示 logo 否则用 title
-  author: 'cos', // 作者名称
+  author: 'SilentXx', // 作者名称
 
   enableJSGridCover: false, // 是否启用 color4bg 的背景
-  site: 'https://space.cosine.ren/',
+  site: 'https://www.silentxx.com',
   featuredCategories: [
     {
       link: 'life',
@@ -116,17 +116,17 @@ export const siteConfig: SiteConfig = {
 // https://icon-sets.iconify.design/ri/
 export const socialConfig: SocialConfig = {
   github: {
-    url: 'https://github.com/yusixian',
+    url: 'https://github.com/ahehexx1982',
     icon: 'ri:github-fill',
     color: '#191717',
   },
-  // zhihu: {
-  //   url: 'https://www.zhihu.com/people/qi-jiu-en',
+  // Gate: {
+  //   url: 'https://www.gateweb.xyz/share/VLRAXQONUW',
   //   icon: 'ri:zhihu-fill',
   //   color: '#1e88e5',
   // },
-  bilibili: {
-    url: 'https://space.bilibili.com/10730895',
+  Tiger: {
+    url: 'https://tigr.link/s/30BPgOQ',
     icon: 'ri:bilibili-fill',
     color: '#da708a',
   },
@@ -136,12 +136,12 @@ export const socialConfig: SocialConfig = {
     color: '#e60026',
   },
   email: {
-    url: 'mailto:cosine_yu@qq.com',
+    url: 'mailto:wayshine.he@qq.com',
     icon: 'ri:mail-line',
     color: '#55acd5',
   },
   twitter: {
-    url: 'https://x.com/_cosine_x',
+    url: 'https://x.com/AheheXx?s=09',
     icon: 'ri:twitter-fill',
     color: '#4b9ae4',
   },
