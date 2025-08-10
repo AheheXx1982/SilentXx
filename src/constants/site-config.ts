@@ -55,7 +55,7 @@ export const siteConfig: SiteConfig = {
   subtitle: '期权加密实战 · 理性现金流系统', // 副标题
   name: 'SilentXx',
   description: '聚焦美股期权与加密货币交易，分享真实、低风险、可复制的现金流投资策略，带你走进理性与纪律构建的投资世界。', // 站点简介（一段话）
-  avatar: '/public/img/SilentXx.webp', // 站点头像 logo.png or url
+  avatar: '/img/SilentXx.webp', // 站点头像 logo.png or url
   showLogo: true, // 是否显示 logo 否则用 title
   author: 'SilentXx', // 作者名称
 
