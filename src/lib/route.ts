@@ -8,7 +8,8 @@ export function routeBuilder<T extends Routes>(route: T, param: RouteParams<type
   if (!param) return href;
   switch (route) {
     case Routes.Post:
-      href += `/${param?.data?.link ?? param?.slug}`;
+      // 使用自定义链接或slug的最后一部分作为文章标识符
+      href = `/article/${param?.data?.link ?? param?.slug.split('/').pop() ?? param?.slug}`;
       break;
     default:
       break;

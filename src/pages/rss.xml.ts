@@ -68,7 +68,7 @@ export async function GET(context: APIContext) {
           title: title,
           pubDate: post.data.date,
           description: description,
-          link: `/post/${post.data.link ?? post.slug}`,
+          link: `/article/${post.data.link ?? post.slug.split('/').pop() ?? post.slug}`,
           content: getSanitizeHtml(post.rendered?.html ?? ''),
         };
       })

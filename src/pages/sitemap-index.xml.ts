@@ -37,7 +37,7 @@ export async function GET(context: APIContext) {
 
   // 生成文章URL列表
   const postUrls = posts.map((post) => {
-    const postUrl = `${site}post/${post.data.link ?? post.slug}/`;
+    const postUrl = `${site}article/${post.data.link ?? post.slug.split('/').pop() ?? post.slug}/`;
     const lastMod = post.data.date.toISOString().split('T')[0];
     return {
       loc: postUrl,

@@ -11,7 +11,7 @@ export enum Routes {
   Categories = '/categories',
   Tags = '/tags',
   // Gallery = '/gallery',
-  Post = '/post',
+  Post = '/article',
   Archives = '/archives',
   // Dashboard = '/dashboard',
 }
