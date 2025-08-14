@@ -32,11 +32,14 @@ export async function GET(context: APIContext) {
   // 获取所有博客文章
   const posts = await getCollection('blog');
 
+  // 确保 posts 存在且为数组
+  const validPosts = posts && Array.isArray(posts) ? posts : [];
+
   // 获取所有静态页面
   const staticPages = ['', 'about', 'rss.xml'];
 
   // 生成文章URL列表
-  const postUrls = posts.map((post) => {
+  const postUrls = validPosts.map((post) => {
     const postUrl = `${site}article/${post.data.link ?? post.slug.split('/').pop() ?? post.slug}/`;
     const lastMod = post.data.date.toISOString().split('T')[0];
     return {

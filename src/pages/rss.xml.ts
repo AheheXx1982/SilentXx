@@ -49,29 +49,55 @@ export async function GET(context: APIContext) {
     throw new Error('Missing site metadata');
   }
 
+  // 确保 posts 存在且为数组
+  const validPosts = posts && Array.isArray(posts) ? posts : [];
+
   return rss({
     title: escapeXml(siteConfig.title),
     description: escapeXml(siteConfig.subtitle || 'No description'),
     site,
     trailingSlash: false,
     stylesheet: '/rss/cos-feed.xsl', // https://docs.astro.build/en/recipes/rss/#adding-a-stylesheet
-    items: posts
+    items: validPosts
       .map((post: BlogPost) => {
-        // 生成描述信息
-        let description = post.data?.description ?? generateTextSummary(post.rendered?.html);
+        // 确保 post 和 post.data 存在
+        if (!post || !post.data) {
+          return null;
+        }
 
-        // 对标题和描述进行XML转义
-        const title = escapeXml(post.data.title);
-        description = escapeXml(description);
+        try {
+          // 生成描述信息，确保有回退方案
+          let description = '';
+          if (post.data?.description) {
+            description = post.data.description;
+          } else if (post.rendered?.html) {
+            description = generateTextSummary(post.rendered.html);
+          } else {
+            description = 'No description available';
+          }
 
-        return {
-          title: title,
-          pubDate: post.data.date,
-          description: description,
-          link: `/article/${post.data.link ?? post.slug.split('/').pop() ?? post.slug}`,
-          content: getSanitizeHtml(post.rendered?.html ?? ''),
-        };
+          // 对标题和描述进行XML转义
+          const title = escapeXml(post.data.title || 'Untitled');
+
+          // 验证日期
+          const pubDate = post.data.date && !isNaN(new Date(post.data.date).getTime()) ? post.data.date : new Date();
+
+          // 生成链接，确保不会出现 undefined
+          const postLink = post.data.link ? `/article/${post.data.link}` : `/article/${post.slug.split('/').pop() ?? 'post'}`;
+
+          return {
+            title: title,
+            pubDate: pubDate,
+            description: escapeXml(description),
+            link: postLink,
+            content: getSanitizeHtml(post.rendered?.html ?? ''),
+          };
+        } catch (error) {
+          console.error(`Error processing post ${post.slug}:`, error);
+          return null;
+        }
       })
+      .filter((item): item is NonNullable<typeof item> => item !== null)
       .slice(0, 20),
   });
 }

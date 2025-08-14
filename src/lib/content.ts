@@ -6,6 +6,11 @@ import type { BlogPost } from 'types/blog';
 export async function getSortedPosts(): Promise<CollectionEntry<'blog'>[]> {
   const posts = await getCollection('blog');
 
+  // 确保始终返回数组，即使没有文章
+  if (!posts || !Array.isArray(posts)) {
+    return [];
+  }
+
   // 按日期排序
   const sortedPosts = posts.sort((a: BlogPost, b: BlogPost) => {
     return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
@@ -29,7 +34,7 @@ export const getAllTags = (posts: BlogPost[]) => {
 
 export const getPostCount = async () => {
   const posts = await getCollection('blog');
-  return posts?.length ?? 0;
+  return posts && Array.isArray(posts) ? posts.length : 0;
 };
 
 export type Category = {
@@ -39,7 +44,13 @@ export type Category = {
 
 export async function getCategoryList(): Promise<{ categories: Category[]; countMap: { [key: string]: number } }> {
   const allBlogPosts = await getCollection('blog');
-  const countMap: { [key: string]: number } = {}; // TODO: 需要优化，应该以分类路径为键名而不是 name 如数据结构既是根分类也是笔记-后端-数据结构。
+
+  // 确保始终有数组进行处理
+  if (!allBlogPosts || !Array.isArray(allBlogPosts)) {
+    return { categories: [], countMap: {} };
+  }
+
+  const countMap: { [key: string]: number } = {};
   const resCategories: Category[] = [];
 
   // 统计每个分类的直接文章数量
@@ -189,6 +200,12 @@ export function getCategoryByLink(categories: Category[], link?: string): Catego
  */
 export async function getPostsByCategory(categoryName: string): Promise<BlogPost[]> {
   const posts = await getSortedPosts();
+
+  // 确保 posts 存在且为数组
+  if (!posts || !Array.isArray(posts)) {
+    return [];
+  }
+
   return posts.filter((post) => {
     const { categories } = post.data;
     if (!categories?.length) return false;
@@ -211,6 +228,12 @@ export async function getPostsByCategory(categoryName: string): Promise<BlogPost
  */
 export async function getPostsByCategoryPath(categoryPath: string[]): Promise<BlogPost[]> {
   const posts = await getSortedPosts();
+
+  // 确保 posts 存在且为数组
+  if (!posts || !Array.isArray(posts)) {
+    return [];
+  }
+
   return posts.filter((post) => {
     const { categories } = post.data;
     if (!categories?.length) return false;
@@ -270,8 +293,27 @@ export function getParentCategory(category: Category | null, categories: Categor
 
 // 传入 getCategoryArr 返回的数组, 返回分类链接
 export async function getCategoryLink(categories: string[]): Promise<string> {
-  if (!categories?.length) return '';
-  const link = categories.map((c) => categoryMap[c]).join('/');
-  // 确保链接不以斜杠结尾，符合 trailingSlash: 'never' 的配置
-  return link.replace(/\/$/, '');
+  try {
+    if (!categories || !Array.isArray(categories) || categories.length === 0) return '';
+
+    const linkParts: string[] = [];
+    for (const category of categories) {
+      if (typeof category === 'string') {
+        const mapped = categoryMap[category];
+        if (mapped) {
+          linkParts.push(mapped);
+        } else {
+          // 如果没有映射，则使用类别名称的小写形式并替换空格为连字符
+          linkParts.push(category.toLowerCase().replace(/\s+/g, '-'));
+        }
+      }
+    }
+
+    const link = linkParts.join('/');
+    // 确保链接不以斜杠结尾，符合 trailingSlash: 'never' 的配置
+    return link.replace(/\/$/, '');
+  } catch (error) {
+    console.error('生成分类链接时出错:', error);
+    return '';
+  }
 }

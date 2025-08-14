@@ -5,8 +5,8 @@ import type { CollectionEntry } from 'astro:content';
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog');
 
-  // 按日期排序
-  const sortedPosts = blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  // 按日期排序，添加数据验证
+  const sortedPosts = blogPosts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()) ?? [];
 
   return [
     {
@@ -28,22 +28,26 @@ const { posts } = Astro.props;
 
   <div class="articles-list">
     {
-      posts.map((post) => (
-        <article class="article-item">
-          <h2>
-            <a href={`/article/${post.slug}`}>{post.data.title}</a>
-          </h2>
-          <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString()}</time>
-          {post.data.description && <p class="description">{post.data.description}</p>}
-          {post.data.tags && (
-            <div class="tags">
-              {post.data.tags.map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
-            </div>
-          )}
-        </article>
-      ))
+      posts && posts.length > 0 ? (
+        posts.map((post) => (
+          <article class="article-item">
+            <h2>
+              <a href={`/article/${post.slug}`}>{post.data.title}</a>
+            </h2>
+            <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString()}</time>
+            {post.data.description && <p class="description">{post.data.description}</p>}
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      ) : (
+        <p>暂无文章</p>
+      )
     }
   </div>
 </div>
@@ -100,11 +104,11 @@ const { posts } = Astro.props;
 
   .tag {
     display: inline-block;
-    background-color: #f0f0f0;
-    color: #666;
+    background: #f0f0f0;
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: 0.2rem;
     font-size: 0.8rem;
     margin-right: 0.5rem;
+    color: #666;
   }
 </style>
