@@ -105,13 +105,13 @@ export const siteConfig: SiteConfig = {
       description: '期权课程',
     },
     {
-      link: 'tools',
-      label: '工具',
+      link: 'crypto/crypto-news',
+      label: '加密风向标',
       image: 'https://r2.cosine.ren/i/2025/01/04/9aorh-ms.webp',
-      description: '工具使用、软件推荐等',
+      description: '加密货币新闻',
     },
     {
-      link: 'coding-train',
+      link: 'options/strategy',
       label: '策略分析',
       image: 'https://r2.cosine.ren/i/2025/01/04/9aorg-cc.webp',
       description: '策略分析',
