@@ -81,7 +81,7 @@ export const siteConfig: SiteConfig = {
       description: '构建稳定现金流的投资体系',
     },
     {
-      link: 'trading-journal',
+      link: 'options/trading-journal',
       label: '实盘分享',
       image: 'https://r2.cosine.ren/i/2025/01/04/9al5e-x5.webp',
       description: '实盘交易记录',
