@@ -4,9 +4,11 @@ About
 
 原主题是[WIP] 余弦の博客重构版，余弦の空间！基于 Astro + Tailwind 尽可能复刻 Shoka 主题的体验
 
-- [余弦の空间]
+初见此主题，便深深爱上，多亏了自己这双近视又老花的慧眼，只是由于作者更新慢（后续还会不会继续更新也不得而知），而本人技术水平又实在有限，几番折腾，终于也算有了一点小小成果，至少自己用起来是没多大问题了，并且我在原主题的基础上进行小范围的修改，以满足自身所需，创新精神粗略估算已经达到 5 颗星的水平~
 
-本人在以上主题的基础上进行小范围的修改，感谢原作者和余弦的贡献与指导。
+感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS code~
+
+##
 
 ## 📦 部署
 
@@ -16,7 +18,7 @@ About
 
 ### Vercel 一键部署
 
-[Deploy with Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAhehe1982%2FSilentX&project-name=my-SilentX&repository-name=my%20SilentX)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAhehe1982%2FSilentX&project-name=my-SilentX&repository-name=my-SilentX)
 
 ### 本地开发
 
@@ -65,13 +67,13 @@ pnpm dev
 3.TypeScript 升到 5.9.2
 ```
 
-bash 4.更新了网站分类和链接
-
-````plain
+```bash
+ 4.更新了网站分类和链接
+```
 
 ```bash
 5.优化链接架构，启动短网址
-````
+```
 
 ```bash
 6.新增页脚
