@@ -55,32 +55,60 @@ pnpm dev
 #SilentX 更新文档：
 ------------------------------------------------------------16/8/2025
 
-```bash
 1.更新 Astro 至 5.13.2 最新版本
-```
 
-```bash
+# 更新 Astro 核心包
+
+npm install astro@5.13.2
+
+# 或者使用 yarn
+
+yarn add astro@5.13.2
+
+# 更新所有 Astro 相关包
+
+npm update @astrojs/\* --latest
+
 2.安装 react 支持
-```
 
-```bash
+# 添加 React 集成
+
+npm install @astrojs/react
+
 3.TypeScript 升到 5.9.2
-```
 
-```bash
- 4.更新了网站分类和链接
-```
+# 更新 TypeScript 版本
 
-```bash
+npm install typescript@5.9.2
+
+# 或者使用 yarn
+
+yarn add typescript@5.9.2
+
+4.更新了网站分类和链接
+
+// 示例：更新分类
+export const categories = [
+{ id: 'tech', name: '技术文章' },
+{ id: 'design', name: '设计分享' },
+{ id: 'tutorials', name: '教程指南' }
+]
+
+// 更新链接配置
+export const links = {
+github: 'https://github.com/yourusername/yourrepo',
+twitter: 'https://twitter.com/yourhandle'
+}
+
 5.优化链接架构，启动短网址
-```
 
-```bash
 6.新增页脚
-```
 
-```bash
 7.更新站点地图和网站图标
-```
 
----
+运行命令：
+
+---# 安装所有依赖后运行
+npm run dev # 开发模式
+npm run build # 构建生产版本
+npm run preview # 预览构建结果
