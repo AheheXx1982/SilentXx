@@ -4,9 +4,11 @@ About
 
 原主题是[WIP] 余弦の博客重构版，余弦の空间！基于 Astro + Tailwind 尽可能复刻 Shoka 主题的体验
 
-初见此主题，便深深爱上，多亏了自己这双近视又老花的慧眼，只是由于作者更新慢（后续还会不会继续更新也不得而知），而本人技术水平又实在有限，几番折腾，终于也算有了一点小小成果，至少自己用起来是没多大问题了，并且我在原主题的基础上进行小范围的修改，以满足自身所需，创新精神粗略估算已经达到 5 颗星的水平~
+初见此主题，便深深爱上，多亏了自己这双近视又老花的双重慧眼，只是由于作者更新慢（后续还会不会继续更新也不得而知），而本人技术水平又实在有限，几番折腾，终于也算有了一点小小成果，至少自己用起来是没多大问题了，并且我在原主题的基础上进行小范围的修改，以满足自身所需，创新精神粗略估算已经达到 5 颗星的水平~
 
-感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS code~
+感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS Code~
+
+特别感谢阿里通义灵码，让我变得如此强大，终于实现了当一名程序员的梦想~
 
 ##
 
@@ -59,46 +61,45 @@ pnpm dev
 
 # 更新 Astro 核心包
 
+```bash
 npm install astro@5.13.2
+```
 
 # 或者使用 yarn
 
+```bash
 yarn add astro@5.13.2
+```
 
 # 更新所有 Astro 相关包
 
+```bash
 npm update @astrojs/\* --latest
+```
 
 2.安装 react 支持
 
 # 添加 React 集成
 
+```bash
 npm install @astrojs/react
+```
 
 3.TypeScript 升到 5.9.2
 
 # 更新 TypeScript 版本
 
+```bash
 npm install typescript@5.9.2
+```
 
 # 或者使用 yarn
 
+```bash
 yarn add typescript@5.9.2
+```
 
 4.更新了网站分类和链接
-
-// 示例：更新分类
-export const categories = [
-{ id: 'tech', name: '技术文章' },
-{ id: 'design', name: '设计分享' },
-{ id: 'tutorials', name: '教程指南' }
-]
-
-// 更新链接配置
-export const links = {
-github: 'https://github.com/yourusername/yourrepo',
-twitter: 'https://twitter.com/yourhandle'
-}
 
 5.优化链接架构，启动短网址
 
@@ -109,6 +110,9 @@ twitter: 'https://twitter.com/yourhandle'
 运行命令：
 
 ---# 安装所有依赖后运行
+
+```bash
 npm run dev # 开发模式
 npm run build # 构建生产版本
 npm run preview # 预览构建结果
+```
