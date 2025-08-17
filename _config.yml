@@ -4,38 +4,11 @@
 
 # Category & Tag
 category_map:
-  随笔: life
-
-  笔试面经: review
-  笔试复盘: exam-record
-  面经: interview
-
-  题目记录: coding-train
-  竞赛: contest
-  字节校园: bytedance
-  剑指offer: offer
-
-  项目集锦: project
-
-  笔记: note
-  青训营笔记: bytedance-note
-  算法: algorithm
-  后端: back-end
-  前端: front-end
-  JavaScript: javascript
-  React: react
-  CS基础: cs-basics
-  数据结构: data-structure
-
-  工具: tools
-  周刊: weekly
-  AI: ai
-  
   期权研究院: options
   期权课程: course
   策略分析: strategy
   实盘分享: trading-journal
-  
+    
   加密实验室: crypto
   网格策略: grid
   合约交易: futures

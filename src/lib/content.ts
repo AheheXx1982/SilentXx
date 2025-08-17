@@ -82,6 +82,16 @@ export async function getCategoryList(): Promise<{ categories: Category[]; count
   }
   // console.log('first countMap', JSON.stringify(countMap));
 
+  // 根据 categoryMap 中的顺序对 resCategories 进行排序
+  const orderedCategoryNames = Object.keys(categoryMap);
+  resCategories.sort((a, b) => {
+    const indexA = orderedCategoryNames.indexOf(a.name);
+    const indexB = orderedCategoryNames.indexOf(b.name);
+    if (indexA === -1) return 1; // a 不在映射中，排在后面
+    if (indexB === -1) return -1; // b 不在映射中，排在前面
+    return indexA - indexB;
+  });
+
   return { categories: resCategories, countMap };
 }
 
