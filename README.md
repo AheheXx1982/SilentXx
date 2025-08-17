@@ -18,10 +18,6 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAhehe1982%2FSilentX&project-name=my-SilentX&repository-name=my-SilentX)
 
-## 🚀 一键部署到 Cloudflare Pages
-
-[![Deploy to Cloudflare Pages](https://deploy.cloudflare.com/button)](https://deploy.cloudflare.com/?app-template=github-ahehe1982-SilentX)
-
 ### 本地开发
 
 1. 克隆项目到本地
@@ -117,4 +113,5 @@ npm run build # 构建生产版本
 npm run preview # 预览构建结果
 ```
 
-----------------------------------------------------------------------17/8/2025 8.更新分类和文章默认图片，压缩首页 banner 背景图片，更新 favicon 图标 9.新增 Cloudflare Pages 一键部署 10.其他细节修改
+----------------------------------------------------------------------17/8/2025  
+8.更新分类和文章默认图片，压缩首页 banner 背景图片，更新 favicon 图标
