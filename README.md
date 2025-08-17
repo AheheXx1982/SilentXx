@@ -4,7 +4,7 @@
 
 感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS Code~
 
-特别感谢阿里通义灵码，让我变得如此强大，终于实现了当一名程序员的梦想~
+特别感谢 ChatGPT，Gemini，通义灵码，让我的智商从 250 瞬间飙升至 250+，终于实现了多年以来当一名程序员的梦想，这种感觉就如同单身几十年后又偶遇初恋一般，纯洁而美好~
 
 ##
 
@@ -17,6 +17,10 @@
 ### Vercel 一键部署
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAhehe1982%2FSilentX&project-name=my-SilentX&repository-name=my-SilentX)
+
+## 🚀 一键部署到 Cloudflare Pages
+
+[![Deploy to Cloudflare Pages](https://deploy.cloudflare.com/button)](https://deploy.cloudflare.com/?app-template=github-ahehe1982-SilentX)
 
 ### 本地开发
 
@@ -112,3 +116,5 @@ npm run dev # 开发模式
 npm run build # 构建生产版本
 npm run preview # 预览构建结果
 ```
+
+----------------------------------------------------------------------17/8/2025 8.更新分类和文章默认图片，压缩首页 banner 背景图片，更新 favicon 图标 9.新增 Cloudflare Pages 一键部署 10.其他细节修改
