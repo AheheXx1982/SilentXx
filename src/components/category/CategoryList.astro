@@ -18,14 +18,13 @@ interface CategoryLink {
 
 const { categories, countMap, totalCount } = Astro.props;
 
-const categoryLinks: CategoryLink[] = await Promise.all(
-  categories.map(async (category: Category) => {
-    return {
-      category,
-      link: await getCategoryLinks([category.name]),
-    };
-  }),
-);
+const categoryLinks: CategoryLink[] = categories.map((category: Category) => {
+  const links = getCategoryLinks([category]);
+  return {
+    category,
+    link: links.length > 0 ? links[0] : categoryMap[category.name] || category.name,
+  };
+});
 ---
 
 <div class="shadow-box bg-gradient-start mx-0 flex w-full flex-col px-6 py-4 md:px-3 md:py-2">
