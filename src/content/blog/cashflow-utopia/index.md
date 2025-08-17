@@ -21,8 +21,8 @@ catalog: true
 
 ## 子分类导航
 
-- [期权卖方策略](/categories/cashflow-utopia/option-selling/) - 卖方策略详解与实战分享
-- [全球高息股轮动](/categories/cashflow-utopia/drip/) - 高股息股票投资策略
-- [税务优化](/categories/cashflow-utopia/tax/) - 投资税务规划与优化
+- [期权卖方策略](/categories/cashflow-utopia/option-selling) - 卖方策略详解与实战分享
+- [全球高息股轮动](/categories/cashflow-utopia/drip) - 高股息股票投资策略
+- [税务优化](/categories/cashflow-utopia/tax) - 投资税务规划与优化
 
 无论您是寻求稳定收入的投资者还是希望优化投资组合的交易者，这里都能为您提供有价值的参考。

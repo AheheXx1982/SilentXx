@@ -18,8 +18,8 @@ catalog: true
 
 ## 子分类导航
 
-- [网格策略](/categories/crypto/grid/) - 网格交易策略研究
-- [合约交易](/categories/crypto/futures/) - 合约交易技巧与风险管理
-- [加密风向标](/categories/crypto/crypto-news/) - 加密市场最新动态与分析
+- [网格策略](/categories/crypto/grid) - 网格交易策略研究
+- [合约交易](/categories/crypto/futures) - 合约交易技巧与风险管理
+- [加密风向标](/categories/crypto/crypto-news) - 加密市场最新动态与分析
 
 无论您是加密货币新手还是有经验的交易者，这里都有适合您的内容。

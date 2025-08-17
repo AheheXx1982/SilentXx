@@ -18,8 +18,8 @@ catalog: true
 
 ## 子分类导航
 
-- [期权课程](/categories/options/course/) - 系统性学习期权知识
-- [策略分析](/categories/options/strategy/) - 深入分析各类期权策略
-- [实盘分享](/categories/options/trading-journal/) - 实战交易记录与复盘
+- [期权课程](/categories/options/course) - 系统性学习期权知识
+- [策略分析](/categories/options/strategy) - 深入分析各类期权策略
+- [实盘分享](/categories/options/trading-journal) - 实战交易记录与复盘
 
 无论您是期权新手还是有经验的交易者，这里都有适合您的内容。

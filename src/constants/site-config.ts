@@ -216,5 +216,4 @@ export const defaultCoverList = [
   '/img/articles/29.webp',
   '/img/articles/30.webp',
   '/img/articles/31.webp',
-  '/img/articles/32.webp',
 ];
