@@ -3,7 +3,7 @@ import { categoryMap } from '@constants/category';
 import type { Category } from '@lib/content';
 import CategoryTitle from './CategoryTitle.astro';
 import SubCategory from './SubCategory.astro';
-import { getCategoryLink } from '@lib/content';
+import { getCategoryLinks, getCategoryList } from '@lib/content';
 
 interface Props {
   categories: Category[];
@@ -22,7 +22,7 @@ const categoryLinks: CategoryLink[] = await Promise.all(
   categories.map(async (category: Category) => {
     return {
       category,
-      link: await getCategoryLink([category.name]),
+      link: await getCategoryLinks([category.name]),
     };
   }),
 );

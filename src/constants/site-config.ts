@@ -69,22 +69,16 @@ export const siteConfig: SiteConfig = {
       description: '期权策略研究、实战分析和课程分享',
     },
     {
-      link: 'crypto',
-      label: '加密实验室',
-      image: '/img/crypto/crypto1.webp',
-      description: '加密货币研究、交易策略和市场分析',
-    },
-    {
-      link: 'cashflow-utopia',
-      label: '现金流乌托邦',
-      image: '/img/stock/income.webp',
-      description: '构建稳定现金流的投资体系',
-    },
-    {
       link: 'options/trading-journal',
       label: '实盘分享',
       image: '/img/stock/stock1.webp',
       description: '实盘交易记录',
+    },
+    {
+      link: 'options/course',
+      label: '期权课程',
+      image: '/img/options/options2.webp',
+      description: '期权课程',
     },
     {
       link: 'crypto/grid',
@@ -99,16 +93,16 @@ export const siteConfig: SiteConfig = {
       description: '合约交易',
     },
     {
-      link: 'options/course',
-      label: '期权课程',
-      image: '/img/options/options2.webp',
-      description: '期权课程',
-    },
-    {
       link: 'crypto/crypto-news',
       label: '加密风向标',
       image: '/img/crypto/crypto5.webp',
       description: '加密货币新闻',
+    },
+    {
+      link: 'crypto',
+      label: '加密实验室',
+      image: '/img/crypto/crypto1.webp',
+      description: '加密货币研究、交易策略和市场分析',
     },
     {
       link: 'cashflow-utopia/option-selling',
@@ -121,6 +115,12 @@ export const siteConfig: SiteConfig = {
       label: '全球高息股轮动',
       image: '/img/stock/high-income.webp',
       description: '全球高息股轮动',
+    },
+    {
+      link: 'cashflow-utopia',
+      label: '现金流乌托邦',
+      image: '/img/stock/income.webp',
+      description: '构建稳定现金流的投资体系',
     },
   ],
 };

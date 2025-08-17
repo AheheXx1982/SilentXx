@@ -23,6 +23,14 @@ export async function getStaticPaths() {
 const { category } = Astro.props;
 const { categories: allCategories, countMap } = await getCategoryList();
 
+// 如果请求的路径不对应任何实际分类，则返回404
+if (!category) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found',
+  });
+}
+
 // 如果是子分类，只展示当前分类的内容
 const displayCategories = category ? [category] : allCategories;
 ---
