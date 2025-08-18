@@ -321,7 +321,7 @@ export async function getCategoryLink(categories: string[]): Promise<string> {
 
     const link = linkParts.join('/');
     // 确保链接不以斜杠结尾，符合 trailingSlash: 'never' 的配置
-    return link.replace(/\/$/, '');
+    return `/article/${link.replace(/\/$/, '')}`;
   } catch (error) {
     console.error('生成分类链接时出错:', error);
     return '';
