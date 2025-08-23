@@ -5,6 +5,26 @@ description: 本周期权实盘交易详细记录与复盘分析
 categories:
   - ['期权研究院', '实盘分享']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'ko', 'hi']
+translations:
+  en:
+    title: 2025 Week 1 Live Trading Record
+    description: Detailed record and review analysis of this week's options live trading
+    subtitle: Real-time trading performance and insights from weekly options transactions
+    content: 'translations/options/trading-journal/week1-trading-record.en.md'
+  ja:
+    title: 2025年第1週ライブ取引記録
+    description: 今週のオプションライブ取引の詳細記録とレビュー分析
+    subtitle: 週次オプション取引からのリアルタイム取引実績とインサイト
+  ko:
+    title: 2025년 제1주 실시간 거래 기록
+    description: 금주 옵션 실시간 거래의 상세 기록 및 리뷰 분석
+    subtitle: 주간 옵션 거래의 실시간 거래 실적 및 인사이트
+  hi:
+    title: 2025 के पहले सप्ताह का लाइव ट्रेडिंग रिकॉर्ड
+    description: इस सप्ताह के विकल्प लाइव ट्रेडिंग का विस्तृत रिकॉर्ड और समीक्षा विश्लेषण
+    subtitle: साप्ताहिक विकल्प लेनदेन से वास्तविक समय ट्रेडिंग प्रदर्शन और अंतर्दृष्टि
 ---
 
 ## 交易概况

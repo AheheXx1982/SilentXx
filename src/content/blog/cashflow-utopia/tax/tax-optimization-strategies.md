@@ -5,6 +5,26 @@ description: 合理规划投资税务，提高投资收益
 categories:
   - ['现金流乌托邦', '税务优化']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'zh-TW', 'hi']
+translations:
+  en:
+    title: 'Investment Tax Optimization Strategies'
+    description: 'Strategic tax planning to maximize investment returns'
+    subtitle: 'Building a Tax-Efficient Investment Portfolio'
+    content: 'translations/cashflow-utopia/tax/tax-optimization-strategies.en.md'
+  ja:
+    title: '投資税務最適化戦略'
+    description: '投資収益を最大化するための合理的な税務計画'
+    subtitle: '税効率の高い投資ポートフォリオの構築'
+  zh-TW:
+    title: '投資稅務優化策略'
+    description: '合理規劃投資稅務，提高投資收益'
+    subtitle: '建構稅收效率投資組合'
+  hi:
+    title: 'निवेश कर अनुकूलन रणनीतियाँ'
+    description: 'निवेश आय को अधिकतम करने के लिए रणनीतिक कर योजना'
+    subtitle: 'कर-दक्ष निवेश पोर्टफोलियो का निर्माण'
 ---
 
 ## 税务优化的重要性

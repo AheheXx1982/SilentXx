@@ -1,9 +1,16 @@
 ---
 import LogoSvg from '@assets/svg/logo.svg?react';
 import { MenuIcon } from '@components/ui/MenuIcon';
-import { siteConfig } from 'constants/site-config';
 import Navigator from './Navigator.astro';
+import LanguageSwitcherAstro from '@components/ui/LanguageSwitcherAstro.astro';
+import { getLanguageFromUrl } from '@lib/i18n';
+import { getSiteConfig } from '@constants/site-config-i18n';
+import type { SupportedLanguage } from '../../types/i18n';
 
+// 获取当前语言
+const currentLanguage = getLanguageFromUrl(Astro.url) as SupportedLanguage;
+// 使用多语言站点配置
+const siteConfig = getSiteConfig(currentLanguage);
 const { alternate, title, showLogo } = siteConfig;
 ---
 
@@ -31,7 +38,10 @@ const { alternate, title, showLogo } = siteConfig;
         )
       }
     </a>
-    <Navigator transition:name="page-header" />
+    <div class="flex items-center gap-4">
+      <Navigator transition:name="page-header" />
+      <LanguageSwitcherAstro class="text-white" />
+    </div>
   </div>
 </div>
 

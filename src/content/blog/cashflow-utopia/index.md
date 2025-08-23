@@ -5,6 +5,29 @@ description: 构建稳定现金流的投资体系，实现财务自由之路
 categories:
   - ['现金流乌托邦']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'zh-TW', 'hi']
+translations:
+  en:
+    title: 'Cashflow Utopia Introduction'
+    description: 'Building a stable cash flow investment system to achieve financial freedom'
+    subtitle: 'Your Journey to Financial Independence'
+    content: 'translations/cashflow-utopia/index.en.md'
+  ja:
+    title: 'キャッシュフローユートピア紹介'
+    description: '安定したキャッシュフロー投資システムを構築して財務自由を実現'
+    subtitle: '経済的自立への道のり'
+    content: 'translations/cashflow-utopia/index.ja.md'
+  zh-TW:
+    title: '現金流烏托邦介紹'
+    description: '構建穩定現金流的投資體系，實現財務自由之路'
+    subtitle: '您的財務獨立之旅'
+    content: 'translations/cashflow-utopia/index.zh-tw.md'
+  hi:
+    title: 'कैशफ्लो उतोपिया परिचय'
+    description: 'स्थिर धन प्रवाह निवेश प्रणाली का निर्माण, वित्तीय स्वतंत्रता प्राप्त करने का मार्ग'
+    subtitle: 'आपकी वित्तीय स्वतंत्रता की यात्रा'
+    content: 'translations/cashflow-utopia/index.hi.md'
 ---
 
 欢迎来到现金流乌托邦！这里专注于分享构建稳定现金流的投资策略和实践经验。

@@ -5,6 +5,19 @@ description: 欢迎来到加密实验室，这里是加密货币研究和交易�
 categories:
   - ['加密实验室']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'ko', 'hi']
+translations:
+  en:
+    title: 'Introduction to Crypto Lab'
+    description: 'Welcome to Crypto Lab, a dedicated area for cryptocurrency research and trading strategy sharing'
+    subtitle: 'Cryptocurrency Research and Trading Strategy Sharing'
+    content: 'translations/crypto/index.en.md'
+  hi:
+    title: क्रिप्टो प्रयोगशाला परिचय
+    description: क्रिप्टो प्रयोगशाला में आपका स्वागत है, यहाँ क्रिप्टोकरेंसी अनुसंधान और ट्रेडिंग रणनीति साझेदारी का क्षेत्र है
+    subtitle: क्रिप्टोकरेंसी अनुसंधान और ट्रेडिंग रणनीति साझेदारी
+    content: 'translations/crypto/index.hi.md'
 ---
 
 欢迎来到加密实验室！这里是专门研究加密货币、分享交易策略和市场分析的专区。

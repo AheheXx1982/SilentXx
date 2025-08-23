@@ -1,10 +1,14 @@
 ---
 import { HomeSiderType } from '@constants/enum';
+import { getLanguageFromUrl } from '@lib/i18n';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
 
 interface Props {
   title: string;
   description?: string;
   siderType?: HomeSiderType;
+  lang?: SupportedLanguage;
 }
 
 import '@fontsource/poppins';
@@ -15,41 +19,59 @@ import LoadingIndicator from 'astro-loading-indicator/component';
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
 import '@styles/index.css';
-import { seoConfig, siteConfig } from '@constants/site-config';
+import { getSiteConfig } from '@constants/site-config-i18n';
 import { Tooltips } from 'astro-tooltips';
 import FloatingGroup from '@components/layout/FloatingGroup.astro';
 import MobileDrawer from '@components/layout/MobileDrawer.astro';
 
-const { title = seoConfig.title, description = seoConfig.description, siderType } = Astro.props;
+const { title, description, siderType, lang } = Astro.props;
+
+// 获取当前语言
+const currentLanguage = lang || getLanguageFromUrl(Astro.url);
+const translations = getTranslations(currentLanguage);
+
+// 使用多语言站点配置
+const siteConfig = getSiteConfig(currentLanguage);
+
+// 使用多语言的元数据
+const finalTitle = title || translations.seo.defaultTitle;
+const finalDescription = description || translations.seo.defaultDescription;
+
+// 构建多语言的页面标题 (类似原来的seoConfig.title格式)
+const pageTitle =
+  title ||
+  `${siteConfig.alternate ? siteConfig.alternate + ' = ' : ''}${siteConfig.title}${siteConfig.subtitle ? ' = ' + siteConfig.subtitle : ''}`;
+const metaDescription = description || siteConfig.description;
+
 // TODO: siderType should be custom in router file, not in layout
 ---
 
 <!doctype html>
-<html transition:name="root" lang="zh-CN">
+<html transition:name="root" lang={currentLanguage}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
     <ClientRouter />
     <LoadingIndicator color="red" />
     <Tooltips />
     <!-- metadata -->
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <meta name="author" content={siteConfig.author} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
     <!-- <meta property="og:image" content="/opengraph.png?v=1" /> TODO: og image-->
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta charset="UTF-8" />
 
     <link rel="alternate" type="application/rss+xml" title={siteConfig.title} href={`${Astro.site}rss.xml`} />

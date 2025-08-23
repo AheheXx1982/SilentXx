@@ -1,0 +1,66 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'zh-TW';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx｜寂靜獵手</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">建站初心</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"專注於期權 · 加密 · 穩定現金流系統構建"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      在這裡，我們堅守「系統思維 + 低風險策略」的投資理念， 致力於深耕美股期權與數字貨幣交易。 通過博客、課程、工具和社區，
+      為普通投資者打造可複製的策略框架， 幫助你擺脫情緒化交易，建立堅實的紀律體系， 走向真正的交易自由。
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">輸出內容</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>期權知識系統</strong><br />
+        打造落地、系統化的期權學習路徑，讓複雜變簡單。
+      </li>
+      <li>
+        <strong>美股+加密輪動套利</strong><br />
+        融合雙市場優勢，開拓穩健的套利和現金流機會。
+      </li>
+      <li>
+        <strong>實盤策略分享</strong><br />
+        包括 Covered Call（備兌看漲）、Cash-Secured Put（現金擔保看跌）、網格交易等，實操為王。
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">關於站長</h2>
+
+    <p class="mb-4">
+      擁有十餘年多市場投資經驗，覆蓋 A 股、美股、加密貨幣、外匯和黃金。 投資路上，既有收穫也有挫折，虧錢經驗同樣寶貴。
+      生活簡約佛系，宅在家裡是常態。
+    </p>
+
+    <p class="mb-4">現實中的我沉默寡言，網絡上的我思維活躍、幽默風趣。 或許正是這份反差，才成就了我獨特的視角和交易哲學。</p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"真正的獵手，擅長靜待時機，終能捕獲豐厚獵物。"</p>
+    </blockquote>
+  </div>
+</Layout>

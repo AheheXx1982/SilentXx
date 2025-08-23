@@ -3,8 +3,10 @@ import { Badge } from '@components/ui/badge';
 import { Button } from '@components/ui/button';
 import { categoryMap } from '@constants/category';
 import { Routes } from '@constants/router';
-import { siteConfig } from '@constants/site-config';
+import { getSiteConfig } from '@constants/site-config-i18n';
 import { getCategoryByLink, getCategoryList, getParentCategory, getPostsByCategory, type Category } from '@lib/content';
+import { getLanguageFromUrl, getLocalizedUrl } from '@lib/i18n';
+import { getTranslations } from '@i18n/index';
 import { routeBuilder } from '@lib/route';
 import { cn } from '@lib/utils';
 import type { CollectionEntry } from 'astro:content';
@@ -19,6 +21,11 @@ interface CategoryWithPosts {
   category: Category | null;
   parentCategory: Category | null;
 }
+
+// 获取当前语言和翻译
+const currentLanguage = getLanguageFromUrl(Astro.url);
+const translations = getTranslations(currentLanguage);
+const siteConfig = getSiteConfig(currentLanguage);
 
 const { categories } = await getCategoryList();
 
@@ -43,12 +50,13 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
     categoryPosts.map((category, idx) => {
       const parentCategory = category?.parentCategory;
       const parentCategoryLink = parentCategory
-        ? Routes.Categories + '/' + (category?.link.split('/').slice(0, -1).join('/') ?? '')
+        ? getLocalizedUrl(Routes.Categories + '/' + (category?.link.split('/').slice(0, -1).join('/') ?? ''), currentLanguage)
         : '';
       const categoryInfo = category?.category;
-      const categoryLink = Routes.Categories + '/' + (category?.link ?? '');
+      const categoryLink = getLocalizedUrl(Routes.Categories + '/' + (category?.link ?? ''), currentLanguage);
       const childrenLen = categoryInfo?.children?.length ?? 0;
       const posts = category?.posts?.slice(0, 6 - (childrenLen ?? 0));
+
       return (
         <FlippedCard>
           <div slot="front" class="flex-center relative h-full rounded-md px-2 py-4">
@@ -81,7 +89,7 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
               {categoryInfo?.children?.length
                 ? categoryInfo.children.map((child) => (
                     <a
-                      href={categoryLink + '/' + categoryMap[child?.name]}
+                      href={getLocalizedUrl(categoryLink + '/' + categoryMap[child?.name], currentLanguage)}
                       class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
                     >
                       {child.name}
@@ -107,11 +115,13 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
                   <span class="mr-2">{parentCategory.name}</span>
                 </a>
               ) : null}
-              <Fragment>
+              <>
                 <Icon name="gg:loadbar-doc" class="mr-0.5 text-base" />
-                {categoryInfo?.children?.length ? `${categoryInfo.children.length} 个子分类，` : ''}
-                {category.posts?.length} 篇文章
-              </Fragment>
+                {categoryInfo?.children?.length
+                  ? `${categoryInfo.children.length} ${translations.common.childrenCategory}`
+                  : ''}
+                {category.posts?.length} {translations.common.articlesCount}
+              </>
             </p>
             <a href={categoryLink} aria-label="more info" class="absolute right-0 bottom-0">
               <Button
@@ -119,7 +129,7 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
                   'bg-gradient-shoka-button rounded-2xl rounded-se-none rounded-es-none transition-all hover:translate-x-1 hover:translate-y-1 hover:scale-105 md:h-7 md:px-2 md:py-1 md:text-xs',
                 )}
               >
-                more...
+                {translations.common.more}
               </Button>
             </a>
           </div>
@@ -128,3 +138,11 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
     })
   }
 </div>
+
+<style>
+  /* 添加一些过渡效果 */
+  .flip-card-front,
+  .flip-card-back {
+    transition: all 600ms ease-in-out;
+  }
+</style>

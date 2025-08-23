@@ -1,0 +1,60 @@
+---
+import { categoryMap } from '@constants/category';
+import type { Category } from '@lib/content';
+import CategoryTitle from './CategoryTitle.astro';
+import SubCategory from './SubCategory.astro';
+import { getCategoryLinks, getCategoryList } from '@lib/content';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '../../types/i18n';
+
+const { categories, countMap, totalCount, currentLanguage = 'zh-CN' } = Astro.props;
+const translations = getTranslations(currentLanguage);
+
+// 获取语言前缀
+const langPrefix = currentLanguage === 'zh-CN' ? '' : `/${currentLanguage.toLowerCase()}`;
+
+const categoryLinks = [];
+for (let i = 0; i < categories.length; i++) {
+  const category = categories[i];
+  const links = getCategoryLinks([category]);
+  categoryLinks.push({
+    category: category,
+    link: links.length > 0 ? links[0] : categoryMap[category.name] || category.name,
+  });
+}
+---
+
+<div class="shadow-box bg-gradient-start mx-0 flex w-full flex-col px-6 py-4 md:px-3 md:py-2">
+  <h2 class="shoka-decoration-circle group relative px-7.5 py-5 text-2xl/9 font-bold">
+    <a href={langPrefix || '/'} class="dashed-border text-muted-foreground group-hover:border-blue group-hover:text-blue border-b"> {translations.nav.home} </a>
+    <span class="text-muted-foreground text-xl">/</span> {translations.category.totalCategoriesCount?.replace('{count}', totalCount.toString()) || `目前共计 ${totalCount} 个分类`}
+  </h2>
+
+  <div class="flex w-full flex-col">
+    {
+      categoryLinks.map((item) => {
+        const category = item.category;
+        const link = item.link;
+        
+        return (
+          <>
+            <CategoryTitle
+              title={category.name}
+              count={countMap[category.name]}
+              href={`${langPrefix}/categories${link ? '/' + link : ''}`}
+              className={category?.children?.length ? 'has-children' : ''}
+            />
+            {category?.children?.length && (
+              <div class="category-first-level-container flex flex-col">
+                {category?.children?.length &&
+                  category.children.map((child) => (
+                    <SubCategory category={child} parentName={category.name} countMap={countMap} />
+                  ))}
+              </div>
+            )}
+          </>
+        );
+      })
+    }
+  </div>
+</div>

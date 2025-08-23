@@ -5,6 +5,26 @@ description: 备兑看涨策略的原理、应用场景和风险分析
 categories:
   - ['期权研究院', '策略分析']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'ko', 'hi']
+translations:
+  en:
+    title: Covered Call Strategy In-Depth Analysis
+    description: Principles, application scenarios, and risk analysis of covered call strategy
+    subtitle: A yield enhancement strategy for moderate bullish or neutral market outlook
+    content: 'translations/options/strategy/covered-call-strategy.en.md'
+  ja:
+    title: カバードコール戦略の深度分析
+    description: カバードコール戦略の原理、適用シナリオ、リスク分析
+    subtitle: 穏やかな上昇または横ばい相場に適した利回り向上戦略
+  ko:
+    title: 커버드 콜 전략 심층 분석
+    description: 커버드 콜 전략의 원리, 적용 시나리오 및 위험 분석
+    subtitle: 온건한 상승 또는 보합 시장 전망에 적합한 수익 향상 전략
+  hi:
+    title: कवर्ड कॉल रणनीति गहन विश्लेषण
+    description: कवर्ड कॉल रणनीति के सिद्धांत, अनुप्रयोग परिदृश्य और जोखिम विश्लेषण
+    subtitle: संयमित बुलिश या तटस्थ बाजार दृष्टिकोण के लिए एक उपज वृद्धि रणनीति
 ---
 
 ## 策略概述

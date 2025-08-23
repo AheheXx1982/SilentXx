@@ -1,0 +1,71 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'ja';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | サイレントハンター</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">サイト設立の理念</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"オプション · 暗号通貨 · 安定したキャッシュフロー・システム構築に集中"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      ここで私たちは「システマチック・シンキング + 低リスク戦略」という投資理念を堅持し、
+      米国株式オプションとデジタル通貨取引の深耕に尽力しています。 ブログ、コース、ツール、コミュニティを通じて、
+      一般投資家のための複製可能な戦略フレームワークを作成し、 感情的取引から脱却し、堅実な規律体系を構築するお手伝いをし、
+      真の取引自由へと向かいます。
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">コンテンツ出力</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>オプション知識システム</strong><br />
+        実用的で体系的なオプション学習パスを作り、複雑さを単純化します。
+      </li>
+      <li>
+        <strong>米国株 + 暗号通貨 ローテーションアービトラージュ</strong><br />
+        二重市場の優位性を組み合わせ、安定したアービトラージュとキャッシュフローの機会を開拓します。
+      </li>
+      <li>
+        <strong>ライブ戦略共有</strong><br />
+        カバードコール、キャッシュ・セキュアド・プット、グリッド取引などを含む—実践中心のアプローチ。
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">著者について</h2>
+
+    <p class="mb-4">
+      A株、米国株、暗号通貨、外国為替、金など、複数の市場で10年以上の投資経験を持っています。
+      投資の道のりでは勝利もあれば挫折もあり、損失経験も同じく貴重です。 シンプルで仏教的な生活を送り、家にいることが日常です。
+    </p>
+
+    <p class="mb-4">
+      現実の私はずっと黙々としていて寡言ですが、ネット上では活発でユーモラスです。
+      おそらくこの対照が、私の独特な視点と取引哲学を生み出したのでしょう。
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"真のハンターは適切な瞬間を待つことに優れ、最終的に豊かな獲物を捕らえることができます。"</p>
+    </blockquote>
+  </div>
+</Layout>

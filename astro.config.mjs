@@ -7,10 +7,19 @@ import umami from '@yeskunall/astro-umami';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from './src/constants/i18n';
 
 // https://astro.build/config
 export default defineConfig({
   site: siteConfig.site,
+  i18n: {
+    defaultLocale: DEFAULT_LANGUAGE,
+    locales: SUPPORTED_LANGUAGES,
+    routing: {
+      prefixDefaultLocale: false, // 默认语言无前缀
+      redirectToDefaultLocale: false,
+    },
+  },
   markdown: {
     // Enable GitHub Flavored Markdown
     gfm: true,

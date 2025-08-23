@@ -12,7 +12,19 @@ const finalConfig = Object.assign(defaultContentConfig, config);
 ---
 
 <div class="custom-content" data-config={JSON.stringify(finalConfig)}>
-  <Content />
+  {
+    typeof Content === 'function'
+      ? (() => {
+          const contentResult = Content();
+          // 如果返回的是HTML字符串，使用set:html渲染
+          if (typeof contentResult === 'string') {
+            return <div set:html={contentResult} />;
+          }
+          // 否则直接渲染组件（使用正确的Astro组件调用方式）
+          return contentResult;
+        })()
+      : null
+  }
 </div>
 
 <script>

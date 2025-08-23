@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'ru';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | Безмолвный Охотник</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Основательская Визия</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Сфокусирован на Опционах · Крипто · Построении Систем Стабильного Денежного Потока"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      Здесь мы придерживаемся инвестиционной философии "системное мышление + стратегии с низким риском", стремимся углубиться в
+      торговлю опционами на американские акции и цифровыми валютами. Через блоги, курсы, инструменты и сообщество, мы создаем
+      воспроизводимые стратегические рамки для розничных инвесторов, помогая вам освободиться от эмоциональной торговли,
+      построить прочную систему дисциплины, и двигаться к истинной свободе торговли.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Вывод Контента</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>Система Знаний по Опционам</strong><br />
+        Создание практичных, систематизированных путей обучения опционам, делая сложное простым.
+      </li>
+      <li>
+        <strong>Арбитраж Ротации Акции США + Крипто</strong><br />
+        Слияние преимуществ двойных рынков для открытия стабильных возможностей арбитража и денежного потока.
+      </li>
+      <li>
+        <strong>Обмен Стратегиями в Прямом Эфире</strong><br />
+        Включая Covered Call, Cash-Secured Put, торговлю по сетке и другое—практический подход.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Об Авторе</h2>
+
+    <p class="mb-4">
+      С более чем десятилетним опытом инвестиций на множестве рынков, охватывающих акции А, американские акции, криптовалюты,
+      форекс и золото. На инвестиционном пути были как достижения, так и неудачи, опыт убытков столь же ценен. Веду простую,
+      спокойную жизнь, оставаться дома — это норма.
+    </p>
+
+    <p class="mb-4">
+      В реальной жизни я молчалив и сдержан, но в сети я мыслю активно и с юмором. Возможно, именно этот контраст сформировал
+      мой уникальный взгляд и торговую философию.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Истинный охотник преуспевает в ожидании подходящего момента и в конце концов захватывает богатую добычу."</p>
+    </blockquote>
+  </div>
+</Layout>

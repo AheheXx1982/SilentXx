@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'de';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | Stiller Jäger</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Gründungsvision</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Fokus auf Optionen · Krypto · Aufbau stabiler Cashflow-Systeme"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      Hier halten wir an der Investitionsphilosophie "systematisches Denken + Strategien mit geringem Risiko" fest und widmen
+      uns dem intensiven Eintauchen in US-Aktienoptionen und den Handel mit digitalen Währungen. Durch Blogs, Kurse, Tools und
+      Community erstellen wir replizierbare Strategierahmen für Privatanleger, helfen Ihnen dabei, sich vom emotionalen Handeln
+      zu lösen, ein solides Disziplinsystem aufzubauen und auf den Weg zur wahren Handelsfreiheit zu gehen.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Inhaltsausgabe</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>Optionen-Wissenssystem</strong><br />
+        Erstellung praktischer, systematisierter Lernpfade für Optionen, um Komplexes einfach zu machen.
+      </li>
+      <li>
+        <strong>US-Aktien + Krypto-Rotationsarbitrage</strong><br />
+        Kombination der Vorteile doppelter Märkte zur Erschließung stabiler Arbitrage- und Cashflow-Möglichkeiten.
+      </li>
+      <li>
+        <strong>Live-Strategieteilung</strong><br />
+        Einschließlich Covered Call, Cash-Secured Put, Grid-Trading und mehr—praxisorientierter Ansatz.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Über den Autor</h2>
+
+    <p class="mb-4">
+      Mit über zehn Jahren Erfahrung in Multi-Markt-Investitionen in Aktien A, US-Aktien, Kryptowährungen, Devisen und Gold. Auf
+      dem Investitionsweg gab es sowohl Gewinne als auch Rückschläge, Verlusterfahrungen sind ebenso wertvoll. Ich führe ein
+      einfaches, entspanntes Leben, zu Hause zu bleiben ist die Regel.
+    </p>
+
+    <p class="mb-4">
+      Im realen Leben bin ich schweigsam und zurückhaltend, online bin ich geistig aktiv und humorvoll. Vielleicht ist genau
+      dieser Gegensatz verantwortlich für meine einzigartige Perspektive und Handelsphilosophie.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Ein wahrer Jäger beherrscht die Kunst, auf den richtigen Moment zu warten und erbeutet letztendlich reiche Beute."</p>
+    </blockquote>
+  </div>
+</Layout>

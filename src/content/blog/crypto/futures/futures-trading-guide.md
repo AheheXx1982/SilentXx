@@ -5,6 +5,26 @@ description: 合约交易的基本概念和风险控制方法
 categories:
   - ['加密实验室', '合约交易']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'ko', 'hi']
+translations:
+  en:
+    title: Futures Trading Basics and Risk Management
+    description: Basic concepts and risk control methods of futures trading
+    subtitle: Financial derivatives trading with leverage effect for profit from price movements
+    content: 'translations/crypto/futures/futures-trading-guide.en.md'
+  ja:
+    title: フューチャーズ取引基礎とリスク管理
+    description: フューチャーズ取引の基本概念とリスクコントロール方法
+    subtitle: 価格変動から利益を得るためのレバレッジ効果付き金融派生商品取引
+  ko:
+    title: 선물 거래 기초와 리스크 관리
+    description: 선물 거래의 기본 개념과 리스크 컨트롤 방법
+    subtitle: 가격 변동에서 수익을 얻기 위한 레버리지 효과가 있는 금융 파생상품 거래
+  hi:
+    title: फ्यूचर्स ट्रेडिंग मूल बातें और जोखिम प्रबंधन
+    description: फ्यूचर्स ट्रेडिंग की मूल अवधारणाएं और जोखिम नियंत्रण विधियाँ
+    subtitle: मूल्य चलन से लाभ के लिए लीवरेज प्रभाव वाला वित्तीय डेरिवेटिव ट्रेडिंग
 ---
 
 ## 合约交易简介

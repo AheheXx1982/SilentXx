@@ -5,6 +5,26 @@ description: 最新加密货币市场动态分析和未来展望
 categories:
   - ['加密实验室', '加密风向标']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'ko', 'hi']
+translations:
+  en:
+    title: Latest Cryptocurrency Market Dynamics and Outlook
+    description: Analysis of recent crypto market dynamics and future outlook
+    subtitle: Market overview, key news, technical analysis, and investment recommendations
+    content: 'translations/crypto/crypto-news/market-outlook.en.md'
+  ja:
+    title: 暗号資産市場の最新動向と展望
+    description: 最新の暗号通貨市場動向分析と将来展望
+    subtitle: 市況概要、重要ニュース、テクニカル分析、投資アドバイス
+  ko:
+    title: 암호화폐 시장 최신 동향과 전망
+    description: 최신 암호화폐 시장 동향 분석 및 미래 전망
+    subtitle: 시장 개요, 주요 뉴스, 기술 분석, 투자 권고
+  hi:
+    title: क्रिप्टो बाजार की नवीनतम गतिविधि और दृष्टिकोण
+    description: नवीनतम क्रिप्टोकरेंसी बाजार गतिविधि विश्लेषण और भविष्य के दृष्टिकोण
+    subtitle: बाजार अवलोकन, मुख्य समाचार, तकनीकी विश्लेषण और निवेश अनुशंसाएं
 ---
 
 ## 市场概况

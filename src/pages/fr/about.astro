@@ -1,0 +1,73 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'fr';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | Chasseur Silencieux</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Vision Fondatrice</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Axé sur les Options · Crypto · Construction de Systèmes de Flux de Trésorerie Stables"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      Ici, nous nous tenons à la philosophie d'investissement de "pensée systémique + stratégies à faible risque", nous nous
+      engageons à explorer en profondeur le trading d'options sur actions américaines et les monnaies numériques. À travers des
+      blogs, des cours, des outils et une communauté, nous créons des cadres stratégiques reproductibles pour les investisseurs
+      de détail, vous aidant à vous libérer du trading émotionnel, à établir un système de discipline solide, et à avancer vers
+      la véritable liberté de trading.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Production de Contenu</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>Système de Connaissance des Options</strong><br />
+        Création de parcours d'apprentissage d'options pratiques et systématisés, rendant le complexe simple.
+      </li>
+      <li>
+        <strong>Arbitrage de Rotation Actions USA + Crypto</strong><br />
+        Fusion des avantages de marchés doubles pour explorer des opportunités stables d'arbitrage et de flux de trésorerie.
+      </li>
+      <li>
+        <strong>Partage de Stratégies en Direct</strong><br />
+        Incluant Covered Call, Cash-Secured Put, trading en grille, et plus—approche axée sur la pratique.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">À Propos de l'Auteur</h2>
+
+    <p class="mb-4">
+      Avec plus de dix ans d'expérience en investissement multi-marchés couvrant les actions A, les actions américaines, les
+      cryptomonnaies, le forex et l'or. Sur le chemin de l'investissement, il y a eu à la fois des réussites et des échecs, les
+      expériences de pertes sont tout aussi précieuses. Je mène une vie simple et décontractée, rester à la maison est la norme.
+    </p>
+
+    <p class="mb-4">
+      Dans la vie réelle, je suis silencieux et réservé, mais en ligne je suis actif mentalement et humoristique. Peut-être
+      est-ce précisément ce contraste qui a forgé ma perspective unique et ma philosophie de trading.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Un vrai chasseur excelle à attendre le bon moment et finit par capturer une proie abondante."</p>
+    </blockquote>
+  </div>
+</Layout>

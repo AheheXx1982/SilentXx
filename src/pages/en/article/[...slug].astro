@@ -1,0 +1,187 @@
+---
+import { getSortedPosts, getCategoryArr, getCategoryLink } from '@lib/content';
+import { getPostTranslation, getSmartArticleContent, getAvailableLanguages } from '@lib/article-i18n';
+import { parseDate } from '@lib/datetime';
+import Layout from '@layouts/Layout.astro';
+import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
+import HomeSider from '@components/layout/HomeSider.astro';
+import Cover from '@components/ui/cover/Cover.astro';
+import CustomContent from '@components/common/CustomContent.astro';
+import { HomeSiderType } from '@constants/enum';
+import { Icon } from 'astro-icon/components';
+import { getTranslations } from '@i18n/index';
+import { getSiteConfig } from '@constants/site-config-i18n';
+import type { SupportedLanguage } from '@types/i18n';
+
+// 当前语言
+const currentLanguage: SupportedLanguage = 'en';
+const translations = getTranslations(currentLanguage);
+const siteConfig = getSiteConfig(currentLanguage);
+
+export async function getStaticPaths() {
+  const postCollections = await getSortedPosts();
+  if (!postCollections || !Array.isArray(postCollections)) {
+    return [];
+  }
+
+  const paths = [];
+  for (const post of postCollections) {
+    let slug: string;
+    if (post?.slug) {
+      if (typeof post.slug === 'string') {
+        slug = post.slug;
+      } else {
+        try {
+          const slugArray = post.slug as string[] | unknown[];
+          slug = Array.isArray(slugArray) ? slugArray.join('/') : String(post.slug);
+        } catch (e) {
+          slug = 'untitled';
+        }
+      }
+    } else {
+      slug = 'untitled';
+    }
+
+    let link: string;
+    if (post.data?.link) {
+      link = post.data.link;
+    } else if (typeof slug === 'string') {
+      const parts = slug.split('/');
+      link = parts.pop() || slug;
+    } else {
+      link = 'untitled';
+    }
+
+    const finalLink = typeof link === 'string' ? link : String(link);
+
+    paths.push({
+      params: { slug: finalLink },
+      props: { post },
+    });
+  }
+
+  return paths;
+}
+
+const { post } = Astro.props || {};
+if (!post) {
+  throw new Error('Article not found');
+}
+
+// 获取多语言文章内容
+const { Content, metadata } = await getSmartArticleContent(post, currentLanguage);
+const { title, description, categories = [], tags = [], date } = post?.data ?? {};
+
+// 使用翻译后的标题和描述（如果有的话）
+const displayTitle = metadata.title || title;
+const displayDescription = metadata.description || description;
+const availableLanguages = getAvailableLanguages(post);
+
+const categoryArr = getCategoryArr(categories?.[0]);
+const categoryStr = categoryArr?.length ? ` | ${categoryArr.join(' / ')}` : '';
+
+// 生成面包屑导航
+const breadcrumbCategories = [];
+if (categoryArr?.length) {
+  for (let i = 0; i < categoryArr.length; i++) {
+    const partialCategories = categoryArr.slice(0, i + 1);
+    const link = await getCategoryLink(partialCategories);
+    breadcrumbCategories.push({
+      name: categoryArr[i],
+      link: `/en/categories/${link}`,
+    });
+  }
+}
+---
+
+<Layout
+  title={`${displayTitle}${categoryStr} | ${siteConfig.title}`}
+  description={displayDescription}
+  siderType={HomeSiderType.POST}
+  lang={currentLanguage}
+>
+  <TwoColumnLayout>
+    <Cover slot="cover" data={post} />
+    <HomeSider slot="sider" type={HomeSiderType.POST} />
+    <div class="shadow-box bg-gradient-start flex flex-col gap-2 p-4 pt-6 md:px-5 md:py-4">
+      <!-- 多语言提示 -->
+      {
+        metadata.fallbackToOriginal && (
+          <div class="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-800 dark:bg-amber-900/20">
+            <div class="flex items-center gap-2 text-amber-800 dark:text-amber-200">
+              <Icon name="ri:information-line" class="h-4 w-4" />
+              <span class="text-sm">
+                {translations.article?.noTranslation ||
+                  'This article is not available in English. Displaying original content.'}
+              </span>
+            </div>
+          </div>
+        )
+      }
+
+      <!-- 可用语言列表 -->
+      {
+        availableLanguages.length > 1 && (
+          <div class="text-muted-foreground mb-4 flex items-center gap-2 text-sm">
+            <Icon name="ri:earth-line" class="h-4 w-4" />
+            <span>可用语言: </span>
+            <div class="flex gap-2">
+              {availableLanguages.map((lang) => {
+                const isActive = lang === currentLanguage;
+                const baseUrl = lang === 'zh-CN' ? '' : `/${lang}`;
+                const articleUrl = `${baseUrl}/article/${post.data?.link ?? post.slug.split('/').pop() ?? post.slug}`;
+
+                return (
+                  <a
+                    href={articleUrl}
+                    class={`rounded px-2 py-1 text-xs transition-colors ${
+                      isActive
+                        ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
+                        : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    {lang.toUpperCase()}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )
+      }
+      <!-- 面包屑导航 -->
+      <nav class="text-muted-foreground flex items-center gap-2 text-sm">
+        <div class="flex items-center gap-1">
+          <Icon name="fa6-solid:house-chimney" class="h-4 w-4" />
+          <a href="/en/" aria-label={translations.nav.home}>
+            <span class="hover:text-blue transition-colors duration-300">{translations.nav.home}</span>
+          </a>
+        </div>
+        {
+          breadcrumbCategories && breadcrumbCategories.length > 0
+            ? breadcrumbCategories.map((category, index) => (
+                <>
+                  <Icon name="ri:arrow-right-s-line" class="text-muted-foreground/60 h-4 w-4" />
+                  <a
+                    href={category.link || '#'}
+                    class={`hover:text-blue transition-colors duration-300 ${
+                      index === breadcrumbCategories.length - 1
+                        ? 'text-primary bg-primary/10 hover:text-primary hover:bg-primary/20 rounded-full px-2.5 py-1'
+                        : ''
+                    }`}
+                    aria-label={`Go to ${category.name} category`}
+                  >
+                    {category.name}
+                  </a>
+                </>
+              ))
+            : null
+        }
+      </nav>
+      <article
+        class="prose md:prose-sm dark:prose-invert tablet:max-w-[calc(100vw-2.5rem)] tablet:w-auto w-[calc(100vw-20rem)] max-w-5xl"
+      >
+        <CustomContent Content={Content} />
+      </article>
+    </div>
+  </TwoColumnLayout>
+</Layout>

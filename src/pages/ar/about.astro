@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'ar';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+  dir="rtl"
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | الصياد الصامت</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">الرؤية التأسيسية</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"التركيز على الخيارات · العملات المشفرة · بناء أنظمة تدفق نقدي مستقرة"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      هنا، نلتزم بفلسفة الاستثمار "التفكير النظامي + الاستراتيجيات منخفضة المخاطر"، مكرسين أنفسنا للغوص العميق في تداول خيارات
+      الأسهم الأمريكية والعملات الرقمية. من خلال المدونات والدورات والأدوات والمجتمع، نخلق أطر استراتيجية قابلة للتكرار
+      للمستثمرين بالتجزئة، نساعدك على التخلص من التداول العاطفي، وبناء نظام انضباط قوي، والمضي نحو حرية التداول الحقيقية.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">إخراج المحتوى</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pr-5">
+      <li>
+        <strong>نظام معرفة الخيارات</strong><br />
+        إنشاء مسارات تعلم خيارات عملية ومنظمة، مما يجعل المعقد بسيطاً.
+      </li>
+      <li>
+        <strong>تحقيق أرباح من تناوب الأسهم الأمريكية + العملات المشفرة</strong><br />
+        دمج مزايا الأسواق المزدوجة لاستكشاف فرص استقرار التحكيم وتدفق النقد.
+      </li>
+      <li>
+        <strong>مشاركة الاستراتيجيات المباشرة</strong><br />
+        بما في ذلك Covered Call، Cash-Secured Put، التداول الشبكي، والمزيد—نهج عملي.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">عن المؤلف</h2>
+
+    <p class="mb-4">
+      مع أكثر من عشر سنوات من الخبرة في الاستثمار متعدد الأسواق تشمل الأسهم الصينية، الأسهم الأمريكية، العملات المشفرة، الفوركس
+      والذهب. في طريق الاستثمار، كانت هناك إنجازات وإخفاقات، خبرات الخسارة مفيدة بنفس القدر. أعيش حياة بسيطة وهادئة، البقاء في
+      المنزل هو الشأن العادي.
+    </p>
+
+    <p class="mb-4">
+      في الحياة الواقعية أنا صامت وخجول، لكن على الإنترنت أنا نشط فكرياً ومحبوب للمزاح. ربما正是 هذا التباين هو ما شكّل منظوراً
+      فريداً وفلسفة تداولية خاصة بي.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"الصياد الحقيقي يتفوق في انتظار اللحظة المناسبة وفي النهاية يُمسك فريسة وافرة."</p>
+    </blockquote>
+  </div>
+</Layout>

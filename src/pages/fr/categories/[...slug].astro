@@ -1,0 +1,205 @@
+---
+import Layout from '@layouts/Layout.astro';
+import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
+import HomeSider from '@components/layout/HomeSider.astro';
+import Cover from '@components/ui/cover/Cover.astro';
+import { HomeSiderType } from '@constants/enum';
+import { getCategoryList, getCategoryByLink, getSortedPosts } from '@lib/content';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+// 当前语言
+const currentLanguage: SupportedLanguage = 'fr';
+const translations = getTranslations(currentLanguage);
+
+export async function getStaticPaths() {
+  const { categories } = await getCategoryList();
+  const allPosts = await getSortedPosts();
+  const paths = [];
+
+  // 获取所有文章的分类信息，生成分类路径
+  const categoryLinks = new Set();
+
+  allPosts.forEach((post) => {
+    const postCategories = post.data.categories;
+    if (postCategories && postCategories.length > 0) {
+      // 处理嵌套分类数组
+      if (Array.isArray(postCategories[0])) {
+        // 嵌套分类：['加密实验室', '网格策略']
+        const firstCategory = postCategories[0][0]; // 一级分类
+        const secondCategory = postCategories[0][1]; // 二级分类
+
+        if (firstCategory) {
+          // 一级分类路径
+          const firstSlug = firstCategory.toLowerCase().replace(/\s+/g, '-');
+          categoryLinks.add(firstSlug);
+
+          // 二级分类路径（如果存在）
+          if (secondCategory) {
+            const secondSlug = secondCategory.toLowerCase().replace(/\s+/g, '-');
+            categoryLinks.add(secondSlug);
+          }
+        }
+      } else {
+        // 单级分类
+        const categorySlug = postCategories[0].toLowerCase().replace(/\s+/g, '-');
+        categoryLinks.add(categorySlug);
+      }
+    }
+  });
+
+  // 添加一些常见的分类别名路径
+  const categoryAliases = {
+    crypto: '加密实验室',
+    options: '期权研究院',
+    cashflow: '现金流乌托邦',
+    grid: '网格策略',
+    futures: '合约交易',
+    news: '加密风向标',
+  };
+
+  // 为每个分类创建路径
+  for (const link of categoryLinks) {
+    paths.push({
+      params: { slug: link },
+      props: { categoryLink: link, isIndex: false },
+    });
+  }
+
+  // 添加别名路径
+  for (const [alias, chineseName] of Object.entries(categoryAliases)) {
+    paths.push({
+      params: { slug: alias },
+      props: { categoryLink: alias, isIndex: false, categoryAlias: chineseName },
+    });
+  }
+
+  return paths;
+}
+
+const { categories, categoryLink, isIndex, categoryAlias } = Astro.props;
+
+let pageTitle = translations.category.allCategories;
+let posts = [];
+let displayCategoryName = '';
+
+if (!isIndex && categoryLink) {
+  const allPosts = await getSortedPosts();
+
+  // 定义分类别名映射
+  const categoryAliases = {
+    crypto: '加密实验室',
+    options: '期权研究院',
+    cashflow: '现金流乌托邦',
+    grid: '网格策略',
+    futures: '合约交易',
+    news: '加密风向标',
+  };
+
+  posts = allPosts.filter((post) => {
+    const postCategories = post.data.categories;
+    if (!postCategories || !postCategories.length) return false;
+
+    // 改进的分类匹配逻辑
+    if (Array.isArray(postCategories[0])) {
+      // 嵌套分类：['加密实验室', '网格策略']
+      const firstCategory = postCategories[0][0]; // 一级分类
+      const secondCategory = postCategories[0][1]; // 二级分类
+
+      // 检查是否匹配别名
+      const targetCategory = categoryAliases[categoryLink] || categoryLink;
+
+      // 匹配一级或二级分类
+      return (
+        firstCategory === targetCategory ||
+        secondCategory === targetCategory ||
+        firstCategory?.toLowerCase().replace(/\s+/g, '-') === categoryLink ||
+        secondCategory?.toLowerCase().replace(/\s+/g, '-') === categoryLink
+      );
+    } else {
+      // 单级分类
+      const category = postCategories[0];
+      const targetCategory = categoryAliases[categoryLink] || categoryLink;
+      return category === targetCategory || category?.toLowerCase().replace(/\s+/g, '-') === categoryLink;
+    }
+  });
+
+  // 获取显示用的分类名称
+  if (posts.length > 0) {
+    const firstPost = posts[0];
+    const postCategories = firstPost.data.categories;
+    if (postCategories && postCategories.length > 0) {
+      if (Array.isArray(postCategories[0])) {
+        // 对于嵌套分类，优先显示二级分类，如果没有则显示一级
+        const targetCategory = categoryAliases[categoryLink] || categoryLink;
+        const secondCategory = postCategories[0][1];
+        const firstCategory = postCategories[0][0];
+
+        if (secondCategory === targetCategory || secondCategory?.toLowerCase().replace(/\s+/g, '-') === categoryLink) {
+          displayCategoryName = secondCategory;
+        } else {
+          displayCategoryName = firstCategory;
+        }
+      } else {
+        displayCategoryName = postCategories[0];
+      }
+    }
+  } else {
+    // 如果没有找到文章，使用别名或分类链接作为显示名称
+    displayCategoryName =
+      categoryAliases[categoryLink] || categoryLink.charAt(0).toUpperCase() + categoryLink.slice(1).replace(/-/g, ' ');
+  }
+
+  pageTitle = `${displayCategoryName} - ${translations.category.allCategories}`;
+}
+---
+
+<Layout
+  title={`${pageTitle} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  siderType={HomeSiderType.CATEGORY}
+  lang={currentLanguage}
+>
+  <TwoColumnLayout>
+    <Cover slot="cover" />
+    <HomeSider slot="sider" type={HomeSiderType.CATEGORY} />
+    <div class="shadow-box bg-gradient-start flex flex-col gap-4 p-4 pt-6 md:px-5 md:py-4">
+      <h1 class="text-2xl font-bold">{pageTitle}</h1>
+
+      <div class="space-y-6">
+        {
+          posts.length > 0 ? (
+            posts.map((post: any) => (
+              <article class="border-b border-gray-200 pb-6 last:border-b-0 dark:border-gray-700">
+                <h2 class="mb-2 text-xl font-semibold">
+                  <a href={`/fr/article/${post.slug}`} class="transition-colors hover:text-blue-600">
+                    {post.data.title}
+                  </a>
+                </h2>
+                {post.data.description && <p class="mb-3 text-gray-600 dark:text-gray-300">{post.data.description}</p>}
+                <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <span>
+                    {translations.post.publishedOn}: {post.data.date.toLocaleDateString('fr')}
+                  </span>
+                  {post.data.categories && post.data.categories.length > 0 && (
+                    <span>
+                      Category: {Array.isArray(post.data.categories[0]) ? post.data.categories[0][0] : post.data.categories[0]}
+                    </span>
+                  )}
+                </div>
+              </article>
+            ))
+          ) : (
+            <div class="py-12 text-center">
+              <p class="text-lg text-gray-500 dark:text-gray-400">{translations.category.noPostsInCategory}</p>
+              <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">Category: {displayCategoryName}</p>
+              <a href="/fr/categories" class="mt-4 inline-block text-blue-600 transition-colors hover:text-blue-800">
+                ← {translations.category.allCategories}
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </TwoColumnLayout>
+</Layout>

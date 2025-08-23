@@ -5,6 +5,26 @@ description: 通过投资全球高息股构建稳定的现金流
 categories:
   - ['现金流乌托邦', '全球高息股轮动']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'zh-TW', 'hi']
+translations:
+  en:
+    title: 'Global High-Dividend Stock Investment Strategy'
+    description: 'Building stable cash flow through global high-dividend stock investments'
+    subtitle: 'Global Dividend Stock Rotation Strategy'
+    content: 'translations/cashflow-utopia/drip/dividend-stock-strategy.en.md'
+  ja:
+    title: 'グローバル高配当株投資戦略'
+    description: 'グローバル高配当株への投資で安定したキャッシュフローを構築'
+    subtitle: 'グローバル配当株ローテーション戦略'
+  zh-TW:
+    title: '全球高息股投資策略'
+    description: '透過投資全球高息股構建穩定的現金流'
+    subtitle: '全球高息股輪動策略'
+  hi:
+    title: 'वैश्विक उच्च लाभांश शेयर निवेश रणनीति'
+    description: 'वैश्विक उच्च लाभांश शेयरों में निवेश के माध्यम से स्थिर कैशफ्लो का निर्माण'
+    subtitle: 'वैश्विक लाभांश शेयर रोटेशन रणनीति'
 ---
 
 ## 策略理念

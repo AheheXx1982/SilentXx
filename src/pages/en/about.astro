@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'en';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | Silent Hunter</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Founding Vision</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Focus on Options · Crypto · Stable Cash Flow System Building"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      Here, we adhere to the investment philosophy of "systematic thinking + low-risk strategies," committed to delving deep
+      into US stock options and digital currency trading. Through blogs, courses, tools, and community, we create replicable
+      strategic frameworks for retail investors, helping you break free from emotional trading, build a solid discipline system,
+      and move toward true trading freedom.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Content Output</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>Options Knowledge System</strong><br />
+        Creating practical, systematic learning paths for options, making complexity simple.
+      </li>
+      <li>
+        <strong>US Stock + Crypto Rotation Arbitrage</strong><br />
+        Combining the advantages of dual markets to explore stable arbitrage and cash flow opportunities.
+      </li>
+      <li>
+        <strong>Live Strategy Sharing</strong><br />
+        Including Covered Call, Cash-Secured Put, grid trading, and more—practice-oriented approach.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">About the Author</h2>
+
+    <p class="mb-4">
+      With over ten years of multi-market investment experience covering A-shares, US stocks, cryptocurrencies, forex, and gold,
+      I've had both wins and setbacks on my investment journey. Losing experiences are equally valuable. I lead a simple and
+      laid-back life, often staying at home.
+    </p>
+
+    <p class="mb-4">
+      In real life, I'm quiet and reserved, but online I'm active-minded and humorous. Perhaps it's this contrast that has
+      shaped my unique perspective and trading philosophy.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"A true hunter excels at waiting for the right moment and ultimately captures abundant prey."</p>
+    </blockquote>
+  </div>
+</Layout>

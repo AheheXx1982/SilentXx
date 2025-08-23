@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'hi';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | साइलेंट हंटर</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">साइट स्थापना की दृष्टि</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"विकल्पों · क्रिप्टो · स्थिर नकद प्रवाह प्रणाली निर्माण पर ध्यान केंद्रित करना"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      यहाँ, हम "प्रणालीगत सोच + कम जोखिम वाली रणनीतियों" के निवेश दर्शन को अपनाते हैं, अमेरिकी शेयर विकल्पों और डिजिटल मुद्रा
+      व्यापार में गहराई से उतरने के लिए प्रतिबद्ध हैं। ब्लॉग, पाठ्यक्रम, उपकरण और समुदाय के माध्यम से, हम खुदरा निवेशकों के लिए
+      प्रतिरूपण योग्य रणनीतिक ढांचे बनाते हैं, आपको भावनात्मक व्यापार से मुक्त करने में मदद करते हैं, एक मजबूत अनुशासन प्रणाली
+      का निर्माण करते हैं, और सच्ची व्यापार स्वतंत्रता की ओर बढ़ते हैं।
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">सामग्री निर्गम</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>विकल्प ज्ञान प्रणाली</strong><br />
+        व्यावहारिक, प्रणालीबद्ध विकल्प अध्ययन पथ बनाना, जटिल को सरल बनाना।
+      </li>
+      <li>
+        <strong>अमेरिकी शेयर + क्रिप्टो रोटेशन आर्बिट्रेज</strong><br />
+        दोहरे बाजारों के लाभों को जोड़कर स्थिर आर्बिट्रेज और नकद प्रवाह के अवसरों का अन्वेषण करना।
+      </li>
+      <li>
+        <strong>लाइव रणनीति साझाकरण</strong><br />
+        कवर्ड कॉल, कैश-सिक्योर्ड पुट, ग्रिड ट्रेडिंग और अधिक सहित—अभ्यास-केंद्रित दृष्टिकोण।
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">लेखक के बारे में</h2>
+
+    <p class="mb-4">
+      ए स्टॉक, अमेरिकी शेयर, क्रिप्टोकरेंसी, फॉरेक्स और सोना सहित कई बाजारों में दस से अधिक वर्षों का निवेश अनुभव है। निवेश के
+      मार्ग में, दोनों जीत और हार रहे हैं, नुकसान के अनुभव भी बहुत मूल्यवान हैं। सरल और आसान जीवन जीते हैं, घर पर रहना सामान्य
+      है।
+    </p>
+
+    <p class="mb-4">
+      वास्तविक जीवन में मैं चुपचाप और संकोची हूँ, लेकिन ऑनलाइन मैं सक्रिय और हास्यास्पद हूँ। शायद यही विपरीत दृश्य ही मेरे
+      अद्वितीय दृष्टिकोण और व्यापार दर्शन को बनाया है।
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"एक सच्चा शिकारी सही समय की प्रतीक्षा में निपुण होता है और अंततः समृद्ध शिकार को पकड़ता है।"</p>
+    </blockquote>
+  </div>
+</Layout>

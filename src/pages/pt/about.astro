@@ -1,0 +1,72 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'pt';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | Caçador Silencioso</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Visão Fundadora</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Focado em Opções · Cripto · Construção de Sistemas de Fluxo de Caixa Estável"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      Aqui, aderimos à filosofia de investimento de "pensamento sistêmico + estratégias de baixo risco", comprometidos em
+      aprofundar o comércio de opções de ações americanas e moedas digitais. Através de blogs, cursos, ferramentas e comunidade,
+      criamos frameworks estratégicos replicáveis para investidores varejistas, ajudando você a se libertar do comércio
+      emocional, construir um sistema de disciplina sólido, e avançar em direção à verdadeira liberdade comercial.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Saída de Conteúdo</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>Sistema de Conhecimento de Opções</strong><br />
+        Criando caminhos de aprendizado de opções práticos e sistematizados, tornando o complexo simples.
+      </li>
+      <li>
+        <strong>Arbitragem de Rotação de Ações EUA + Cripto</strong><br />
+        Combinando as vantagens de mercados duplos para explorar oportunidades estáveis de arbitragem e fluxo de caixa.
+      </li>
+      <li>
+        <strong>Compartilhamento de Estratégias ao Vivo</strong><br />
+        Incluindo Covered Call, Cash-Secured Put, trading em grade, e mais—abordagem orientada à prática.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">Sobre o Autor</h2>
+
+    <p class="mb-4">
+      Com mais de dez anos de experiência em investimento multimercado abrangendo ações A, ações americanas, criptomoedas, forex
+      e ouro. Na jornada de investimento, tive tanto conquistas quanto frustrações, as experiências de perda são igualmente
+      valiosas. Levo uma vida simples e descomplicada, ficar em casa é comum.
+    </p>
+
+    <p class="mb-4">
+      Na vida real sou silencioso e reservado, mas online sou mentalmente ativo e bem-humorado. Talvez seja precisamente este
+      contraste que tenha moldado minha perspectiva única e filosofia de negociação.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"Um verdadeiro caçador se destaca em esperar o momento certo e, por fim, captura presas abundantes."</p>
+    </blockquote>
+  </div>
+</Layout>

@@ -1,0 +1,70 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '@types/i18n';
+
+const currentLanguage: SupportedLanguage = 'ko';
+const translations = getTranslations(currentLanguage);
+---
+
+<Layout
+  title={`${translations.nav.about} | ${translations.seo.defaultTitle}`}
+  description={translations.seo.defaultDescription}
+  lang={currentLanguage}
+>
+  <div class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-bold">{translations.nav.about} SilentXx | 사일런트 헌터</h1>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">사이트 설립 철학</h2>
+    <blockquote class="mb-4 text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"옵션 · 암호화폐 · 안정적인 현금 흐름 시스템 구축에 집중"</p>
+    </blockquote>
+
+    <p class="mb-4">
+      여기서 우리는 "체계적 사고 + 저위험 전략"이라는 투자 철학을 고수하며, 미국 주식 옵션과 디지털 통화 거래를 깊이 있게
+      연구하는 데 전념합니다. 블로그, 강의, 도구, 커뮤니티를 통해 일반 투자자들을 위한 복제 가능한 전략 프레임워크를 만들고,
+      감정적 거래에서 벗어나 견고한 규율 체계를 구축하도록 도우며, 진정한 거래 자유로움을 향해 나아갑니다.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">콘텐츠 출력</h2>
+
+    <ul class="mb-4 list-disc space-y-2 pl-5">
+      <li>
+        <strong>옵션 지식 시스템</strong><br />
+        실용적이고 체계적인 옵션 학습 경로를 만들어 복잡한 것을 단순하게 만듭니다.
+      </li>
+      <li>
+        <strong>미국 주식 + 암호화폐 로테이션 아비트리지</strong><br />
+        이중 시장의 장점을 결합하여 안정적인 아비트리지와 현금 흐름 기회를 개척합니다.
+      </li>
+      <li>
+        <strong>실시간 전략 공유</strong><br />
+        커버드 콜, 캐시-시큐어드 풋, 그리드 거래 등 포함—실용 중심 접근법.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <h2 class="mb-4 text-2xl font-semibold">저자 소개</h2>
+
+    <p class="mb-4">
+      A주, 미국 주식, 암호화폐, 외환, 금 등 다양한 시장에서 10년 이상의 투자 경험을 보유하고 있습니다. 투자 여정에서 성공과
+      실패를 모두 경험했으며, 손실 경험同样 매우 소중합니다. 소박하고 여유로운 삶을 살며, 주로 집에서 지내는 편입니다.
+    </p>
+
+    <p class="mb-4">
+      현실에서는 조용하고 내성적이지만, 온라인에서는 활발하고 유머러스합니다. 아마도 이러한 대조가 저만의 독특한 시각과 거래
+      철학을 만들어낸 것 같습니다.
+    </p>
+
+    <hr class="my-6 border-gray-300 dark:border-gray-700" />
+
+    <blockquote class="text-xl font-semibold text-gray-900 italic dark:text-white">
+      <p>"진정한 사냥꾼은 적절한 순간을 기다리는 데 능숙하며 결국 풍부한 사냥감을 포착합니다."</p>
+    </blockquote>
+  </div>
+</Layout>

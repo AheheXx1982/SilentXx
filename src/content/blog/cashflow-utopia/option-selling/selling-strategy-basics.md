@@ -5,6 +5,26 @@ description: 期权卖方策略的核心理念和实施方法
 categories:
   - ['现金流乌托邦', '期权卖方策略']
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'zh-TW', 'hi']
+translations:
+  en:
+    title: 'Option Selling Strategy Basics'
+    description: 'Core concepts and implementation methods of option selling strategies'
+    subtitle: 'Building Consistent Income through Option Selling'
+    content: 'translations/cashflow-utopia/option-selling/selling-strategy-basics.en.md'
+  ja:
+    title: 'オプション売り戦略の基本'
+    description: 'オプション売り戦略のコアコンセプトと実装方法'
+    subtitle: 'オプション売りで安定収入を構築'
+  zh-TW:
+    title: '期權賣方策略基礎'
+    description: '期權賣方策略的核心理念和實施方法'
+    subtitle: '透過期權賣方構建穩定收入'
+  hi:
+    title: 'विकल्प विक्रेता रणनीति की मूल बातें'
+    description: 'विकल्प विक्रय रणनीतियों की मुख्य अवधारणाएं और कार्यान्वयन विधियां'
+    subtitle: 'विकल्प विक्रय के माध्यम से निरंतर आय का निर्माण'
 ---
 
 ## 策略概述

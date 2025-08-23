@@ -5,13 +5,35 @@ import { cn } from '@lib/utils';
 import { Icon } from 'astro-icon/components';
 import DropdownNav from './DropdownNav';
 import ThemeToggle from '@components/theme/ThemeToggle.astro';
+import { getLanguageFromUrl, getLocalizedUrl } from '@lib/i18n';
+import { getTranslations } from '@i18n/index';
+
+// 获取当前语言和翻译
+const currentLanguage = getLanguageFromUrl(Astro.url);
+const translations = getTranslations(currentLanguage);
+
+// 创建多语言路由器
+const localizedRouters = routers.map((router) => ({
+  ...router,
+  name: router.translationKey
+    ? translations.nav[router.translationKey as keyof typeof translations.nav] || router.name
+    : router.name,
+  path: router.path ? getLocalizedUrl(router.path, currentLanguage) : undefined,
+  children: router.children?.map((child) => ({
+    ...child,
+    name: child.translationKey
+      ? translations.nav[child.translationKey as keyof typeof translations.nav] || child.name
+      : child.name,
+    path: child.path ? getLocalizedUrl(child.path, currentLanguage) : undefined,
+  })),
+}));
 ---
 
 <div class="tablet:grow-0 flex grow items-center">
   <!-- 导航菜单 -->
   <div class="tablet:hidden flex grow items-center">
     {
-      routers.map((item) => {
+      localizedRouters.map((item) => {
         if (item.children?.length) {
           return <DropdownNav client:load item={item} />;
         }

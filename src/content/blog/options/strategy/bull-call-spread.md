@@ -10,6 +10,26 @@ tags:
   - 价差策略
   - 风险管理
 catalog: true
+originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'ko', 'hi']
+translations:
+  en:
+    title: Bull Call Spread Strategy Analysis
+    description: In-depth analysis of bull call spread construction, profit/loss characteristics, and applicable scenarios
+    subtitle: A limited risk, limited reward options strategy for moderate bullish outlooks
+    content: 'translations/options/strategy/bull-call-spread.en.md'
+  ja:
+    title: ブルコールスプレッド戦略解説
+    description: ブルコールスプレッド戦略の構築、損益特性、適用シナリオを詳しく解説
+    subtitle: 適度な強気相場に適した限定リスク・限定利益のオプション戦略
+  ko:
+    title: 불 콜 스프레ッド 전략 분석
+    description: 불 콜 스프레ッド 전략의 구성, 손익 특성 및 적용 시나리오에 대한 심층 분석
+    subtitle: 온건한 상승세 전망에 적합한 제한적 위험, 제한적 수익 옵션 전략
+  hi:
+    title: बुल कॉल स्प्रेड रणनीति विस्तार से
+    description: बुल कॉल स्प्रेड रणनीति के निर्माण, लाभ/हानि विशेषताओं और उपयुक्त परिदृश्यों का गहन विश्लेषण
+    subtitle: संयमित बुलिश दृष्टिकोण के लिए एक सीमित जोखिम, सीमित पुरस्कार विकल्प रणनीति
 ---
 
 ## 策略概述

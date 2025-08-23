@@ -18,7 +18,9 @@
       "@constants/*": ["constants/*"],
       "@hooks/*": ["hooks/*"],
       "@store/*": ["store/*"],
-      "@scripts/*": ["scripts/*"]
+      "@scripts/*": ["scripts/*"],
+      "@types/*": ["types/*"],
+      "@i18n/*": ["i18n/*"]
     }
   }
 }

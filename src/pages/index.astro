@@ -4,17 +4,24 @@ import HomeSider from '@components/layout/HomeSider.astro';
 import PostList from '@components/post/PostList.astro';
 import Cover from '@components/ui/cover/Cover.astro';
 import { HomeSiderType } from '@constants/enum';
-import { seoConfig } from '@constants/site-config';
+import { getSiteConfig } from '@constants/site-config-i18n';
+import { getTranslations } from '@i18n/index';
 import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import { getSortedPosts } from '@lib/content';
+import { getLocalizedUrl } from '@lib/i18n';
 import { Icon } from 'astro-icon/components';
+import type { SupportedLanguage } from '@types/i18n';
+import { getLanguageFromUrl } from '@lib/i18n';
 
+const currentLanguage: SupportedLanguage = getLanguageFromUrl(Astro.url) || 'zh-CN';
+const translations = getTranslations(currentLanguage);
+const siteConfig = getSiteConfig(currentLanguage);
 const postCollections = await getSortedPosts();
 const posts = postCollections.slice(0, 5);
 ---
 
-<Layout title={seoConfig.title}>
+<Layout title={siteConfig.title} description={siteConfig.description} siderType={HomeSiderType.HOME} lang={currentLanguage}>
   <TwoColumnLayout>
     <Cover slot="cover" />
     <HomeSider slot="sider" />
@@ -22,8 +29,14 @@ const posts = postCollections.slice(0, 5);
       <PostList posts={posts} showPaginator={false} />
     </div>
     <div class="flex w-full flex-col items-center">
-      <ButtonLink variant="gradient-shoka" url="/posts" size="lg" label="所有文章" className="mt-10 items-center">
-        所有文章
+      <ButtonLink
+        variant="gradient-shoka"
+        url={getLocalizedUrl('/posts', currentLanguage)}
+        size="lg"
+        label={translations.archive.allPosts}
+        className="mt-10 items-center"
+      >
+        {translations.archive.allPosts}
         <Icon name="gg:format-justify" />
       </ButtonLink>
     </div>

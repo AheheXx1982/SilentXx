@@ -6,6 +6,13 @@ import { seoConfig } from '@constants/site-config';
 import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import { getCategoryLinks, getCategoryList } from '@lib/content';
+import { getTranslations } from '@i18n/index';
+import { getLanguageFromPath } from '@constants/i18n';
+
+// 从URL路径获取当前语言
+const urlPath = Astro.url.pathname;
+const currentLanguage = getLanguageFromPath(urlPath) || 'zh-CN';
+const translations = getTranslations(currentLanguage);
 
 const { categories, countMap } = await getCategoryList();
 const links = getCategoryLinks(categories, '');
@@ -13,8 +20,13 @@ const links = getCategoryLinks(categories, '');
 
 <Layout title={`全部分类 | ${seoConfig.title}`}>
   <TwoColumnLayout>
-    <Cover slot="cover" title="全部分类" />
+    <Cover slot="cover" title={translations.category.allCategories} />
     <HomeSider slot="sider" />
-    <CategoryList categories={categories} countMap={countMap} totalCount={links.length ?? 0} />
+    <CategoryList
+      categories={categories}
+      countMap={countMap}
+      totalCount={links.length ?? 0}
+      currentLanguage={currentLanguage}
+    />
   </TwoColumnLayout>
 </Layout>

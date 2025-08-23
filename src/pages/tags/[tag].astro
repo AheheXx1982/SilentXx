@@ -1,7 +1,9 @@
 ---
 import HomeSider from '@components/layout/HomeSider.astro';
 import Cover from '@components/ui/cover/Cover.astro';
-import { siteConfig } from '@constants/site-config';
+import { getSiteConfig } from '@constants/site-config-i18n';
+import { getTranslations } from '@i18n/index';
+import type { SupportedLanguage } from '../../types/i18n';
 import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import { getPostLastCategory, getSortedPosts } from '@lib/content';
@@ -25,22 +27,34 @@ export async function getStaticPaths() {
   }));
 }
 
+// 获取当前语言（中文默认）
+const currentLanguage: SupportedLanguage = 'zh-CN';
+const siteConfig = getSiteConfig(currentLanguage);
+const translations = getTranslations(currentLanguage);
+
+// 获取语言前缀
+const langPrefix = currentLanguage === 'zh-CN' ? '' : `/${currentLanguage}`;
+
 const { tag, posts } = Astro.props;
 ---
 
-<Layout title={`标签:${tag} | ${siteConfig.title}`} description={`标签 ${tag} 下的所有文章`}>
+<Layout
+  title={`${translations.tag.allTags}: ${tag} | ${siteConfig.title}`}
+  description={`${translations.tag.postsWithTag}: ${tag}`}
+>
   <TwoColumnLayout>
     <Cover slot="cover" title={`包含标签"${tag}"的文章`} />
     <HomeSider slot="sider" />
     <div class="shadow-box bg-gradient-start mx-0 flex w-full flex-col px-6 py-4 md:px-3 md:py-2">
       <h2 class="shoka-decoration-circle has-children group relative h-19 px-7.5 py-5 text-2xl/9 font-bold">
         <a
-          href={Astro.url.origin + '/tags'}
-          class="dashed-border text-muted-foreground group-hover:border-blue group-hover:text-blue border-b">全部</a
+          href={`${langPrefix}/tags`}
+          class="dashed-border text-muted-foreground group-hover:border-blue group-hover:text-blue border-b"
+          >{translations.tag.allTags}</a
         >
         <span class="text-muted-foreground text-lg"> / </span>
         <span class="text-muted-foreground">{tag}</span>
-        <span class="text-muted-foreground text-lg">({posts.length} 篇文章)</span>
+        <span class="text-muted-foreground text-lg">({posts.length} {translations.tag.postsWithTag})</span>
       </h2>
       {
         posts?.length && (
@@ -53,13 +67,13 @@ const { tag, posts } = Astro.props;
                     {parseDate(post?.data?.date, 'YY-MM-DD')}
                   </span>
                   <a
-                    href={Astro.url.origin + link}
+                    href={`${langPrefix}${link}`}
                     class="text-muted-foreground hover:text-blue mr-2 inline-block text-xs md:relative md:-top-1"
                   >
                     {name}
                   </a>
                   <a
-                    href={'/article/' + (post?.data?.link ?? post?.slug?.split('/').pop() ?? post?.slug)}
+                    href={`${langPrefix}/article/${post?.data?.link ?? post?.slug?.split('/').pop() ?? post?.slug}`}
                     class="dashed-border md:absolute md:top-7 md:left-7"
                   >
                     {post?.data?.title}

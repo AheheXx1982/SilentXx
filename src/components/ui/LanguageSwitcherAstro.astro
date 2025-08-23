@@ -1,0 +1,163 @@
+---
+import { getLanguageFromUrl, getLocalizedUrl, getBasePath } from '@lib/i18n';
+import { LANGUAGE_INFO } from '@constants/i18n';
+import type { SupportedLanguage } from '../../types/i18n';
+
+// 获取当前语言
+const currentLanguage = getLanguageFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+// 使用工具函数获取基本路径
+const basePath = getBasePath(currentPath);
+
+// 生成语言选项
+const languageOptions = Object.entries(LANGUAGE_INFO).map(([code, info]) => ({
+  ...info,
+  url: getLocalizedUrl(basePath, code as SupportedLanguage),
+  current: code === currentLanguage,
+}));
+
+interface Props {
+  class?: string;
+  showText?: boolean;
+}
+
+const { class: className = '', showText = false } = Astro.props;
+---
+
+<div class={`language-switcher relative ${className}`}>
+  <button
+    class="language-switcher-btn flex items-center gap-2 rounded-md px-3 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+    aria-label="切换语言"
+  >
+    <span class="text-lg">
+      {LANGUAGE_INFO[currentLanguage].flag}
+    </span>
+    {showText && <span class="hidden sm:inline">{LANGUAGE_INFO[currentLanguage].nativeName}</span>}
+    <span class="language-switcher-arrow text-sm transition-transform">▼</span>
+  </button>
+
+  <div
+    class="language-switcher-dropdown invisible absolute top-full right-0 z-50 mt-1 min-w-[280px] rounded-md border border-gray-200 bg-white py-2 opacity-0 shadow-lg transition-all duration-200 dark:border-gray-700 dark:bg-gray-900"
+  >
+    <div class="grid grid-cols-2 gap-1">
+      {
+        languageOptions.map((lang) => {
+          return (
+            <a
+              href={lang.url}
+              class={`block px-4 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800 ${
+                lang.current ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20' : ''
+              }`}
+              dir="ltr"
+            >
+              <div class="flex items-center gap-3">
+                <span class="text-lg">{lang.flag}</span>
+                <div class="flex flex-col">
+                  <span class="font-medium">{lang.nativeName}</span>
+                  <span class="text-xs text-gray-500 dark:text-gray-400">{lang.name}</span>
+                </div>
+                {lang.current && <span class="ml-auto text-blue-600 dark:text-blue-400">✓</span>}
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  // 使用事件委托的简单可靠方案
+  function initLanguageSwitcher() {
+    console.log('Initializing language switcher with event delegation...');
+
+    // 移除之前的事件监听器（如果存在）
+    document.removeEventListener('click', window._languageSwitcherHandler);
+
+    // 创建全局事件处理器
+    window._languageSwitcherHandler = function (e) {
+      const target = e.target;
+
+      // 处理语言切换按钮点击
+      const switcherBtn = target.closest('.language-switcher-btn');
+      if (switcherBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log('Language switcher button clicked');
+
+        const switcher = switcherBtn.closest('.language-switcher');
+        const dropdown = switcher.querySelector('.language-switcher-dropdown');
+        const arrow = switcher.querySelector('.language-switcher-arrow');
+
+        if (!dropdown || !arrow) return;
+
+        const isOpen = !dropdown.classList.contains('opacity-0');
+
+        // 先关闭所有其他下拉菜单
+        document.querySelectorAll('.language-switcher-dropdown').forEach((otherDropdown) => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.add('opacity-0', 'invisible');
+            const otherArrow = otherDropdown.parentElement?.querySelector('.language-switcher-arrow');
+            if (otherArrow) otherArrow.classList.remove('rotate-180');
+          }
+        });
+
+        // 切换当前下拉菜单
+        if (isOpen) {
+          dropdown.classList.add('opacity-0', 'invisible');
+          arrow.classList.remove('rotate-180');
+        } else {
+          dropdown.classList.remove('opacity-0', 'invisible');
+          arrow.classList.add('rotate-180');
+        }
+        return;
+      }
+
+      // 处理语言选项点击
+      const langLink = target.closest('.language-switcher-dropdown a');
+      if (langLink) {
+        // 让链接自然跳转，不做任何干预
+        console.log('Language option clicked, navigating...');
+        return;
+      }
+
+      // 点击外部关闭所有下拉菜单
+      if (!target.closest('.language-switcher')) {
+        document.querySelectorAll('.language-switcher-dropdown').forEach((dropdown) => {
+          dropdown.classList.add('opacity-0', 'invisible');
+          const arrow = dropdown.parentElement?.querySelector('.language-switcher-arrow');
+          if (arrow) arrow.classList.remove('rotate-180');
+        });
+      }
+    };
+
+    // 绑定全局事件监听器
+    document.addEventListener('click', window._languageSwitcherHandler);
+
+    console.log('Language switcher initialized with global event delegation');
+  }
+
+  // 立即初始化
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+  } else {
+    initLanguageSwitcher();
+  }
+
+  // 页面切换时重新初始化（Astro的View Transitions）
+  document.addEventListener('astro:page-load', initLanguageSwitcher);
+
+  // 页面完全加载后再次确保初始化
+  window.addEventListener('load', initLanguageSwitcher);
+</script>
+
+<style>
+  .language-switcher-arrow {
+    transition: transform 0.2s ease;
+  }
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+</style>
