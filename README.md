@@ -1,6 +1,6 @@
-<div align="center">
-
 <span id="top"></span>
+
+<div align="center">
 
 # 🚀 SilentX / 寂静猎手
 
@@ -91,11 +91,15 @@ SilentX/
 └── tsconfig.json           # TypeScript 配置 / TypeScript configuration
 ```
 
+---
+
 ## 📋 环境要求 / Requirements
 
 - Node.js >= 18.x
 - pnpm >= 10.x
 - Git
+
+---
 
 ## 🛠️ 开发命令 / Development Commands
 
@@ -106,6 +110,8 @@ pnpm dev              # 启动开发服务器 / Start dev server
 pnpm build            # 构建生产版本 / Build production
 pnpm preview          # 预览构建结果 / Preview build
 ```
+
+---
 
 ## 🔧 安装部署 / Installation & Deployment
 
@@ -127,13 +133,18 @@ pnpm build
 pnpm preview
 ```
 
+---
+
 ## 🌐 一键部署 / One-Click Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AheheXx1982/SilentXx)
+<div align="center">
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AheheXx1982/SilentXx)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AheheXx1982/SilentXx)
 
 </div>
+
+---
 
 ## 🌐 国际化配置 / i18n Configuration
 
@@ -148,10 +159,14 @@ export const SUPPORTED_LANGUAGES = [
 ] as const;
 ```
 
+---
+
 ## 🔧 基本配置 / Basic Config
 
 - [src/constants/site-config.ts](src/constants/site-config.ts) 修改站点信息 / modify site info
 - [src/constants/i18n.ts](src/constants/i18n.ts) 添加新语言支持 / add new languages
+
+---
 
 ## 🎨 主题定制 / Theme Customization
 
@@ -162,11 +177,13 @@ export const SUPPORTED_LANGUAGES = [
 }
 ```
 
+---
+
 ## 📝 内容管理 / Content Management
 
 新文章放在 [src/content/blog/](src/content/blog/):
 
-```plain
+```markdown
 ---
 title: '文章标题 / Title'
 description: '文章描述 / Description'
@@ -179,6 +196,8 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 你的 Markdown 内容...
 ```
+
+---
 
 ## 📈 更新日志 / Changelog
 
@@ -193,6 +212,8 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 ✅ 短链接优化 / SEO friendly URLs
 
 [📋 查看完整更新历史 → CHANGELOG.md](CHANGELOG.md)
+
+---
 
 ## 🙏 致谢 / Thanks
 
