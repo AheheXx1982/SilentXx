@@ -17,21 +17,19 @@ _基于 Astro 的现代化静态站点生成器，集成先进的多语言支持
 
 ---
 
-## 📖 中文简介
+## 📖 项目前言 / Project Overview
 
 初见此主题，便深深爱上，多亏了自己这双近视又老花的双重慧眼，只是由于作者更新慢（后续还会不会继续更新也不得而知），而本人技术水平又实在有限，几经折腾，终于也算有了一点小小成果，至少自己用起来是没多大问题了，并且我在原主题的基础上进行小范围的修改，以完善和增强系统性能，创新精神粗略估算已经达到 5 颗星水平~
 
-感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 [GitHub](https://github.com/) 和 [VS Code](https://code.visualstudio.com/)~
+Upon first encountering this theme, I instantly fell in love with it—thanks to my double blessing of nearsightedness and presbyopia, which somehow sharpened my discernment. However, the author updates slowly (and whether it will continue is unknown), and my technical skills are quite limited. After numerous trials and errors, I finally achieved a modest result: at least it works well for my own use. Moreover, I made small modifications on top of the original theme to improve and enhance system performance. Roughly estimating, my level of innovation could be rated five stars. ⭐⭐⭐⭐⭐
 
-特别感谢 ChatGPT，Gemini，通义灵码，它们相互配合，最终完成了卓有成效的工作，也让我的智商从 250 瞬间飙升至 250+，终于实现了多年以来当一名程序员的梦想，这种感觉恰似某年某月某日单身几十年后又与初恋不期而遇一般，纯洁而美好，堪称爱的双向奔赴~
+感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS Code.
 
----
+I am grateful to the original author and to Cosine for their contributions and guidance, and also to my own hardworking and strong-willed self. Honestly, half a month ago, I didn’t even know how to use GitHub or VS Code.
 
-## 📖 English Overview
+特别感谢 ChatGPT、Gemini，通义灵码以及他的小兄弟 Qoder，在我的亲情关怀与悉心指导下，它们相互配合，最终完成了卓有成效的工作，也让我的智商从 250 瞬间飙升至 250+，实现了我多年以来当一名程序员的梦想，这种感觉恰似某年某月某日单身几十年后的我又与初恋不期而遇一般，纯洁而美好~
 
-At first glance, I fell in love with this theme. Thanks to my double vision (nearsightedness + presbyopia), I was able to catch its potential. Although the author updates slowly, I managed to make some improvements based on my limited skills, enhancing performance and stability.
-
-Special thanks to ChatGPT, Gemini, and Tongyi Lingma, which assisted efficiently, making my coding experience enjoyable and effective.
+Special thanks to ChatGPT, Gemini, Tongyi Lingma, and its little sibling Qoder. Under my careful attention and guidance, they cooperated seamlessly to produce highly effective results, and, in the process, my IQ skyrocketed from 250 to 250+, fulfilling my long-standing dream of becoming a programmer. This feeling is akin to unexpectedly meeting my first love after decades of being single—pure and beautiful.
 
 ---
 
@@ -178,9 +176,9 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 ### 核心灵感 / Inspiration
 
-- [余弦の博客](https://blog.thankyou8.com/)
-- [Hexo Shoka](https://github.com/amehime/hexo-theme-shoka)
+- [余弦の博客](hhttps://space.cosine.ren/)
 - [cosine/cos-space](https://github.com/cosname/cos-space)
+- [Hexo Shoka](https://github.com/amehime/hexo-theme-shoka)
 
 ### 技术支持 / Tech Support
 
@@ -190,7 +188,7 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 ### AI 助手 / AI Assistant
 
-- [Qwen](https://tongyi.aliyun.com/)
+- [Qoder](hhttps://qoder.com/)
 - [ChatGPT](https://chatgpt.com/)
 - [通义灵码](https://tongyi.aliyun.com/lingma)
 - [Gemini](https://gemini.google.com/)
