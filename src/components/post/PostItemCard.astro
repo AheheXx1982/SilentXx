@@ -1,7 +1,7 @@
 ---
 // 导入所需的库和类型
-import { Badge } from '@components/ui/badge';
-import { Button } from '@components/ui/button';
+import { Badge } from '@components/ui/badge.tsx';
+import { Button } from '@components/ui/button.tsx';
 import { Routes } from '@constants/router';
 import { defaultCoverList } from '@constants/site-config';
 import { getCategoryArr, getCategoryLink } from '@lib/content';
@@ -101,16 +101,18 @@ const categoryStr = categoryArr?.length ? categoryArr[categoryArr.length - 1] : 
     <div class={cn('mt-2 flex @container gap-2 ', { 'justify-end': !leftClip }, 'md:justify-start')}>
       {
         data?.data.tags?.length
-          ? data?.data.tags.map((tag: string, index: number) => (
-              <Badge
-                className={cn('hidden cursor-pointer gap-0.5 text-xs whitespace-nowrap @md:flex', {
-                  '@xs:flex': index < 2,
-                  '@sm:flex': index < 3,
-                })}
-              >
-                <Icon name="fa6-solid:tags" /> {tag}
-              </Badge>
-            ))
+          ? data?.data.tags.map((tag: string, index: number) => {
+              return (
+                <Badge
+                  className={cn('hidden cursor-pointer gap-0.5 text-xs whitespace-nowrap @md:flex', {
+                    '@xs:flex': index < 2,
+                    '@sm:flex': index < 3,
+                  })}
+                >
+                  <Icon name="fa6-solid:tags" /> {tag}
+                </Badge>
+              );
+            })
           : null
       }
     </div>

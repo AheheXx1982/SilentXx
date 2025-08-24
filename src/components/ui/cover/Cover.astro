@@ -21,8 +21,8 @@ const { date, title: dataTitle } = data?.data ?? {};
 
 const readState = readingTime(data?.body ?? '');
 
-// 获取当前语言和多语言配置
-const currentLanguage = getLanguageFromUrl(Astro.url) as SupportedLanguage;
+// 获取当前语言和多语言配置，确保有默认值
+const currentLanguage = (getLanguageFromUrl(Astro.url) as SupportedLanguage) || 'zh-CN';
 const siteConfig = getSiteConfig(currentLanguage);
 const translations = getTranslations(currentLanguage);
 ---

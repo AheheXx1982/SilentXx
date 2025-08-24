@@ -99,3 +99,5 @@ export const hi: Translations = {
     cashflowUtopiaDesc: 'स्थिर कैशफ्लो के लिए पूरी तरह से विस्तृत मार्गदर्शन',
   },
 };
+
+export default hi;

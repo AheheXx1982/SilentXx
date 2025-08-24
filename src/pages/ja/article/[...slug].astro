@@ -1,6 +1,6 @@
 ---
 import { getSortedPosts, getCategoryArr, getCategoryLink } from '@lib/content';
-import { getPostTranslation, getSmartArticleContent, getAvailableLanguages } from '@lib/article-i18n';
+import { getPostTranslation, getSmartArticleContent, getAvailableLanguages, hasTranslation } from '@lib/article-i18n';
 import { parseDate } from '@lib/datetime';
 import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
@@ -26,6 +26,12 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const post of postCollections) {
+    // 检查文章是否支持日语
+    const availableLanguages = getAvailableLanguages(post);
+    if (!availableLanguages.includes('ja')) {
+      continue; // 跳过不支持日语的文章
+    }
+
     let slug: string;
     if (post?.slug) {
       if (typeof post.slug === 'string') {
@@ -46,8 +52,8 @@ export async function getStaticPaths() {
     if (post.data?.link) {
       link = post.data.link;
     } else if (typeof slug === 'string') {
-      const parts = slug.split('/');
-      link = parts.pop() || slug;
+      // 只使用文件名部分作为链接
+      link = slug.split('/').pop() || slug;
     } else {
       link = 'untitled';
     }

@@ -7,6 +7,7 @@ import { siteConfig } from '@constants/site-config';
 import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import { getCategoryArr, getSortedPosts, getCategoryLink } from '@lib/content';
+import { getPostTranslation, getAvailableLanguages, markdownToHtml } from '@lib/article-i18n';
 import { parseDate } from '@lib/datetime';
 import { Icon } from 'astro-icon/components';
 
@@ -20,6 +21,16 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const post of postCollections) {
+    // 检查文章是否支持中文（默认所有文章都支持中文）
+    const availableLanguages = post.data?.availableLanguages || ['zh-CN'];
+    if (!availableLanguages.includes('zh-CN')) {
+      continue; // 跳过不支持中文的文章
+    }
+
+    // 检查文章是否有内容
+    if (!post.body && !post.data.content) {
+      continue; // 跳过没有内容的文章
+    }
     // 确保 post 和 post.slug 存在
     let slug: string;
     if (post?.slug) {
@@ -44,8 +55,8 @@ export async function getStaticPaths() {
     if (post.data?.link) {
       link = post.data.link;
     } else if (typeof slug === 'string') {
-      const parts = slug.split('/');
-      link = parts.pop() || slug;
+      // 只使用文件名部分作为链接
+      link = slug.split('/').pop() || slug;
     } else {
       link = 'untitled';
     }
@@ -69,13 +80,23 @@ if (!post) {
   throw new Error('未找到文章内容');
 }
 
-const { Content } = await post.render();
+// 直接创建Content函数，避免使用post.render()
+const Content = () => {
+  const htmlContent = markdownToHtml(post.body || '');
+  return `<div class="prose prose-lg max-w-none dark:prose-invert">${htmlContent}</div>`;
+};
+
 const { title, description, categories = [], tags = [], date } = post?.data ?? {};
+
+// 使用翻译后的标题和描述（如果有的话）
+const displayTitle = title;
+const displayDescription = description;
+const availableLanguages = getAvailableLanguages(post);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: title,
-  description: description || (post.body ? post.body.slice(0, 100) : ''),
+  headline: displayTitle,
+  description: displayDescription || (post.body ? post.body.slice(0, 100) : ''),
   keywords: categories?.length ? tags.concat(categories[0]) : tags,
   author: {
     '@type': 'Person',
@@ -103,8 +124,8 @@ if (categoryArr?.length) {
 ---
 
 <Layout
-  title={`${post.data.title}${categoryStr} | ${siteConfig.title}`}
-  description={description}
+  title={`${displayTitle}${categoryStr} | ${siteConfig.title}`}
+  description={displayDescription}
   siderType={HomeSiderType.POST}
 >
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

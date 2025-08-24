@@ -1,6 +1,6 @@
 ---
-import { Badge } from '@components/ui/badge';
-import { Button } from '@components/ui/button';
+import { Badge } from '@components/ui/badge.tsx';
+import { Button } from '@components/ui/button.tsx';
 import { categoryMap } from '@constants/category';
 import { Routes } from '@constants/router';
 import { getSiteConfig } from '@constants/site-config-i18n';
@@ -22,8 +22,8 @@ interface CategoryWithPosts {
   parentCategory: Category | null;
 }
 
-// 获取当前语言和翻译
-const currentLanguage = getLanguageFromUrl(Astro.url);
+// 获取当前语言和翻译，确保有默认值
+const currentLanguage = getLanguageFromUrl(Astro.url) || 'zh-CN';
 const translations = getTranslations(currentLanguage);
 const siteConfig = getSiteConfig(currentLanguage);
 
@@ -87,23 +87,27 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
             </div>
             <div class="grid grid-cols-2 gap-x-5 gap-y-3">
               {categoryInfo?.children?.length
-                ? categoryInfo.children.map((child) => (
-                    <a
-                      href={getLocalizedUrl(categoryLink + '/' + categoryMap[child?.name], currentLanguage)}
-                      class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
-                    >
-                      {child.name}
-                    </a>
-                  ))
+                ? categoryInfo.children.map((child) => {
+                    return (
+                      <a
+                        href={getLocalizedUrl(categoryLink + '/' + categoryMap[child?.name], currentLanguage)}
+                        class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
+                      >
+                        {child.name}
+                      </a>
+                    );
+                  })
                 : null}
-              {posts.map((post) => (
-                <a
-                  href={routeBuilder(Routes.Post, post)}
-                  class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
-                >
-                  {post.data.title}
-                </a>
-              ))}
+              {posts.map((post) => {
+                return (
+                  <a
+                    href={routeBuilder(Routes.Post, post)}
+                    class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
+                  >
+                    {post.data.title}
+                  </a>
+                );
+              })}
             </div>
             <p class="text-muted-foreground absolute bottom-4 left-6 flex items-center text-sm">
               {parentCategory?.name ? (
@@ -118,9 +122,9 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
               <>
                 <Icon name="gg:loadbar-doc" class="mr-0.5 text-base" />
                 {categoryInfo?.children?.length
-                  ? `${categoryInfo.children.length} ${translations.common.childrenCategory}`
+                  ? categoryInfo.children.length + ' ' + translations.common.childrenCategory
                   : ''}
-                {category.posts?.length} {translations.common.articlesCount}
+                {category.posts?.length + ' ' + translations.common.articlesCount}
               </>
             </p>
             <a href={categoryLink} aria-label="more info" class="absolute right-0 bottom-0">

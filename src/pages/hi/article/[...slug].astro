@@ -11,7 +11,7 @@ import { HomeSiderType } from '@constants/enum';
 import { Icon } from 'astro-icon/components';
 import { getTranslations } from '@i18n/index';
 import { getSiteConfig } from '@constants/site-config-i18n';
-import type { SupportedLanguage } from '@types/i18n';
+import type { SupportedLanguage } from '../../../types/i18n';
 
 // 当前语言
 const currentLanguage: SupportedLanguage = 'hi';
@@ -26,6 +26,12 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const post of postCollections) {
+    // 检查文章是否支持印地语
+    const availableLanguages = getAvailableLanguages(post);
+    if (!availableLanguages.includes('hi')) {
+      continue; // 跳过不支持印地语的文章
+    }
+
     let slug: string;
     if (post?.slug) {
       if (typeof post.slug === 'string') {
@@ -46,8 +52,8 @@ export async function getStaticPaths() {
     if (post.data?.link) {
       link = post.data.link;
     } else if (typeof slug === 'string') {
-      const parts = slug.split('/');
-      link = parts.pop() || slug;
+      // 只使用文件名部分作为链接
+      link = slug.split('/').pop() || slug;
     } else {
       link = 'untitled';
     }

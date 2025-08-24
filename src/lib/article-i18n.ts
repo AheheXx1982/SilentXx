@@ -462,7 +462,7 @@ function getTranslatedContent(articlePath: string, language: SupportedLanguage):
 /**
  * 将Markdown文本转换为HTML
  */
-function markdownToHtml(markdown: string): string {
+export function markdownToHtml(markdown: string): string {
   const lines = markdown.split('\n');
   const result = [];
   let inList = false;
@@ -570,7 +570,7 @@ export async function getSmartArticleContent(post: BlogPost, targetLanguage: Sup
   // 如果有翻译内容（来自frontmatter），直接使用
   if (translation.isTranslated && translation.content && translation.content !== post.body) {
     // 检查content是否是文件路径
-    if (translation.content.endsWith('.md')) {
+    if (typeof translation.content === 'string' && translation.content.endsWith('.md')) {
       // 如果是文件路径，尝试读取文件内容
       try {
         const fileContent = await readTranslationFromFile(translation.content);
@@ -645,12 +645,36 @@ export async function getSmartArticleContent(post: BlogPost, targetLanguage: Sup
     };
   }
 
-  // 使用原始内容
-  const { Content } = await post.render();
-  return {
-    Content,
-    metadata: translation,
-  };
+  // 使用原始内容 - 修复这里的问题
+  try {
+    // 对于所有语言，直接使用markdownToHtml转换
+    const Content = () => {
+      const htmlContent = markdownToHtml(post.body || '');
+      return `<div class="prose prose-lg max-w-none dark:prose-invert">${htmlContent}</div>`;
+    };
+
+    return {
+      Content,
+      metadata: {
+        ...translation,
+        fallbackToOriginal: !translation.isTranslated,
+      },
+    };
+  } catch (error) {
+    // 如果渲染失败，返回错误信息
+    console.error('Error rendering post content:', error);
+    const Content = () => {
+      return `<div class="error-content">内容渲染错误: ${error.message}</div>`;
+    };
+
+    return {
+      Content,
+      metadata: {
+        ...translation,
+        fallbackToOriginal: !translation.isTranslated,
+      },
+    };
+  }
 }
 
 /**
@@ -743,12 +767,15 @@ export function getAvailableLanguages(post: BlogPost): SupportedLanguage[] {
  * 为指定语言获取本地化的文章链接
  */
 export function getLocalizedArticleUrl(post: BlogPost, language: SupportedLanguage, baseUrl: string = ''): string {
+  // 使用 link 字段或从 slug 中提取文件名（不包含路径）
   const link = post.data.link ?? post.slug.split('/').pop() ?? post.slug;
 
+  // 对于中文版本，使用默认路径
   if (language === 'zh-CN') {
     return `${baseUrl}/article/${link}`;
   }
 
+  // 对于其他语言版本，添加语言前缀
   return `${baseUrl}/${language}/article/${link}`;
 }
 

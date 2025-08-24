@@ -35,81 +35,45 @@ const defaultSegmentType = type === HomeSiderType.POST ? HomeSiderSegmentType.DI
     )
   }
 
-  <sider-content class="w-full overflow-auto" data-type={type} data-default-type={defaultSegmentType}>
-    <div slot="info">
-      <HomeInfo />
-    </div>
-    <div slot="directory">
-      {type === HomeSiderType.POST && <TableOfContents client:load />}
-    </div>
-  </sider-content>
+  <!-- 使用条件渲染替代自定义 Web Component -->
+  <div class="w-full overflow-auto" data-type={type} data-default-type={defaultSegmentType}>
+    {
+      type === HomeSiderType.HOME || defaultSegmentType === HomeSiderSegmentType.INFO ? (
+        <div>
+          <HomeInfo />
+        </div>
+      ) : type === HomeSiderType.POST && defaultSegmentType === HomeSiderSegmentType.DIRECTORY ? (
+        <div>
+          <TableOfContents client:load />
+        </div>
+      ) : null
+    }
+  </div>
 </div>
 
 <script>
   import { HomeSiderType, HomeSiderSegmentType } from '@constants/enum';
   import { homeSiderSegmentType } from '@store/app';
 
-  // 定义SiderContent自定义元素
-  class SiderContent extends HTMLElement {
-    // 私有属性定义
-    private infoContent: HTMLElement | null = null;
-    private directoryContent: HTMLElement | null = null;
-    private pageType: string | null = null;
-    private defaultType: string | null = null;
+  // 获取所有相关的 DOM 元素
+  const homeSider = document.querySelector('.page-home-sider');
+  if (homeSider) {
+    const segmentControl = homeSider.querySelector('#inner-home-sider');
+    const infoContent = homeSider.querySelector('[data-content="info"]');
+    const directoryContent = homeSider.querySelector('[data-content="directory"]');
 
-    constructor() {
-      super();
-
-      // 保存最初的内容片段
-      this.infoContent = this.querySelector('[slot="info"]');
-      this.directoryContent = this.querySelector('[slot="directory"]');
-
-      // 从HTML属性中获取当前页面类型和默认分段类型
-      this.pageType = this.getAttribute('data-type');
-      this.defaultType = this.getAttribute('data-default-type');
-
-      // 初始化
-      this.init();
-    }
-
-    init() {
-      // 确保DOM已准备好
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => this.initContent());
-      } else {
-        this.initContent();
-      }
-    }
-
-    initContent() {
-      // 首页直接显示HomeInfo
-      if (this.pageType === HomeSiderType.HOME) {
-        this.showContent(HomeSiderSegmentType.INFO);
-      } else {
-        // 设置初始值
-        const initialType = (this.defaultType as HomeSiderSegmentType) || HomeSiderSegmentType.INFO;
-        homeSiderSegmentType.set(initialType);
-        this.showContent(initialType);
-
-        // 监听状态变化
-        homeSiderSegmentType.listen((value) => {
-          this.showContent(value);
-        });
-      }
-    }
-
-    showContent(type: HomeSiderSegmentType) {
-      // 根据类型显示对应内容
-      if (type === HomeSiderSegmentType.DIRECTORY) {
-        this.infoContent?.classList.add('hidden');
-        this.directoryContent?.classList.remove('hidden');
-      } else {
-        this.infoContent?.classList.remove('hidden');
-        this.directoryContent?.classList.add('hidden');
-      }
+    // 如果是文章页面，添加事件监听器
+    if (segmentControl && infoContent && directoryContent) {
+      segmentControl.addEventListener('change', (e) => {
+        const value = e.detail.value;
+        if (value === HomeSiderSegmentType.DIRECTORY) {
+          infoContent.classList.add('hidden');
+          directoryContent.classList.remove('hidden');
+        } else {
+          infoContent.classList.remove('hidden');
+          directoryContent.classList.add('hidden');
+        }
+      });
     }
   }
-
-  // 注册自定义元素
-  customElements.define('sider-content', SiderContent);
 </script>

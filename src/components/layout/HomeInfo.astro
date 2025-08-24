@@ -95,23 +95,25 @@ const localizedRouters = routers.map((router) => ({
                 {name}
               </div>
               <div class="flex flex-col gap-2.5">
-                {children.map(({ name, path, icon }) => (
-                  <ButtonLink
-                    url={path}
-                    label={name}
-                    variant="gradient-shoka"
-                    className={cn(
-                      'shoka-button-shadow h-12 w-40 rounded-xl text-base tracking-wider transition-all duration-300',
-                      {
-                        'text-muted-foreground/80 hover:bg-muted-foreground/10 bg-none shadow-none hover:shadow-none':
-                          path !== Astro.url.pathname,
-                      },
-                    )}
-                  >
-                    {icon && <Icon name={icon} class="mr-1.5" />}
-                    {name}
-                  </ButtonLink>
-                ))}
+                {children.map(({ name, path, icon }) => {
+                  return (
+                    <ButtonLink
+                      url={path}
+                      label={name}
+                      variant="gradient-shoka"
+                      className={cn(
+                        'shoka-button-shadow h-12 w-40 rounded-xl text-base tracking-wider transition-all duration-300',
+                        {
+                          'text-muted-foreground/80 hover:bg-muted-foreground/10 bg-none shadow-none hover:shadow-none':
+                            path !== Astro.url.pathname,
+                        },
+                      )}
+                    >
+                      {icon && <Icon name={icon} class="mr-1.5" />}
+                      {name}
+                    </ButtonLink>
+                  );
+                })}
               </div>
             </div>
           );

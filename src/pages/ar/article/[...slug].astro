@@ -11,7 +11,7 @@ import { HomeSiderType } from '@constants/enum';
 import { Icon } from 'astro-icon/components';
 import { getTranslations } from '@i18n/index';
 import { getSiteConfig } from '@constants/site-config-i18n';
-import type { SupportedLanguage } from '@types/i18n';
+import type { SupportedLanguage } from '../../../types/i18n';
 
 // 当前语言
 const currentLanguage: SupportedLanguage = 'ar';
@@ -26,6 +26,12 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const post of postCollections) {
+    // 检查文章是否支持阿拉伯语
+    const availableLanguages = getAvailableLanguages(post);
+    if (!availableLanguages.includes('ar')) {
+      continue; // 跳过不支持阿拉伯语的文章
+    }
+
     let slug: string;
     if (post?.slug) {
       if (typeof post.slug === 'string') {
@@ -99,7 +105,6 @@ if (categoryArr?.length) {
   description={displayDescription}
   siderType={HomeSiderType.POST}
   lang={currentLanguage}
-  dir="rtl"
 >
   <TwoColumnLayout>
     <Cover slot="cover" data={post} />

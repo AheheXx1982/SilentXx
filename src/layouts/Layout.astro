@@ -26,8 +26,8 @@ import MobileDrawer from '@components/layout/MobileDrawer.astro';
 
 const { title, description, siderType, lang } = Astro.props;
 
-// 获取当前语言
-const currentLanguage = lang || getLanguageFromUrl(Astro.url);
+// 获取当前语言，确保有默认值
+const currentLanguage = lang || getLanguageFromUrl(Astro.url) || 'zh-CN';
 const translations = getTranslations(currentLanguage);
 
 // 使用多语言站点配置

@@ -11,7 +11,7 @@ import { HomeSiderType } from '@constants/enum';
 import { Icon } from 'astro-icon/components';
 import { getTranslations } from '@i18n/index';
 import { getSiteConfig } from '@constants/site-config-i18n';
-import type { SupportedLanguage } from '@types/i18n';
+import type { SupportedLanguage } from '../../../types/i18n';
 
 // 当前语言
 const currentLanguage: SupportedLanguage = 'en';
@@ -26,6 +26,12 @@ export async function getStaticPaths() {
 
   const paths = [];
   for (const post of postCollections) {
+    // 检查文章是否支持英语
+    const availableLanguages = getAvailableLanguages(post);
+    if (!availableLanguages.includes('en')) {
+      continue; // 跳过不支持英语的文章
+    }
+
     let slug: string;
     if (post?.slug) {
       if (typeof post.slug === 'string') {
@@ -46,8 +52,8 @@ export async function getStaticPaths() {
     if (post.data?.link) {
       link = post.data.link;
     } else if (typeof slug === 'string') {
-      const parts = slug.split('/');
-      link = parts.pop() || slug;
+      // 只使用文件名部分作为链接
+      link = slug.split('/').pop() || slug;
     } else {
       link = 'untitled';
     }
@@ -124,7 +130,7 @@ if (categoryArr?.length) {
         availableLanguages.length > 1 && (
           <div class="text-muted-foreground mb-4 flex items-center gap-2 text-sm">
             <Icon name="ri:earth-line" class="h-4 w-4" />
-            <span>可用语言: </span>
+            <span>Available languages: </span>
             <div class="flex gap-2">
               {availableLanguages.map((lang) => {
                 const isActive = lang === currentLanguage;

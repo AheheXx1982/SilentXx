@@ -20,8 +20,8 @@ interface Props {
 const { posts, page, showPaginator = true } = Astro.props;
 const covers = shuffle(defaultCoverList).slice(0, 10);
 
-// 获取当前语言和翻译
-const currentLanguage = getLanguageFromUrl(Astro.url);
+// 获取当前语言和翻译，确保有默认值
+const currentLanguage = getLanguageFromUrl(Astro.url) || 'zh-CN';
 const translations = getTranslations(currentLanguage);
 ---
 
@@ -38,11 +38,13 @@ const translations = getTranslations(currentLanguage);
   posts && posts?.length > 0 && (
     <>
       <div class="flex flex-col">
-        {posts.map((post, index) => (
-          <div class="p-4">
-            <PostItemCard data={post} leftClip={index % 2 === 0} randomCover={covers[index]} />
-          </div>
-        ))}
+        {posts.map((post, index) => {
+          return (
+            <div class="p-4">
+              <PostItemCard data={post} leftClip={index % 2 === 0} randomCover={covers[index % covers.length]} />
+            </div>
+          );
+        })}
       </div>
       {showPaginator && page && <Paginator page={page} />}
     </>

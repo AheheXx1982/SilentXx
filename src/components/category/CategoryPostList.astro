@@ -56,29 +56,31 @@ if (rootCategory) {
 
   <div class="flex w-full flex-col">
     {
-      categories.map(
-        (category) =>
-          category?.children?.length && (
-            <div class="category-first-level-container flex flex-col">
-              {category?.children?.length &&
-                category.children.map((child) => (
-                  <SubCategory category={child} parentName={category.name} countMap={countMap} />
-                ))}
-            </div>
-          ),
-      )
+      categories.map((category) => {
+        if (!category?.children?.length) return null;
+        return (
+          <div class="category-first-level-container flex flex-col">
+            {category?.children?.length &&
+              category.children.map((child) => {
+                return <SubCategory category={child} parentName={category.name} countMap={countMap} />;
+              })}
+          </div>
+        );
+      })
     }
     {
       posts?.length && (
         <div class="category-second-level-container flex flex-col">
-          {posts.map((post) => (
-            <p class="shoka-decoration-circle group text-primary hover:text-blue relative px-7.5 py-2 text-base/9">
-              <span class="text-muted-foreground mr-2 text-xs">{parseDate(post?.data?.date, 'YY-MM-DD')}</span>
-              <a href={routeBuilder(Routes.Post, post as BlogPost)} class="dashed-border">
-                {post?.data?.title}
-              </a>
-            </p>
-          ))}
+          {posts.map((post) => {
+            return (
+              <p class="shoka-decoration-circle group text-primary hover:text-blue relative px-7.5 py-2 text-base/9">
+                <span class="text-muted-foreground mr-2 text-xs">{parseDate(post?.data?.date, 'YY-MM-DD')}</span>
+                <a href={routeBuilder(Routes.Post, post as BlogPost)} class="dashed-border">
+                  {post?.data?.title}
+                </a>
+              </p>
+            );
+          })}
         </div>
       )
     }

@@ -17,10 +17,12 @@ translations:
     title: 2025年第1週ライブ取引記録
     description: 今週のオプションライブ取引の詳細記録とレビュー分析
     subtitle: 週次オプション取引からのリアルタイム取引実績とインサイト
+    content: 'translations/options/trading-journal/week1-trading-record.ja.md'
   ko:
     title: 2025년 제1주 실시간 거래 기록
     description: 금주 옵션 실시간 거래의 상세 기록 및 리뷰 분석
     subtitle: 주간 옵션 거래의 실시간 거래 실적 및 인사이트
+    content: 'translations/options/trading-journal/week1-trading-record.ko.md'
   hi:
     title: 2025 के पहले सप्ताह का लाइव ट्रेडिंग रिकॉर्ड
     description: इस सप्ताह के विकल्प लाइव ट्रेडिंग का विस्तृत रिकॉर्ड और समीक्षा विश्लेषण
