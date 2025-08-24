@@ -201,7 +201,7 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 ✅ 短链接优化 / SEO friendly URLs
 
-[📋 查看完整更新历史 → CHANGELOG.md](https://github.com/AheheXx1982/SilentXx/blob/main/CHANGELOG.md)
+[📋 查看完整更新历史 → CHANGELOG.md](CHANGELOG1.md)
 
 ---
 
