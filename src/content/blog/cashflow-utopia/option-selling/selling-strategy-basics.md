@@ -2,6 +2,7 @@
 title: 期权卖方策略基础
 date: 2025-01-10
 description: 期权卖方策略的核心理念和实施方法
+link: selling-strategy-basics
 categories:
   - ['现金流乌托邦', '期权卖方策略']
 catalog: true

@@ -5,6 +5,10 @@ import { getTranslatedCategoryName } from '@lib/category-i18n';
 
 const { category, parentName, countMap, currentLanguage = 'zh-CN' } = Astro.props;
 
+// 获取语言前缀
+const langPrefix = currentLanguage === 'zh-CN' ? '' : `/${currentLanguage.toLowerCase()}`;
+
+// 直接使用传入的原始分类名称生成链接
 const categoryLink = await getCategoryLink([parentName, category.name]);
 const grandChildLinks = await Promise.all(
   (category.children || []).map(async (grandChild) => ({
@@ -20,7 +24,7 @@ const translatedCategoryName = getTranslatedCategoryName(category.name, currentL
 <CategoryTitle
   title={translatedCategoryName}
   count={countMap[category.name] ?? 0}
-  href={`/categories/${categoryLink}`}
+  href={`${langPrefix}/categories/${categoryLink}`}
   level="h3"
 />
 {
@@ -33,7 +37,7 @@ const translatedCategoryName = getTranslatedCategoryName(category.name, currentL
         const translatedGrandChildName = getTranslatedCategoryName(grandChild.name, currentLanguage);
         return (
           <p class="shoka-decoration-circle text-primary hover:text-blue relative px-7.5 py-2 text-base/9">
-            <a href={`/categories/${link}`} class="dashed-border border-b">
+            <a href={`${langPrefix}/categories/${link}`} class="dashed-border border-b">
               {translatedGrandChildName}
             </a>
             <span class="text-muted-foreground text-sm">({countMap[grandChild.name] ?? 0})</span>

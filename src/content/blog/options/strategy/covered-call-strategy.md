@@ -2,6 +2,7 @@
 title: 备兑看涨策略深度分析
 date: 2025-01-03
 description: 备兑看涨策略的原理、应用场景和风险分析
+link: covered-call-strategy
 categories:
   - ['期权研究院', '策略分析']
 catalog: true

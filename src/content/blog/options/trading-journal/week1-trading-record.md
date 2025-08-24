@@ -2,6 +2,7 @@
 title: 2025年第1周实盘交易记录
 date: 2025-01-04
 description: 本周期权实盘交易详细记录与复盘分析
+link: week1-trading-record
 categories:
   - ['期权研究院', '实盘分享']
 catalog: true

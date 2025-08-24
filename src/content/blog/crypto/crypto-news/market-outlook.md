@@ -2,6 +2,7 @@
 title: 加密市场最新动态与展望
 date: 2025-01-08
 description: 最新加密货币市场动态分析和未来展望
+link: market-outlook
 categories:
   - ['加密实验室', '加密风向标']
 catalog: true

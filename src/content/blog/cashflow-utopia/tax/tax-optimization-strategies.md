@@ -2,6 +2,7 @@
 title: 投资税务优化策略
 date: 2025-01-13
 description: 合理规划投资税务，提高投资收益
+link: tax-optimization-strategies
 categories:
   - ['现金流乌托邦', '税务优化']
 catalog: true

@@ -2,6 +2,7 @@
 title: 牛市价差策略详解
 date: 2025-01-05
 description: 深入解析牛市价差策略的构建、盈亏特点和适用场景
+link: bull-call-spread
 categories:
   - ['期权研究院', '策略分析']
 tags:

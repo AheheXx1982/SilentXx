@@ -8,6 +8,7 @@ import Layout from '../../../layouts/Layout.astro';
 import TwoColumnLayout from '../../../layouts/TwoColumnLayout.astro';
 import { getPostLastCategory, getSortedPosts } from '@lib/content';
 import { parseDate } from '@lib/datetime';
+import { getTranslatedTagName } from '@lib/tag-i18n';
 
 export async function getStaticPaths() {
   const posts = await getSortedPosts();
@@ -36,14 +37,15 @@ const translations = getTranslations(currentLanguage);
 const langPrefix = currentLanguage === 'zh-CN' ? '' : `/${currentLanguage}`;
 
 const { tag, posts } = Astro.props;
+const translatedTagName = getTranslatedTagName(tag, currentLanguage);
 ---
 
 <Layout
-  title={`${translations.tag.allTags}: ${tag} | ${siteConfig.title}`}
-  description={`${translations.tag.postsWithTag}: ${tag}`}
+  title={`${translations.tag.allTags}: ${translatedTagName} | ${siteConfig.title}`}
+  description={`${translations.tag.postsWithTag}: ${translatedTagName}`}
 >
   <TwoColumnLayout>
-    <Cover slot="cover" title={`Posts tagged "${tag}"`} />
+    <Cover slot="cover" title={`Posts tagged "${translatedTagName}"`} />
     <HomeSider slot="sider" />
     <div class="shadow-box bg-gradient-start mx-0 flex w-full flex-col px-6 py-4 md:px-3 md:py-2">
       <h2 class="shoka-decoration-circle has-children group relative h-19 px-7.5 py-5 text-2xl/9 font-bold">
@@ -53,7 +55,7 @@ const { tag, posts } = Astro.props;
           >{translations.tag.allTags}</a
         >
         <span class="text-muted-foreground text-lg"> / </span>
-        <span class="text-muted-foreground">{tag}</span>
+        <span class="text-muted-foreground">{translatedTagName}</span>
         <span class="text-muted-foreground text-lg">({posts.length} {translations.tag.postsWithTag})</span>
       </h2>
       {

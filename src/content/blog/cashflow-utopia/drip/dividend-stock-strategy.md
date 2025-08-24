@@ -2,6 +2,7 @@
 title: 全球高息股投资策略
 date: 2025-01-11
 description: 通过投资全球高息股构建稳定的现金流
+link: dividend-stock-strategy
 categories:
   - ['现金流乌托邦', '全球高息股轮动']
 catalog: true

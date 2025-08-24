@@ -2,6 +2,7 @@
 title: 合约交易基础与风险管理
 date: 2025-01-07
 description: 合约交易的基本概念和风险控制方法
+link: futures-trading-guide
 categories:
   - ['加密实验室', '合约交易']
 catalog: true

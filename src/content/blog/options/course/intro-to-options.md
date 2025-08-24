@@ -2,6 +2,7 @@
 title: 期权入门基础课程
 date: 2025-01-02
 description: 期权基础知识入门，适合初学者的第一门课程
+link: intro-to-options
 categories:
   - ['期权研究院', '期权课程']
 catalog: true

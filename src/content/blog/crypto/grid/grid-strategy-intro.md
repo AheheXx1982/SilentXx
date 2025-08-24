@@ -2,6 +2,7 @@
 title: 网格策略入门指南
 date: 2025-01-06
 description: 网格交易策略的基本原理和实操方法
+link: grid-strategy-intro
 categories:
   - ['加密实验室', '网格策略']
 catalog: true
@@ -17,14 +18,17 @@ translations:
     title: グリッド戦略入門ガイド
     description: グリッド取引戦略の基本原理と実践方法
     subtitle: レンジ相場向けの自動ローバイセラーハイ戦略
+    content: 'translations/crypto/grid/grid-strategy-intro.ja.md'
   ko:
     title: 그리드 전략 입문 가이드
     description: 그리드 거래 전략의 기본 원리와 실전 방법
     subtitle: 레인지 마켓을 위한 자동 저점 매수-고점 매도 전략
+    content: 'translations/crypto/grid/grid-strategy-intro.ko.md'
   hi:
     title: ग्रिड रणनीति प्रारंभिक गाइड
     description: ग्रिड ट्रेडिंग रणनीति के मूल सिद्धांत और व्यावहारिक विधियाँ
     subtitle: रेंज-बाउंड बाजारों के लिए स्वचालित खरीद-कम-बेच-अधिक रणनीति
+    content: 'translations/crypto/grid/grid-strategy-intro.hi.md'
 ---
 
 ## 策略概述

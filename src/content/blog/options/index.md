@@ -2,10 +2,25 @@
 title: 期权研究院介绍
 date: 2025-01-01
 description: 欢迎来到期权研究院，这里是期权策略研究的核心区域
+link: options
 categories:
   - 期权研究院
 catalog: true
 originalLanguage: zh-CN
+availableLanguages: ['zh-CN', 'en', 'ja', 'zh-TW']
+translations:
+  en:
+    title: 'Options Institute Introduction'
+    description: 'Welcome to the Options Institute, the core area for options strategy research'
+    subtitle: 'Your Hub for Options Trading Knowledge'
+  ja:
+    title: 'オプション研究所紹介'
+    description: 'オプション研究所へようこそ、オプション戦略研究のコアエリアです'
+    subtitle: 'オプション取引知識のハブ'
+  zh-TW:
+    title: '期權研究院介紹'
+    description: '歡迎來到期權研究院，這裡是期權策略研究的核心區域'
+    subtitle: '您的期權交易知識中心'
 ---
 
 欢迎来到期权研究院！这里是专门研究期权策略、分享实战经验和提供课程教学的专区。

@@ -6,6 +6,7 @@ import Cover from '@components/ui/cover/Cover.astro';
 import { HomeSiderType } from '@constants/enum';
 import { getCategoryList, getCategoryByLink, getSortedPosts } from '@lib/content';
 import { getTranslations } from '@i18n/index';
+import { getPostTranslation } from '@lib/article-i18n';
 import type { SupportedLanguage } from '@types/i18n';
 
 // 当前语言
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
     if (postCategories && postCategories.length > 0) {
       // 处理嵌套分类数组
       if (Array.isArray(postCategories[0])) {
-        // 嵌套分类：['加密实验室', '网格策略']
+        // 嵌套分类：['期权研究院', '期权课程']
         const firstCategory = postCategories[0][0]; // 一级分类
         const secondCategory = postCategories[0][1]; // 二级分类
 
@@ -38,6 +39,9 @@ export async function getStaticPaths() {
           if (secondCategory) {
             const secondSlug = secondCategory.toLowerCase().replace(/\s+/g, '-');
             categoryLinks.add(secondSlug);
+            // 添加嵌套路径：父分类/子分类
+            const nestedPath = `${firstSlug}/${secondSlug}`;
+            categoryLinks.add(nestedPath);
           }
         }
       } else {
@@ -48,14 +52,78 @@ export async function getStaticPaths() {
     }
   });
 
-  // 添加一些常见的分类别名路径
+  // 根据_config.yml中的分类映射生成路径
+  const categoryMap = {
+    期权研究院: 'options',
+    期权课程: 'course',
+    策略分析: 'strategy',
+    实盘分享: 'trading-journal',
+    加密实验室: 'crypto',
+    网格策略: 'grid',
+    合约交易: 'futures',
+    加密风向标: 'crypto-news',
+    现金流乌托邦: 'cashflow-utopia',
+    期权卖方策略: 'option-selling',
+    全球高息股轮动: 'drip',
+    税务优化: 'tax',
+  };
+
+  // 生成正确的嵌套分类路径
+  allPosts.forEach((post) => {
+    const postCategories = post.data.categories;
+    if (postCategories && Array.isArray(postCategories[0]) && postCategories[0].length >= 2) {
+      const parentCategory = postCategories[0][0];
+      const childCategory = postCategories[0][1];
+
+      const parentSlug = categoryMap[parentCategory];
+      const childSlug = categoryMap[childCategory];
+
+      if (parentSlug && childSlug) {
+        // 添加嵌套路径：options/course
+        categoryLinks.add(`${parentSlug}/${childSlug}`);
+      }
+    }
+  });
+
+  // 添加更全面的分类别名路径
   const categoryAliases = {
+    // 主分类
     crypto: '加密实验室',
     options: '期权研究院',
-    cashflow: '现金流乌托邦',
+    'cashflow-utopia': '现金流乌托邦',
+
+    // 子分类
     grid: '网格策略',
     futures: '合约交易',
-    news: '加密风向标',
+    'crypto-news': '加密风向标',
+    course: '期权课程',
+    strategy: '策略分析',
+    'trading-journal': '实盘分享',
+    'option-selling': '期权卖方策略',
+    drip: '全球高息股轮动',
+    tax: '税务优化',
+
+    // 嵌套分类路径
+    'options/course': ['期权研究院', '期权课程'],
+    'options/strategy': ['期权研究院', '策略分析'],
+    'options/trading-journal': ['期权研究院', '实盘分享'],
+    'crypto/grid': ['加密实验室', '网格策略'],
+    'crypto/futures': ['加密实验室', '合约交易'],
+    'crypto/crypto-news': ['加密实验室', '加密风向标'],
+    'cashflow-utopia/option-selling': ['现金流乌托邦', '期权卖方策略'],
+    'cashflow-utopia/drip': ['现金流乌托邦', '全球高息股轮动'],
+    'cashflow-utopia/tax': ['现金流乌托邦', '税务优化'],
+
+    // 英语别名
+    'options-institute': '期权研究院',
+    'crypto-lab': '加密实验室',
+    'grid-strategy': '网格策略',
+    'futures-trading': '合约交易',
+    'options-course': '期权课程',
+    'strategy-analysis': '策略分析',
+    'option-selling-strategies': '期权卖方策略',
+    'dividend-stocks': '全球高息股轮动',
+    'tax-optimization': '税务优化',
   };
 
   // 为每个分类创建路径
@@ -88,17 +156,60 @@ if (!isIndex && categoryLink) {
 
   // 定义分类别名映射
   const categoryAliases = {
+    // 主分类
     crypto: '加密实验室',
     options: '期权研究院',
-    cashflow: '现金流乌托邦',
+    'cashflow-utopia': '现金流乌托邦',
+
+    // 子分类
     grid: '网格策略',
     futures: '合约交易',
-    news: '加密风向标',
+    'crypto-news': '加密风向标',
+    course: '期权课程',
+    strategy: '策略分析',
+    'trading-journal': '实盘分享',
+    'option-selling': '期权卖方策略',
+    drip: '全球高息股轮动',
+    tax: '税务优化',
+
+    // 嵌套分类路径 - 返回数组形式以匹配嵌套结构
+    'options/course': ['期权研究院', '期权课程'],
+    'options/strategy': ['期权研究院', '策略分析'],
+    'options/trading-journal': ['期权研究院', '实盘分享'],
+    'crypto/grid': ['加密实验室', '网格策略'],
+    'crypto/futures': ['加密实验室', '合约交易'],
+    'crypto/crypto-news': ['加密实验室', '加密风向标'],
+    'cashflow-utopia/option-selling': ['现金流乌托邦', '期权卖方策略'],
+    'cashflow-utopia/drip': ['现金流乌托邦', '全球高息股轮动'],
+    'cashflow-utopia/tax': ['现金流乌托邦', '税务优化'],
+
+    // 英语别名
+    'options-institute': '期权研究院',
+    'crypto-lab': '加密实验室',
+    'grid-strategy': '网格策略',
+    'futures-trading': '合约交易',
+    'options-course': '期权课程',
+    'strategy-analysis': '策略分析',
+    'option-selling-strategies': '期权卖方策略',
+    'dividend-stocks': '全球高息股轮动',
+    'tax-optimization': '税务优化',
   };
 
   posts = allPosts.filter((post) => {
     const postCategories = post.data.categories;
     if (!postCategories || !postCategories.length) return false;
+
+    // 处理嵌套路径（如 options/course）
+    if (categoryLink.includes('/')) {
+      const targetCategoryArray = categoryAliases[categoryLink];
+      if (targetCategoryArray && Array.isArray(targetCategoryArray)) {
+        // 匹配嵌套分类
+        if (Array.isArray(postCategories[0])) {
+          return postCategories[0][0] === targetCategoryArray[0] && postCategories[0][1] === targetCategoryArray[1];
+        }
+      }
+      return false;
+    }
 
     // 改进的分类匹配逻辑
     if (Array.isArray(postCategories[0])) {
@@ -131,14 +242,21 @@ if (!isIndex && categoryLink) {
     if (postCategories && postCategories.length > 0) {
       if (Array.isArray(postCategories[0])) {
         // 对于嵌套分类，优先显示二级分类，如果没有则显示一级
-        const targetCategory = categoryAliases[categoryLink] || categoryLink;
-        const secondCategory = postCategories[0][1];
-        const firstCategory = postCategories[0][0];
-
-        if (secondCategory === targetCategory || secondCategory?.toLowerCase().replace(/\s+/g, '-') === categoryLink) {
-          displayCategoryName = secondCategory;
+        if (categoryLink.includes('/')) {
+          const targetCategoryArray = categoryAliases[categoryLink];
+          if (targetCategoryArray && Array.isArray(targetCategoryArray)) {
+            displayCategoryName = targetCategoryArray[1]; // 显示子分类
+          }
         } else {
-          displayCategoryName = firstCategory;
+          const targetCategory = categoryAliases[categoryLink] || categoryLink;
+          const secondCategory = postCategories[0][1];
+          const firstCategory = postCategories[0][0];
+
+          if (secondCategory === targetCategory || secondCategory?.toLowerCase().replace(/\s+/g, '-') === categoryLink) {
+            displayCategoryName = secondCategory;
+          } else {
+            displayCategoryName = firstCategory;
+          }
         }
       } else {
         displayCategoryName = postCategories[0];
@@ -146,12 +264,35 @@ if (!isIndex && categoryLink) {
     }
   } else {
     // 如果没有找到文章，使用别名或分类链接作为显示名称
-    displayCategoryName =
-      categoryAliases[categoryLink] || categoryLink.charAt(0).toUpperCase() + categoryLink.slice(1).replace(/-/g, ' ');
+    if (categoryLink.includes('/')) {
+      const targetCategoryArray = categoryAliases[categoryLink];
+      if (targetCategoryArray && Array.isArray(targetCategoryArray)) {
+        displayCategoryName = targetCategoryArray[1]; // 显示子分类
+      } else {
+        displayCategoryName =
+          categoryLink.split('/').pop()?.charAt(0).toUpperCase() + categoryLink.split('/').pop()?.slice(1).replace(/-/g, ' ') ||
+          categoryLink;
+      }
+    } else {
+      displayCategoryName =
+        categoryAliases[categoryLink] || categoryLink.charAt(0).toUpperCase() + categoryLink.slice(1).replace(/-/g, ' ');
+    }
   }
 
   pageTitle = `${displayCategoryName} - ${translations.category.allCategories}`;
 }
+
+// 为每篇文章获取翻译信息
+const postsWithTranslations = posts.map((post: any) => {
+  const translation = getPostTranslation(post, currentLanguage);
+  return {
+    ...post,
+    translatedTitle: translation.title,
+    translatedDescription: translation.description,
+    isTranslated: translation.isTranslated,
+    fallbackToOriginal: translation.fallbackToOriginal,
+  };
+});
 ---
 
 <Layout
@@ -168,15 +309,30 @@ if (!isIndex && categoryLink) {
 
       <div class="space-y-6">
         {
-          posts.length > 0 ? (
-            posts.map((post: any) => (
+          postsWithTranslations.length > 0 ? (
+            postsWithTranslations.map((post: any) => (
               <article class="border-b border-gray-200 pb-6 last:border-b-0 dark:border-gray-700">
                 <h2 class="mb-2 text-xl font-semibold">
-                  <a href={`/fr/article/${post.slug}`} class="transition-colors hover:text-blue-600">
-                    {post.data.title}
+                  <a
+                    href={`/fr/article/${post.data?.link ?? post.slug.split('/').pop() ?? post.slug}`}
+                    class="transition-colors hover:text-blue-600"
+                  >
+                    {post.translatedTitle}
+                    {post.isTranslated && (
+                      <span class="ml-1 text-xs text-green-600" title="Translated">
+                        [T]
+                      </span>
+                    )}
+                    {post.fallbackToOriginal && (
+                      <span class="ml-1 text-xs text-orange-600" title="Original">
+                        [O]
+                      </span>
+                    )}
                   </a>
                 </h2>
-                {post.data.description && <p class="mb-3 text-gray-600 dark:text-gray-300">{post.data.description}</p>}
+                {(post.translatedDescription || post.data.description) && (
+                  <p class="mb-3 text-gray-600 dark:text-gray-300">{post.translatedDescription || post.data.description}</p>
+                )}
                 <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
                   <span>
                     {translations.post.publishedOn}: {post.data.date.toLocaleDateString('fr')}

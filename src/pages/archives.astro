@@ -9,6 +9,7 @@ import type { SupportedLanguage } from '../types/i18n';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import Cover from '@components/ui/cover/Cover.astro';
 import HomeSider from '@components/layout/HomeSider.astro';
+import { getAvailableLanguages, getPostTranslation } from '@lib/article-i18n';
 
 const { url } = Astro;
 const currentLanguage = getLanguageFromUrl(url) || 'zh-CN';
@@ -18,18 +19,28 @@ const translations = getTranslations(currentLanguage);
 // 获取语言前缀
 const langPrefix = currentLanguage === 'zh-CN' ? '' : `/${currentLanguage}`;
 
-const posts = await getCollection('blog', ({ slug }) => {
-  if (currentLanguage === 'zh-CN') {
-    return !slug.startsWith('en/');
-  } else if (currentLanguage === 'en') {
-    return slug.startsWith('en/');
-  } else {
-    return false;
-  }
+// 获取所有文章
+const allPosts = await getCollection('blog');
+
+// 过滤出在当前语言下有内容的文章
+const posts = allPosts.filter((post) => {
+  const availableLanguages = getAvailableLanguages(post);
+  return availableLanguages.includes(currentLanguage);
+});
+
+// 获取带翻译信息的文章列表
+const postsWithTranslations = posts.map((post) => {
+  const translation = getPostTranslation(post, currentLanguage);
+  return {
+    ...post,
+    translatedTitle: translation.title,
+    isTranslated: translation.isTranslated,
+    fallbackToOriginal: translation.fallbackToOriginal,
+  };
 });
 
 // 按年份对文章进行分组
-const postsByYear = posts
+const postsByYear = postsWithTranslations
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .reduce(
     (acc, post) => {
@@ -40,7 +51,7 @@ const postsByYear = posts
       acc[year].push(post);
       return acc;
     },
-    {} as Record<number, typeof posts>,
+    {} as Record<number, typeof postsWithTranslations>,
   );
 
 const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
@@ -58,7 +69,7 @@ const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
           >{translations.nav.home}</a
         >
         <span class="text-muted-foreground text-lg md:text-base"> / </span>
-        {translations.archive.allPosts} - {posts.length}
+        {translations.archive.allPosts} - {postsWithTranslations.length}
         {translations.archive.postsInYear}
       </h2>
       <div class="flex flex-col gap-4 md:gap-5">
@@ -79,7 +90,17 @@ const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
                       href={`${langPrefix}/article/${post.data?.link ?? post.slug.split('/').pop() ?? post.slug}`}
                       class="dashed-border text-primary hover:text-blue truncate transition-colors"
                     >
-                      {post.data.title}
+                      {post.translatedTitle}
+                      {post.isTranslated && (
+                        <span class="ml-1 text-xs text-green-600" title="已翻译">
+                          [T]
+                        </span>
+                      )}
+                      {post.fallbackToOriginal && (
+                        <span class="ml-1 text-xs text-orange-600" title="原文显示">
+                          [O]
+                        </span>
+                      )}
                     </a>
                   </p>
                 ))}
