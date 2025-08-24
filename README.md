@@ -1,10 +1,6 @@
-<span id="top"></span>
-
-<div align="center">
-
 # 🚀 SilentX / 寂静猎手
 
-_Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_<br>  
+_Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_  
 _基于 Astro 的现代化静态站点生成器，集成先进的多语言支持和组件架构_
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -13,10 +9,8 @@ _基于 Astro 的现代化静态站点生成器，集成先进的多语言支持
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.0.0-38b2ac?logo=tailwind-css)](https://tailwindcss.com/)
 [![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)](https://reactjs.org/)
 
-[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [📖 English Docs](#english-overview) •<br>
+[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [📖 English Docs](#english-overview) •  
 [🚀 Quick Start](#快速开始) • [🏗️ Architecture](#系统架构)
-
-</div>
 
 ---
 
@@ -137,12 +131,8 @@ pnpm preview
 
 ## 🌐 一键部署 / One-Click Deploy
 
-<div align="center">
-
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AheheXx1982/SilentXx)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AheheXx1982/SilentXx)
-
-</div>
 
 ---
 
@@ -239,5 +229,5 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 [🔝 Back to Top](#top)
 
-_Made with ❤️ by SilentXx Team_
+_Made with ❤️ by SilentXx Team_  
 _Copyright © 2025 SilentX. All rights reserved._
