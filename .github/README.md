@@ -1,851 +1,233 @@
-/* README.md 样式优化 - 现代化投资主题 */
-
-/* 基础字体和排版 */
-.markdown-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: #24292f;
-  background-color: #ffffff;
-  scroll-behavior: smooth;
-}
-
-/* 全局容器样式 */
-.markdown-body .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* 主标题区域特殊样式 */
-.markdown-body div[align="center"]:first-child {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  color: white;
-  border-radius: 16px;
-  padding: 40px 20px;
-  margin-bottom: 40px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.markdown-body div[align="center"]:first-child h1 {
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  border-bottom: none;
-  margin-bottom: 16px;
-  font-size: 3em;
-  background: linear-gradient(45deg, #fff, #f0f0f0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.markdown-body div[align="center"]:first-child em {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1em;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.markdown-body div[align="center"]:first-child strong {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.2em;
-  margin-bottom: 24px;
-  display: block;
-}
-
-/* 标题优化 - 投资主题渐变 */
-.markdown-body h1 {
-  font-size: 2.5em;
-  font-weight: 700;
-  margin-bottom: 0.5em;
-  padding-bottom: 0.3em;
-  border-bottom: 3px solid transparent;
-  background: linear-gradient(90deg, #0969da, #7c3aed, #dc2626);
-  background-size: 100% 3px;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  color: #0969da;
-  position: relative;
-}
-
-.markdown-body h1::before {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #ff6b6b, #feca57, #48cae4);
-  border-radius: 2px;
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  0% { box-shadow: 0 0 5px rgba(255, 107, 107, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(254, 202, 87, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(72, 202, 228, 0.5); }
-}
-
-.markdown-body h2 {
-  font-size: 1.8em;
-  font-weight: 600;
-  margin-top: 2em;
-  margin-bottom: 1em;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #f6f8fa 0%, #e1e7ed 100%);
-  border-left: 4px solid #0969da;
-  border-radius: 0 8px 8px 0;
-  color: #1f2328;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.markdown-body h2:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-left-color: #7c3aed;
-}
-
-.markdown-body h3 {
-  font-size: 1.4em;
-  font-weight: 600;
-  margin-top: 1.5em;
-  margin-bottom: 0.8em;
-  color: #656d76;
-  padding-left: 16px;
-  position: relative;
-}
-
-.markdown-body h3::before {
-  content: '💎';
-  position: absolute;
-  left: -8px;
-  top: 0;
-  font-size: 0.8em;
-  animation: gemSpin 4s linear infinite;
-}
+# 🚀 SilentX / 寂静猎手
 
-@keyframes gemSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.markdown-body h4 {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin-top: 1.2em;
-  margin-bottom: 0.6em;
-  color: #7d8590;
-  border-left: 3px solid #e1e5e9;
-  padding-left: 12px;
-}
-
-/* 代码块优化 - 投资主题 */
-.markdown-body pre {
-  background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  overflow-x: auto;
-  border: 1px solid #d0d7de;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  position: relative;
-}
-
-.markdown-body pre::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #ff6b6b, #feca57, #48cae4, #a78bfa);
-  border-radius: 12px 12px 0 0;
-}
+_Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_  
+_基于 Astro 的现代化静态站点生成器，集成先进的多语言支持和组件架构_
 
-.markdown-body code {
-  background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
-  padding: 3px 6px;
-  border-radius: 6px;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  font-size: 0.85em;
-  color: #e36209;
-  font-weight: 500;
-  border: 1px solid rgba(254, 202, 87, 0.2);
-}
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Astro](https://img.shields.io/badge/Astro-5.13.2-ff5d01?logo=astro)](https://astro.build/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178c6?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.0.0-38b2ac?logo=tailwind-css)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)](https://reactjs.org/)
 
-.markdown-body pre code {
-  background: transparent;
-  padding: 0;
-  color: #24292f;
-  border: none;
-}
+[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [📖 English Docs](#english-overview) •  
+[🚀 Quick Start](#快速开始) • [🏗️ Architecture](#系统架构)
 
-/* 徽章和按钮优化 - 投资主题动效 */
-.markdown-body img[src*="shields.io"] {
-  margin: 3px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+---
 
-.markdown-body img[src*="shields.io"]:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+## 📖 项目前言 / Project Overview
 
-.markdown-body img[src*="button.svg"] {
-  margin: 10px 6px;
-  border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+初见此主题，便深深爱上，多亏了自己这双近视又老花的双重慧眼，只是由于作者更新慢（后续还会不会继续更新也不得而知），而本人技术水平又实在有限，几经折腾，终于也算有了一点小小成果，至少自己用起来是没多大问题了，并且我在原主题的基础上进行小范围的修改，以完善和增强系统性能，创新精神粗略估算已经达到 5 颗星水平~
 
-.markdown-body img[src*="button.svg"]:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
+Upon first encountering this theme, I instantly fell in love with it—thanks to my double blessing of nearsightedness and
+presbyopia, which somehow sharpened my discernment. However, the author updates slowly (and whether it will continue is
+unknown), and my technical skills are quite limited. After numerous trials and errors, I finally achieved a modest result: at
+least it works well for my own use. Moreover, I made small modifications on top of the original theme to improve and enhance
+system performance. Roughly estimating, my level of innovation could be rated five stars. ⭐⭐⭐⭐⭐
 
-/* 部署按钮特殊效果 */
-.markdown-body img[alt*="Deploy"] {
-  filter: brightness(1.1);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(5px);
-}
+感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS Code.
 
-/* 表格优化 - 现代投资数据展示 */
-.markdown-body table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 20px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  background: white;
-}
+I am grateful to the original author and to Cosine for their contributions and guidance, and also to my own hardworking and
+strong-willed self. Honestly, half a month ago, I didn't even know how to use GitHub or VS Code.
 
-.markdown-body th,
-.markdown-body td {
-  border: none;
-  padding: 16px 20px;
-  text-align: left;
-  transition: background-color 0.3s ease;
-}
+特别感谢 ChatGPT、Gemini，通义灵码以及他的小兄弟 Qoder，在我的亲情关怀与悉心指导下，它们相互配合，最终完成了卓有成效的工作，也让我的智商从 250 瞬间飙升至 250+，实现了我多年以来当一名程序员的梦想，这种感觉恰似某年某月某日单身几十年后的我又与初恋不期而遇一般，纯洁而美好~
 
-.markdown-body th {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.9em;
-}
+Special thanks to ChatGPT, Gemini, Tongyi Lingma, and its little sibling Qoder. Under my careful attention and guidance, they
+cooperated seamlessly to produce highly effective results, and, in the process, my IQ skyrocketed from 250 to 250+, fulfilling
+my long-standing dream of becoming a programmer. This feeling is akin to unexpectedly meeting my first love after decades of
+being single—pure and beautiful.
 
-.markdown-body tr:nth-child(even) {
-  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
-}
+---
 
-.markdown-body tr:hover {
-  background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 100%);
-  transform: scale(1.01);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+## 🏆 栋梁特色 / Key Features
 
-/* 表格内的特殊内容样式 */
-.markdown-body td:first-child {
-  font-weight: 600;
-  color: #1f2937;
-}
+| 特性 / Feature                        | 说明 / Description                   | 优势 / Advantage                             |
+| ------------------------------------- | ------------------------------------ | -------------------------------------------- |
+| 🚀 **Astro SSG**                      | 静态站点生成 / Static Site Generator | 极速加载，SEO 友好 / Fast load, SEO friendly |
+| ⚡ **部分水合 / Partial Hydration**   | 按需 JavaScript / On-demand JS       | 减少包大小 / Reduce bundle size              |
+| 🎨 **shadcn/ui**                      | 现代化组件库 / Modern UI Components  | 一致的设计语言 / Consistent design           |
+| 🌐 **12 语言支持 / Multi-language**   | 国际化覆盖 / Internationalization    | 全球用户友好 / Global-friendly               |
+| 📱 **响应式设计 / Responsive Design** | 多设备适配 / Multi-device support    | 完美移动端体验 / Perfect mobile experience   |
 
-.markdown-body td:last-child {
-  color: #059669;
-  font-weight: 500;
-}
+---
 
-/* 列表优化 - 投资主题图标 */
-.markdown-body ul,
-.markdown-body ol {
-  margin: 20px 0;
-  padding-left: 28px;
-}
+## 📈 性能指标 / Performance Metrics
 
-.markdown-body li {
-  margin: 12px 0;
-  line-height: 1.7;
-  position: relative;
-}
+| 指标 / Metric                    | 分数 / Score | 说明 / Description                     |
+| -------------------------------- | ------------ | -------------------------------------- |
+| 🚀 **性能 / Performance**        | 98/100       | 极速加载体验 / Fast load experience    |
+| ♿ **可访问性 / Accessibility**  | 95/100       | 无障碍友好 / Accessibility friendly    |
+| 🔍 **SEO**                       | 100/100      | 搜索引擎优化 / Search engine optimized |
+| 📱 **最佳实践 / Best Practices** | 96/100       | 现代化标准 / Modern standard           |
 
-.markdown-body li > p {
-  margin: 6px 0;
-}
+_数据来源 / Source: [Lighthouse Performance Test](https://developers.google.com/speed/pagespeed/insights/)_
 
-/* 特殊列表项样式 */
-.markdown-body li:contains('💼'),
-.markdown-body li:contains('🎯'),
-.markdown-body li:contains('📊'),
-.markdown-body li:contains('💰') {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  padding: 8px 12px;
-  border-radius: 8px;
-  border-left: 4px solid #0ea5e9;
-  margin: 8px 0;
-}
+---
 
-/* 任务列表特殊样式 */
-.markdown-body input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #10b981;
-  border-radius: 4px;
-}
+## 📁 项目结构 / Project Structure
 
-.markdown-body input[type="checkbox"]:checked + * {
-  text-decoration: line-through;
-  opacity: 0.7;
-}
+```plaintext
+SilentX/
+├── src/                    # 源代码 / Source Code
+│   ├── components/         # 组件库 / Component library
+│   ├── constants/          # 常量配置 / Constants
+│   ├── content/            # 内容管理 / Content management
+│   │   └── blog/           # 博客文章 / Blog posts
+│   ├── i18n/               # 国际化文件 / i18n files
+│   ├── layouts/            # 布局模板 / Layout templates
+│   ├── pages/              # 页面路由 / Page routes
+│   └── styles/             # 样式文件 / Style files
+├── public/                 # 静态资源 / Static assets
+│   ├── fonts/              # 字体文件 / Font files
+│   └── img/                # 图片资源 / Image assets
+├── astro.config.mjs        # Astro 配置 / Astro configuration
+├── tailwind.config.mjs     # Tailwind CSS 配置 / Tailwind CSS configuration
+├── package.json            # 项目依赖 / Project dependencies
+└── tsconfig.json           # TypeScript 配置 / TypeScript configuration
+```
 
-/* 引用块优化 - 投资警示样式 */
-.markdown-body blockquote {
-  border-left: 4px solid #f59e0b;
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  padding: 20px 24px;
-  margin: 20px 0;
-  border-radius: 0 12px 12px 0;
-  color: #92400e;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
-  position: relative;
-}
+---
 
-.markdown-body blockquote::before {
-  content: '⚠️';
-  position: absolute;
-  top: 16px;
-  left: -2px;
-  font-size: 1.2em;
-  background: #f59e0b;
-  color: white;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8em;
-}
+## 📋 环境要求 / Requirements
 
-.markdown-body blockquote p {
-  margin: 0;
-  font-style: italic;
-  font-weight: 500;
-}
+- Node.js >= 18.x
+- pnpm >= 10.x
+- Git
 
-/* 分割线优化 - 投资主题彩虹效果 */
-.markdown-body hr {
-  height: 3px;
-  background: linear-gradient(90deg, 
-    #ff6b6b 0%, 
-    #feca57 16.66%, 
-    #48cae4 33.33%, 
-    #a78bfa 50%, 
-    #06d6a0 66.66%, 
-    #f72585 83.33%, 
-    #4cc9f0 100%
-  );
-  border: none;
-  margin: 40px 0;
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-}
+---
 
-.markdown-body hr::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.4), 
-    transparent
-  );
-  animation: shimmer 2s infinite;
-}
+## 🛠️ 开发命令 / Development Commands
 
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
+```bash
+# 开发环境 / Development
 
-/* 链接优化 - 投资主题悬停效果 */
-.markdown-body a {
-  color: #0969da;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
+pnpm dev              # 启动开发服务器 / Start dev server
+pnpm build            # 构建生产版本 / Build production
+pnpm preview          # 预览构建结果 / Preview build
+```
 
-.markdown-body a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(9, 105, 218, 0.1), rgba(124, 58, 237, 0.1));
-  transition: width 0.3s ease;
-  border-radius: 4px;
-  z-index: -1;
-}
+---
 
-.markdown-body a:hover {
-  color: #0550ae;
-  border-bottom-color: #0550ae;
-  transform: translateY(-1px);
-}
+## 🔧 安装部署 / Installation & Deployment
 
-.markdown-body a:hover::before {
-  width: 100%;
-}
+```bash
+# 1. 克隆项目 / Clone repo
+git clone https://github.com/AheheXx1982/SilentX.git
+cd SilentX
 
-/* 特殊链接样式 */
-.markdown-body a[href*="github.com"] {
-  color: #333;
-}
+# 2. 安装依赖 / Install dependencies
+pnpm install
 
-.markdown-body a[href*="github.com"]:hover {
-  color: #000;
-  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-}
+# 3. 启动开发服务器 / Start dev server
+pnpm dev
 
-/* 特殊内容区域 - 投资主题卡片系统 */
-.markdown-body .highlight-box {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  color: white;
-  padding: 24px;
-  border-radius: 16px;
-  margin: 24px 0;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
-  position: relative;
-  overflow: hidden;
-}
+# 4. 构建生产版本 / Build production
+pnpm build
 
-.markdown-body .highlight-box::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  animation: highlight-shine 3s infinite;
-}
+# 5. 预览构建结果 / Preview build
+pnpm preview
+```
 
-@keyframes highlight-shine {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+---
 
-/* 功能卡片样式 - 投资主题 */
-.markdown-body .feature-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 24px;
-  margin: 20px 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
+## 🌐 一键部署 / One-Click Deploy
 
-.markdown-body .feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #ff6b6b, #feca57, #48cae4, #a78bfa);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AheheXx1982/SilentXx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AheheXx1982/SilentXx)
 
-.markdown-body .feature-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: #cbd5e1;
-}
+---
 
-.markdown-body .feature-card:hover::before {
-  transform: scaleX(1);
-}
+## 🌐 国际化配置 / i18n Configuration
 
-/* 投资数据展示卡片 */
-.markdown-body .data-card {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  color: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 16px 0;
-  box-shadow: 0 8px 25px rgba(30, 41, 59, 0.4);
-  position: relative;
-}
+```typescript
+// 添加新语言支持 / Add new language
+export const SUPPORTED_LANGUAGES = [
+  'zh-CN',
+  'en',
+  'ja',
+  'ko',
+  // Add new language codes
+] as const;
+```
 
-.markdown-body .data-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #10b981, #059669);
-  border-radius: 0 12px 0 50px;
-  opacity: 0.1;
-}
+---
 
-/* 成就徽章和统计卡片 */
-.markdown-body .achievement-badge {
-  display: inline-block;
-  background: linear-gradient(45deg, #ff6b6b 0%, #feca57 50%, #48cae4 100%);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85em;
-  font-weight: 600;
-  margin: 3px;
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+## 🔧 基本配置 / Basic Config
 
-.markdown-body .achievement-badge:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-}
+- [src/constants/site-config.ts](src/constants/site-config.ts) 修改站点信息 / modify site info
+- [src/constants/i18n.ts](src/constants/i18n.ts) 添加新语言支持 / add new languages
 
-/* 进度条样式 */
-.markdown-body .progress-bar {
-  width: 100%;
-  height: 8px;
-  background: #e2e8f0;
-  border-radius: 4px;
-  overflow: hidden;
-  margin: 12px 0;
-}
+---
 
-.markdown-body .progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #10b981, #059669);
-  border-radius: 4px;
-  transition: width 2s ease;
-  position: relative;
-}
+## 🎨 主题定制 / Theme Customization
 
-.markdown-body .progress-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: progress-shine 2s infinite;
+```css
+:root {
+  --primary: 351 77% 62%;
+  --primary-foreground: 355.7 100% 97.3%;
 }
+```
 
-@keyframes progress-shine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
+---
 
-/* 响应式设计 - 投资主题优化 */
-@media (max-width: 768px) {
-  .markdown-body {
-    padding: 16px;
-    font-size: 16px;
-  }
-
-  .markdown-body h1 {
-    font-size: 2.2em;
-  }
-
-  .markdown-body h2 {
-    font-size: 1.6em;
-    padding: 10px 16px;
-  }
-
-  .markdown-body h3 {
-    font-size: 1.3em;
-  }
-
-  .markdown-body pre {
-    padding: 16px;
-    margin: 16px 0;
-    border-radius: 8px;
-  }
-
-  .markdown-body table {
-    font-size: 0.9em;
-    border-radius: 8px;
-  }
-
-  .markdown-body th,
-  .markdown-body td {
-    padding: 12px 16px;
-  }
-
-  .markdown-body .feature-card {
-    padding: 20px;
-    margin: 16px 0;
-  }
-
-  .markdown-body div[align="center"]:first-child {
-    padding: 30px 16px;
-    border-radius: 12px;
-  }
-
-  .markdown-body div[align="center"]:first-child h1 {
-    font-size: 2.5em;
-  }
-
-  /* 移动端表格滚动 */
-  .markdown-body table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
+## 📝 内容管理 / Content Management
 
-@media (max-width: 480px) {
-  .markdown-body h1 {
-    font-size: 1.8em;
-  }
-
-  .markdown-body h2 {
-    font-size: 1.4em;
-  }
-
-  .markdown-body div[align="center"]:first-child h1 {
-    font-size: 2em;
-  }
-
-  .markdown-body .container {
-    padding: 0 12px;
-  }
-}
+新文章放在 [src/content/blog/](src/content/blog/):
 
-/* 深色模式适配 - 投资主题 */
-@media (prefers-color-scheme: dark) {
-  .markdown-body {
-    color: #e6edf3;
-    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-  }
-
-  .markdown-body h1,
-  .markdown-body h2 {
-    color: #f0f6fc;
-    border-bottom-color: #30363d;
-  }
-
-  .markdown-body h2 {
-    background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
-    border-left-color: #1f6feb;
-  }
-
-  .markdown-body h3 {
-    color: #7d8590;
-  }
-
-  .markdown-body pre {
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    border-color: #30363d;
-  }
-
-  .markdown-body code {
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    color: #f85149;
-    border-color: rgba(248, 81, 73, 0.2);
-  }
-
-  .markdown-body th {
-    background: linear-gradient(135deg, #30363d 0%, #21262d 100%);
-    color: #e6edf3;
-  }
-
-  .markdown-body tr:nth-child(even) {
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-  }
-
-  .markdown-body tr:hover {
-    background: linear-gradient(135deg, #21262d 0%, #161b22 100%);
-  }
-
-  .markdown-body blockquote {
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    border-left-color: #f59e0b;
-    color: #e6edf3;
-  }
-
-  .markdown-body .feature-card {
-    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    border-color: #30363d;
-  }
-
-  .markdown-body .data-card {
-    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-  }
-
-  .markdown-body table,
-  .markdown-body th,
-  .markdown-body td {
-    border-color: #30363d;
-  }
-
-  /* 深色模式下的主标题区域 */
-  .markdown-body div[align="center"]:first-child {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-  }
-}
+```markdown
+---
+title: '文章标题 / Title'
+description: '文章描述 / Description'
+date: 2025-01-01
+category: '分类名称 / Category'
+tags: ['标签 1 / Tag1', '标签 2 / Tag2']
+---
 
-/* 特殊emoji和图标优化 - 投资主题动效 */
-.markdown-body .emoji {
-  width: 1.3em;
-  height: 1.3em;
-  vertical-align: -0.2em;
-  margin: 0 0.2em;
-  transition: all 0.3s ease;
-}
+# 文章内容 / Content
 
-.markdown-body .emoji:hover {
-  transform: scale(1.2) rotate(10deg);
-}
+你的 Markdown 内容...
+```
 
-/* 投资相关emoji特殊效果 */
-.markdown-body .emoji[alt*="💰"],
-.markdown-body .emoji[alt*="💎"],
-.markdown-body .emoji[alt*="📈"],
-.markdown-body .emoji[alt*="🚀"] {
-  animation: investment-pulse 2s infinite;
-}
+---
 
-@keyframes investment-pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
+## 📈 更新日志 / Changelog
 
-/* 目录树样式 - 投资项目结构 */
-.markdown-body .directory-tree {
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  line-height: 1.6;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
+🎯 最新版本 / Latest: v2.1.0 (2025-08-24)
 
-/* 按钮样式增强 - 投资主题 */
-.markdown-body .btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-  border: none;
-  cursor: pointer;
-}
+✅ shadcn/ui 完整集成 / Modern UI Component integration
 
-.markdown-body .btn:hover {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
-}
+✅ 12 语言国际化 / Multi-language support
 
-/* 成功按钮变体 */
-.markdown-body .btn-success {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
+✅ 响应式导航系统 / Responsive navigation system
 
-.markdown-body .btn-success:hover {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-}
+✅ 短链接优化 / SEO friendly URLs
 
-/* 警告按钮变体 */
-.markdown-body .btn-warning {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-}
+[📋 查看完整更新历史 → CHANGELOG.md](CHANGELOG.md)
 
-.markdown-body .btn-warning:hover {
-  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-}
+---
 
-/* 浮动动画效果 */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
+## 🙏 致谢 / Thanks
 
-.markdown-body .floating {
-  animation: float 3s ease-in-out infinite;
-}
+### 核心灵感 / Inspiration
 
-/* 脉冲效果 */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
-}
+- [余弦の博客](https://space.cosine.ren/)
+- [Hexo Shoka](https://github.com/amehime/hexo-theme-shoka)
 
-.markdown-body .pulse {
-  animation: pulse 2s infinite;
-}
+### 技术支持 / Tech Support
 
-/* 成功指示器 */
-.markdown-body .success-indicator {
-  color: #10b981;
-  font-weight: 600;
-}
+- [Astro](https://astro.build/)
+- [Vercel](https://vercel.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
 
-.markdown-body .success-indicator::before {
-  content: '✅ ';
-  margin-right: 4px;
-}
+### AI 助手 / AI Assistant
 
-/* 警告指示器 */
-.markdown-body .warning-indicator {
-  color: #f59e0b;
-  font-weight: 600;
-}
+- [Qoder](https://qoder.com/)
+- [ChatGPT](https://chat.openai.com/)
+- [通义灵码](https://tongyi.aliyun.com/lingma)
+- [Gemini](https://gemini.google.com/)
 
-.markdown-body .warning-indicator::before {
-  content: '⚠️ ';
-  margin-right: 4px;
-}
+让我们一起构建更好的技术社区！ / Let's build a better tech community together!
 
-/* 加载动画 */
-@keyframes loading {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+[🔝 Back to Top](#top)
 
-.markdown-body .loading {
-  animation: loading 1s linear infinite;
-}
+_Made with ❤️ by SilentXx Team_  
+_Copyright © 2025 SilentX. All rights reserved._
