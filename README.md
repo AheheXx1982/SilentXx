@@ -130,8 +130,29 @@ pnpm preview
 
 ## 🌐 一键部署 / One-Click Deploy
 
-- [Netlify](https://www.netlify.com/)
-- [Vercel](https://vercel.com/)
+- <div align="center">
+
+# 🚀 SilentXx ｜ 寂静猎手
+
+_基于 Astro 的现代静态站点生成器 · Modern Static Site Generator based on Astro_
+
+---
+
+## ⚡ 一键部署 · One-click Deploy
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/你的用户名/你的仓库名)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/你的用户名/你的仓库名)
+
+---
+
+### 📖 使用说明 · Usage
+
+- 点击上方按钮即可一键部署到 **Netlify** 或 **Vercel**
+- Click the buttons above to deploy to **Netlify** or **Vercel** instantly
+- 部署前请确认仓库内的 **Build 命令** 与 **输出目录** 配置正确
+- Make sure your **build command** and **output directory** are set correctly in the repo
+
+</div>
 
 ## 🌐 国际化配置 / i18n Configuration
 
