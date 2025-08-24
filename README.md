@@ -69,8 +69,25 @@ _数据来源 / Source: [Lighthouse Performance Test](https://developers.google.
 
 ## 📁 项目结构 / Project Structure
 
-``plain SilentX/ ├── src/ # 源代码 / source code ├── public/ # 静态资源 / static assets └── package.json # 项目配置 / project
-config
+```plaintext
+SilentX/
+├── src/                    # 源代码 / Source Code
+│   ├── components/         # 组件库 / Component library
+│   ├── constants/          # 常量配置 / Constants
+│   ├── content/            # 内容管理 / Content management
+│   │   └── blog/           # 博客文章 / Blog posts
+│   ├── i18n/               # 国际化文件 / i18n files
+│   ├── layouts/            # 布局模板 / Layout templates
+│   ├── pages/              # 页面路由 / Page routes
+│   └── styles/             # 样式文件 / Style files
+├── public/                 # 静态资源 / Static assets
+│   ├── fonts/              # 字体文件 / Font files
+│   └── img/                # 图片资源 / Image assets
+├── astro.config.mjs        # Astro 配置 / Astro configuration
+├── tailwind.config.mjs    # Tailwind CSS 配置 / Tailwind CSS configuration
+├── package.json           # 项目依赖 / Project dependencies
+└── tsconfig.json          # TypeScript 配置 / TypeScript configuration
+```
 
 ````plain
 
