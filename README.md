@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🎯 SilentX
+# 🚀 SilentX
 
-_Focus on US stock options and cryptocurrency trading, sharing real, low-risk, replicable cash flow investment strategies_
+_Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_
 
-**聚焦美股期权与加密货币交易，分享真实、低风险、可复制的现金流投资策略**
+**基于 Astro 的现代化静态站点生成器，集成先进的多语言支持和组件架构**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Astro](https://img.shields.io/badge/Astro-5.13.2-ff5d01?logo=astro)](https://astro.build/)
@@ -12,84 +12,94 @@ _Focus on US stock options and cryptocurrency trading, sharing real, low-risk, r
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.0.0-38b2ac?logo=tailwind-css)](https://tailwindcss.com/)
 [![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)](https://reactjs.org/)
 
-[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [🚀 Quick Start](#快速开始) • [📊 Investment Strategies](#投资理念与方法论)
+[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [🚀 Quick Start](#快速开始) • [🏗️ Architecture](#系统架构)
 
 </div>
 
 ---
 
+## 📜 项目前言
+
+> “初见此主题，便深深爱上，多亏了自己这双近视又老花的双重慧眼。”
+
+这个项目的诞生源于一次“一见钟情”的遇见。在浏览众多主题的过程中，这个主题的优雅设计和现代化架构立刻吸引了我的注意力。然而，由于原作者更新节奏缓慢（后续的维护也存在不确定性），而我的技术水平又实在有限，这便开始了一段充满挑战与成长的旅程。
+
+### 🌱 **技术成长之路**
+
+几经折腾，终于也算有了一点小小成果。至少自己用起来是没多大问题了，并且在原主题的基础上进行了小范围的修改，以完善和增强系统性能。粗略估算，创新精神已经达到了 **⭐⭐⭐⭐⭐** 水平！
+
+坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS Code，但在 AI 助手的悔心指导下，它们相互配合，最终完成了卓有成效的工作。这让我的智商从 250 瞬间飙升至 250+，终于实现了多年以来当一名程序员的梦想。
+
+这种感觉恋似某年某月某日，单身几十年后我又与初恋不期而遇一般，纯洁而美好，堪称爱的双向奔赴～
+
+### 🙏 **感谢与致敬**
+
+- **原作者和余弦**：感谢他们的贡献与指导，为项目提供了堅实的技术基础
+- **勤劳的自己**：感谢学习意志超强的自己，从零开始的毌力和坑不懈的精神
+- **AI 助手们**：在英明领导下，它们的相互配合和悔心指导成就了这个项目
+
+---
+
 ## 🌟 English Introduction
 
-**SilentX** is a professional investment education platform focused on **US stock options** and **cryptocurrency trading**. Our mission is to share **practical, low-risk, and replicable** cash flow investment strategies with the global investment community.
+**SilentX** is a modern static site generator built with cutting-edge web technologies. It features a robust multi-language architecture, advanced component system, and exceptional performance optimization.
 
-### 🎯 **Core Focus Areas**
+### 🎯 **Core Technical Features**
 
-- **📊 Options Trading Institute** - Professional options strategy research and live trading analysis
-- **💰 Crypto Lab** - Quantitative trading strategies and DeFi protocol analysis
-- **🏆 Cashflow Utopia** - Building sustainable passive income systems
-- **📚 Educational Resources** - From beginner to advanced investment education
+- **🏗️ Advanced Architecture** - Modular design with component-based development
+- **🌐 Internationalization Engine** - Comprehensive 12-language support system
+- **⚡ Performance Optimization** - Static site generation with selective hydration
+- **📱 Responsive Framework** - Mobile-first design principles
 
 ### ✨ **Technical Highlights**
 
-- **🚀 Modern Architecture** - Built with Astro 5.13.2 + React 19.1.1 + TypeScript 5.9.2
-- **🎨 Beautiful UI** - Integrated with shadcn/ui component library
-- **🌐 12 Languages** - Full internationalization support
-- **📱 Responsive Design** - Perfect experience across all devices
-- **⚡ Lightning Fast** - Static site generation with optimal performance
+- **🚀 Modern Stack** - Astro 5.13.2 + React 19.1.1 + TypeScript 5.9.2
+- **🎨 Design System** - Integrated shadcn/ui component library
+- **🌐 Multi-language** - Complete internationalization infrastructure
+- **📱 Responsive Design** - Cross-device compatibility and optimization
+- **⚡ High Performance** - Optimized static generation with minimal JavaScript
 
 ---
 
 ## 🇨🇳 中文简介
 
-## ✨ 项目特色
+**SilentX** 是一个基于 Astro 构建的现代化静态站点生成器，采用先进的组件化架构和全面的国际化支持。项目专注于技术创新和开发体验优化。
 
-### 🎨 **现代化设计系统**
+## ✨ 系统架构特色
 
-- 🎭 **双主题支持** - 优雅的亮色/暗色主题切换
-- 📱 **响应式设计** - 完美适配移动端、平板和桌面
+### 🏗️ **模块化架构设计**
+
+- 🎭 **组件化系统** - 高度可复用的 React 组件库
+- 📱 **响应式设计** - 移动优先的设计理念
 - 🎯 **shadcn/ui 集成** - 现代化组件库，保证设计一致性
 - ⚡ **Tailwind CSS** - 原子化 CSS，高效开发体验
 
-### 🌐 **强大的国际化**
+### 🌐 **先进的国际化引擎**
 
 - 🗣️ **12 种语言支持** - 中文(简/繁)、英语、日语、韩语、西班牙语、葡萄牙语、德语、法语、俄语、阿拉伯语、印地语
 - 🔗 **智能路由** - SEO 友好的多语言 URL 结构
 - 🏷️ **本地化内容** - 标签、分类、文章的完整翻译支持
 
-### 🚀 **卓越性能**
+### 🚀 **高性能优化**
 
 - ⚡ **静态站点生成** - 基于 Astro 的 SSG，极致加载速度
 - 🎯 **部分水合** - React 组件按需加载，减少 JavaScript 包大小
 - 📦 **现代构建工具** - Vite 驱动的闪电般构建速度
 - 🔍 **SEO 优化** - 自动生成 sitemap、RSS feed
 
-### 📝 **内容管理**
+### 📏 **内容管理系统**
 
 - 📄 **Markdown/MDX 支持** - 支持富文本和交互式组件
 - 🏷️ **智能分类系统** - 多层级分类，标签云支持
 - 🔗 **短链接优化** - SEO 友好的 URL 结构
 - 📈 **阅读统计** - 字数统计、阅读时间估算
 
-### 💼 **专业功能**
+### 💼 **专业开发功能**
 
-- 📊 **期权交易分析** - 期权策略研究和实盘分享
-- 💰 **加密货币研究** - 网格策略、DeFi 分析
-- 📈 **现金流系统** - 投资策略和风险管理
-- 🎯 **实盘记录** - 真实交易数据和复盘分析
-
-### 🧠 **投资理念**
-
-- 💡 **理性投资** - 基于数据和逻辑的决策框架
-- ⚖️ **风险控制** - 严格的仓位管理和止损机制
-- 🔄 **策略复制** - 可标准化、可重复的交易体系
-- 📚 **持续学习** - 不断总结经验，优化策略
-
-### 🎯 **核心策略**
-
-- 🔥 **期权卖方策略** - 利用时间价值衰减获取稳定收益
-- 🌐 **网格交易系统** - 震荡市场中的量化盈利模式
-- 💎 **高息股轮动** - 全球优质分红股票投资组合
-- ⚡ **合约套利** - 期现套利和跨期套利策略
+- 🔧 **TypeScript 支持** - 全面的类型安全保障
+- 🎯 **组件开发** - 可复用的 UI 组件库
+- 📊 **性能监控** - 内置性能分析工具
+- 🔄 **自动化流程** - 代码检查、构建、部署一体化
 
 ---
 
@@ -160,57 +170,32 @@ pnpm preview
 
 ## 📁 项目结构
 
-```plain
+``plain
 SilentX/
 ├── 📁 src/
-│   ├── 📁 components/        # React组件
-│   │   ├── 📁 ui/           # shadcn/ui组件
-│   │   ├── 📁 layout/       # 布局组件
-│   │   └── 📁 common/       # 通用组件
-│   ├── 📁 content/          # 内容文件
-│   │   ├── 📁 blog/         # 博客文章
-│   │   └── 📁 translations/ # 翻译文件
-│   ├── 📁 i18n/             # 国际化配置
-│   ├── 📁 lib/              # 工具函数
-│   ├── 📁 pages/            # 页面文件
-│   ├── 📁 styles/           # 样式文件
-│   └── 📁 types/            # 类型定义
-├── 📁 public/               # 静态资源
-├── 📄 astro.config.mjs      # Astro配置
-├── 📄 tailwind.config.mjs   # Tailwind配置
-├── 📄 components.json       # shadcn/ui配置
-└── 📌 package.json          # 项目配置
-```
+│ ├── 📁 components/ # React 组件
+│ │ ├── 📁 ui/ # shadcn/ui 组件
+│ │ ├── 📁 layout/ # 布局组件
+│ │ └── 📁 common/ # 通用组件
+│ ├── 📁 content/ # 内容文件
+│ │ ├── 📁 blog/ # 博客文章
+│ │ └── 📁 translations/ # 翻译文件
+│ ├── 📁 i18n/ # 国际化配置
+│ ├── 📁 lib/ # 工具函数
+│ ├── 📁 pages/ # 页面文件
+│ ├── 📁 styles/ # 样式文件
+│ └── 📁 types/ # 类型定义
+├── 📁 public/ # 静态资源
+├── 📄 astro.config.mjs # Astro 配置
+├── 📄 tailwind.config.mjs # Tailwind 配置
+├── 📄 components.json # shadcn/ui 配置
+└── 📌 package.json # 项目配置
+
+````plain
 
 ---
 
 ## 📚 使用指南
-
-### 🎆 **新手入门指南**
-
-#### 1️⃣ **学习准备**
-
-```mermaid
-graph LR
-    A[基础知识] --> B[平台熟悉]
-    B --> C[模拟交易]
-    C --> D[小金额实战]
-    D --> E[策略优化]
-```
-
-#### 2️⃣ **必备工具**
-
-- 📊 **交易平台**: Interactive Brokers / TD Ameritrade / Robinhood
-- 💰 **加密交易所**: Binance / Coinbase / Gate.io
-- 📈 **分析工具**: TradingView / OptionStrat / ThinkorSwim
-- 📚 **学习资源**: SilentX 博客 + 推荐书籍
-
-#### 3️⃣ **安全清单**
-
-- ✅ **资金安全**: 使用可承受损失的资金
-- ✅ **风险控制**: 单次交易不超过总资金的 5%
-- ✅ **学习优先**: 先学习理论，再进行实践
-- ✅ **耐心执行**: 严格按照策略进行交易
 
 ### 🛠️ **开发者指南**
 
@@ -229,7 +214,7 @@ pnpm dev
 
 # 浏览器访问
 open http://localhost:4321
-```
+````
 
 #### 📈 **常用命令**
 
@@ -242,6 +227,37 @@ pnpm preview          # 预览构建结果
 # 代码质量
 pnpm lint             # 代码检查
 pnpm type-check       # TypeScript类型检查
+```
+
+#### 🏗️ **项目架构说明**
+
+- **组件分层** - UI 组件、布局组件、业务组件清晰分离
+- **状态管理** - 使用 Nanostores 进行轻量级状态管理
+- **路由系统** - 基于文件系统的自动路由生成
+- **样式系统** - Tailwind CSS + shadcn/ui 组合
+
+#### 🌐 **国际化配置**
+
+```typescript
+// 添加新语言支持
+export const SUPPORTED_LANGUAGES = [
+  'zh-CN',
+  'en',
+  'ja',
+  'ko',
+  // 添加新语言代码
+] as const;
+```
+
+#### 🎨 **主题定制**
+
+```css
+/* 自定义主题色彩 */
+:root {
+  --primary: 351 77% 62%;
+  --primary-foreground: 355.7 100% 97.3%;
+  /* 更多颜色变量 */
+}
 ```
 
 ---
@@ -280,124 +296,53 @@ pnpm type-check       # TypeScript类型检查
 
 ---
 
-## 🧠 投资理念与方法论
+## 🌟 核心技术特性
 
-### 💡 **核心投资哲学**
+### 🏗️ **模块化架构**
 
-> "投资不是投机，而是一门基于概率和数学的艺术。我们追求的不是一夜暴富，而是长期稳定的现金流收益。"
+**Component-Based Architecture - 基于组件的现代化架构设计**
 
-#### 🎯 **四大核心理念**
+- 🎯 **高度可复用的组件** - 模块化设计，一次开发，多处使用
+- 📈 **性能优化组件** - 按需加载，减少初始包大小
+- ⚖️ **类型安全保障** - TypeScript 全面覆盖，编译时错误检测
+- 🔄 **状态管理系统** - Nanostores 轻量级状态管理
+- 🎨 **设计系统集成** - shadcn/ui 现代化组件库
 
-1. **📊 数据驱动决策**
-   - 基于历史数据和统计概率制定策略
-   - 量化分析替代情绪化判断
-   - 严格的回测验证策略有效性
+### 🌐 **国际化引擎**
 
-2. **⚖️ 风险优先原则**
-   - 永远将风险控制放在第一位
-   - 严格的仓位管理和止损机制
-   - 分散投资降低单一标的风险
+**Multi-language Engine - 企业级多语言支持系统**
 
-3. **🔄 策略标准化**
-   - 建立可重复执行的交易规则
-   - 系统化的进出场条件
-   - 标准化的风险管理流程
+- 🗺️ **全球化覆盖** - 12 种主流语言全面支持
+- 🔗 **SEO 友好路由** - 多语言 URL 结构优化
+- 🏷️ **内容本地化** - 动态翻译加载，支持上下文切换
+- 📊 **实时语言切换** - 无刷新语言切换体验
+- 📦 **分包加载** - 按语言分包，减少初始加载时间
 
-4. **📚 持续学习进化**
-   - 定期复盘总结交易经验
-   - 跟踪市场变化调整策略
-   - 学习新的金融工具和方法
+### ⚡ **性能优化**
 
-### 🎓 **投资教育体系**
+**Performance Optimization - 企业级性能优化方案**
 
-#### 📈 **期权交易进阶路径**
+- 🚀 **静态站点生成** - Astro SSG 极速构建和加载
+- 🎯 **部分水合** - 智能 JavaScript 注入，只在需要时加载
+- 📦 **资源优化** - 图片压缩、代码分割、按需加载
+- 🔍 **SEO 优化** - 结构化数据、sitemap、RSS 自动生成
+- 📈 **性能监控** - 内置性能分析和优化建议
 
-```mermaid
-graph LR
-    A[基础知识] --> B[策略理解]
-    B --> C[模拟交易]
-    C --> D[小仓位实战]
-    D --> E[策略优化]
-    E --> F[规模化操作]
-```
+### 📏 **内容管理**
 
-#### 💰 **现金流构建策略**
+**Content Management System - 灵活的内容管理解决方案**
 
-```plain
-graph TB
-    A[资产评估] --> B[策略选择]
-    B --> C[仓位配置]
-    C --> D[执行监控]
-    D --> E[收益分析]
-    E --> F[策略调整]
-    F --> B
-```
-
----
-
-## 📊 实战案例分析
-
-### 🎯 **期权策略实战**
-
-#### 🔥 **现金担保看跌期权 (Cash-Secured Put)**
-
-**策略概述：** 通过卖出看跌期权获取权利金收入，同时准备现金以防被执行时买入股票。
-
-| 参数              | 说明            | 推荐值    |
-| ----------------- | --------------- | --------- |
-| 📅 **到期时间**   | 期权剩余天数    | 30-45 天  |
-| 📊 **Delta 值**   | 期权价格敏感度  | 0.15-0.30 |
-| 💰 **年化收益率** | 权利金年化收益  | 8-15%     |
-| ⚖️ **风险比率**   | 最大损失/权利金 | < 20:1    |
-
-#### ⚡ **铁鹰式价差 (Iron Condor)**
-
-**策略概述：** 同时卖出虚值看涨和看跌期权，买入更虚值期权对冲风险。
-
-```plain
-收益区间：下轨 ≤ 股价 ≤ 上轨
-最大收益：净权利金收入
-最大损失：价差宽度 - 净权利金
-盈亏平衡：下轨 ± 净权利金
-```
-
-### 💎 **加密货币网格策略**
-
-#### 🤖 **自动化网格系统**
-
-**核心参数配置：**
-
-- **网格数量：** 10-20 个网格
-- **价格区间：** 支撑位到阻力位
-- **单网格投资：** 总资金的 5-10%
-- **触发条件：** 价格变动 2-5%
-
-**收益来源：**
-
-- 🔄 频繁的低买高卖获取价差
-- 📈 持有数量增加享受上涨收益
-- 💰 降低平均持仓成本
-
-### 🏆 **成功案例分享**
-
-<div align="center">
-
-| 策略类型          | 时间周期  | 年化收益  | 最大回撤 | 胜率 |
-| ----------------- | --------- | --------- | -------- | ---- |
-| 🎯 **期权卖方**   | 2023-2024 | **18.5%** | -8.2%    | 78%  |
-| 🤖 **网格交易**   | 2023-2024 | **22.3%** | -12.1%   | 85%  |
-| 💎 **高息股轮动** | 2023-2024 | **14.7%** | -6.5%    | 82%  |
-| 🔥 **组合策略**   | 2023-2024 | **16.8%** | -7.8%    | 80%  |
-
-</div>
-
-_注：以上数据为历史回测结果，不代表未来收益保证_
+- 📄 **Markdown/MDX 支持** - 富文本编辑和交互式组件集成
+- 🏷️ **智能分类** - 多级分类系统，标签云支持
+- 🔗 **URL 优化** - 短链接生成，SEO 友好的 URL 结构
+- 📈 **阅读体验** - 字数统计、阅读时间估算、目录生成
+- 🔄 **版本控制** - Git 集成，支持内容版本管理
 
 ---
 
 ## 🌍 社区与资源
 
-### 💬 **学习交流社区**
+### 💬 **技术交流社区**
 
 <div align="center">
 
@@ -410,63 +355,65 @@ _注：以上数据为历史回测结果，不代表未来收益保证_
 
 </div>
 
-### 📖 **学习资源推荐**
+### 📖 **技术学习资源**
 
-#### 📚 **期权交易必读书籍**
+#### 📚 **技术文档必读**
 
-- 📖 《期权投资策略》- McMillan
-- 📖 《期权波动率与定价》- Natenberg
-- 📖 《期权交易核心策略与技巧解析》- 王勇
-- 📖 《我如何以交易为生》- Alexander Elder
+- 📖 **Astro 官方文档** - 静态站点生成器最佳实践
+- 📖 **React 开发指南** - 现代 React 开发模式
+- 📖 **TypeScript 手册** - 类型安全的 JavaScript 开发
+- 📖 **Tailwind CSS 指南** - 原子化 CSS 设计系统
 
-#### 🎥 **优质学习频道**
+#### 🎥 **优质学习资源**
 
-- 📺 **TastyTrade** - 期权教育权威平台
-- 📺 **Options Alpha** - 系统期权学习课程
-- 📺 **The Chart Guys** - 技术分析教学
-- 📺 **Coin Bureau** - 加密货币深度分析
+- 📺 **Astro 官方教程** - 从入门到高级的完整路径
+- 📺 **React 开发课程** - 组件化开发最佳实践
+- 📺 **TypeScript 深入讲解** - 高级类型系统使用
+- 📺 **Web 性能优化** - 现代 Web 应用性能调优
 
-#### 🛠️ **实用工具推荐**
+#### 🛠️ **开发工具推荐**
 
-- 🔧 **OptionStrat** - 期权策略分析工具
-- 🔧 **TradingView** - 专业图表分析平台
-- 🔧 **3Commas** - 网格交易自动化
-- 🔧 **Portfolio Visualizer** - 投资组合回测
+- 🔧 **VS Code + Astro 插件** - 最佳开发体验
+- 🔧 **Lighthouse** - 网站性能分析工具
+- 🔧 **Figma** - 现代化设计协作平台
+- 🔧 **GitHub Actions** - CI/CD 自动化部署
 
-### 🏅 **认证与成就系统**
+### 🏅 **开发者成就系统**
 
-#### 🎖️ **学习里程碑**
+#### 🎖️ **技术里程碑**
 
-- 🥉 **入门级** - 完成基础课程学习
-- 🥈 **进阶级** - 掌握 3 种以上交易策略
-- 🥇 **专家级** - 实现稳定盈利 6 个月以上
-- 🏆 **大师级** - 年化收益率超过 15%
+- 🥉 **初学者** - 成功运行项目本地开发环境
+- 🥈 **进阶级** - 成功定制组件和主题样式
+- 🥇 **专家级** - 贡献新功能或优化现有代码
+- 🏆 **大师级** - 成为核心贡献者或维护者
 
 #### 🎯 **社区贡献奖励**
 
-- ⭐ **内容创作者** - 分享优质策略分析
-- ⭐ **问题解答者** - 帮助新手解决问题
-- ⭐ **代码贡献者** - 提交有价值的代码
-- ⭐ **社区大使** - 推广项目发展
+- ⭐ **内容创作者** - 分享技术教程和最佳实践
+- ⭐ **问题解答者** - 帮助新手解决技术问题
+- ⭐ **代码贡献者** - 提交有价值的代码和功能
+- ⭐ **社区大使** - 推广项目发展和技术传播
 
 ---
 
 ## 🎨 自定义配置
 
+### 🔧 **项目配置**
+
 编辑 `src/constants/site-config.ts`：
 
 ```typescript
 export const siteConfig = {
-  title: '寂静猎手',
-  subtitle: '期权加密实战 · 理性现金流系统',
-  description: '聚焦美股期权与加密货币交易...',
+  title: 'SilentX',
+  subtitle: '现代化静态站点生成器',
+  description: '基于 Astro 的现代化静态站点生成器...',
   author: 'SilentXx',
   site: 'https://www.silentxx.com',
   // ... 更多配置
 };
 ```
 
-### 🌐 多语言配置
+### 🌐 **多语言配置**
 
 编辑 `src/constants/i18n.ts` 添加新语言：
 
@@ -482,7 +429,7 @@ export const SUPPORTED_LANGUAGES = [
 ] as const;
 ```
 
-### 🎨 主题定制
+### 🎨 **主题定制**
 
 编辑 `src/styles/global/shadcn.css` 自定义主题色彩：
 
@@ -492,6 +439,24 @@ export const SUPPORTED_LANGUAGES = [
   --primary-foreground: 355.7 100% 97.3%;
   /* 自定义更多颜色变量 */
 }
+```
+
+### 📝 **内容管理**
+
+添加新文章在 `src/content/blog/` 目录下：
+
+```plain
+---
+title: '文章标题'
+description: '文章描述'
+date: 2024-01-01
+category: '分类名称'
+tags: ['标签1', '标签2']
+---
+
+# 文章内容
+
+你的 Markdown 内容...
 ```
 
 ---
@@ -704,6 +669,7 @@ SOFTWARE.
 
 ### 🤖 **AI 助手**
 
+- **[Qoder](https://qoder.com/)** - 强悍性能的 AI 编程助手，高效代码生成和项目优化
 - **ChatGPT** - 代码优化和问题解决
 - **通义灵码** - 开发效率提升
 - **Gemini** - 技术方案咨询
@@ -797,8 +763,8 @@ SOFTWARE.
 
 - [ ] 🔄 **自动化部署** - GitHub Actions CI/CD 流程完善
 - [ ] 📱 **PWA 支持** - 离线访问功能，提升用户体验
-- [ ] 🔍 **全文搜索** - Algolia 集成，快速定位内容
-- [ ] 📊 **数据分析** - 用户行为追踪，优化内容策略
+- [ ] 🔍 **全文搜索** - Algolia 搜索集成
+- [ ] 📊 **数据分析** - 用户行为追踪
 - [ ] 💬 **实时聊天** - WebSocket 聊天室，增强社区互动
 - [ ] 🎨 **个性化推荐** - 基于用户偏好的内容推荐系统
 
@@ -843,27 +809,126 @@ SOFTWARE.
 
 ## ❓ 常见问题
 
-### ❓ **投资策略相关问题**
+### ❓ **技术相关问题**
 
 <details>
-<summary><strong>🎯 期权交易需要多少启动资金？</strong></summary>
+<summary><strong>🚀 如何开始使用 SilentX？</strong></summary>
 
-**建议启动资金：**
+**快速开始步骤：**
 
-- **最低要求**：$5,000-$10,000（现金担保看跌策略）
-- **舒适操作**：$25,000-$50,000（多样化策略组合）
-- **规模化操作**：$100,000+（全策略矩阵）
+1. **环境准备**
+   - Node.js >= 18.x
+   - pnpm >= 10.x
+   - Git
 
-**资金分配原则：**
+2. **项目设置**
 
-- 单次交易风险不超过总资金的 2-5%
-- 保留 20-30%现金作为风险缓冲
-- 分散到 8-12 个不同标的降低集中度风险
+   ```bash
+   git clone https://github.com/AheheXx1982/SilentX.git
+   cd SilentX
+   pnpm install
+   pnpm dev
+   ```
+
+3. **开始开发**
+   - 浏览器访问 http://localhost:4321
+   - 修改 `src/` 目录下的文件
+   - 实时预览更改效果
 
 </details>
 
 <details>
-<summary><strong>💰 网格交易适合什么市场环境？</strong></summary>
+<summary><strong>🌐 如何添加新的语言支持？</strong></summary>
+
+**添加新语言步骤：**
+
+1. **更新语言配置**
+
+   ```typescript
+   // src/constants/i18n.ts
+   export const SUPPORTED_LANGUAGES = [
+     'zh-CN',
+     'en',
+     'ja',
+     'ko',
+     'new-lang', // 添加新语言代码
+   ] as const;
+   ```
+
+2. **创建翻译文件**
+
+   ```typescript
+   // src/i18n/new-lang.ts
+   export default {
+     site: {
+       title: 'Site Title',
+       description: 'Site Description',
+     },
+     // ... 更多翻译
+   };
+   ```
+
+3. **添加内容翻译**
+   - 在 `src/content/translations/` 目录下创建对应的翻译文件
+
+</details>
+
+<details>
+<summary><strong>🎨 如何自定义主题样式？</strong></summary>
+
+**主题定制方法：**
+
+1. **修改色彩变量**
+
+   ```css
+   /* src/styles/global/shadcn.css */
+   :root {
+     --primary: 351 77% 62%;
+     --secondary: 210 40% 98%;
+     --accent: 210 40% 96%;
+   }
+   ```
+
+2. **自定义组件样式**
+
+   ```css
+   /* src/styles/components/ */
+   .custom-component {
+     @apply bg-primary text-primary-foreground;
+   }
+   ```
+
+3. **添加新的 shadcn/ui 组件**
+   ```bash
+   npx shadcn-ui@latest add button
+   ```
+
+</details>
+
+<details>
+<summary><strong>🗺️ 如何部署到生产环境？</strong></summary>
+
+**部署选项：**
+
+1. **Netlify 部署**
+   - 直接链接 GitHub 仓库
+   - 自动检测 Astro 项目
+   - 一键部署，自动 HTTPS
+
+2. **Vercel 部署**
+   - 完美支持 Astro SSG
+   - 全球 CDN 加速
+   - 自动预览环境
+
+3. **手动部署**
+   ```bash
+   pnpm build
+   # 上传 dist/ 目录到服务器
+   ```
+
+</details>
+
+---
 
 **最佳市场环境：**
 
@@ -1030,6 +1095,7 @@ SOFTWARE.
 
 ### 🤖 **AI 助手**
 
+- **[Qoder](https://qoder.com/)** - 强悍性能的 AI 编程助手，高效代码生成和项目优化
 - **ChatGPT** - 代码优化和问题解决
 - **通义灵码** - 开发效率提升
 - **Gemini** - 技术方案咨询
@@ -1050,9 +1116,9 @@ SOFTWARE.
 ![GitHub Forks](https://img.shields.io/github/forks/AheheXx1982/SilentX?style=social)
 ![GitHub Watchers](https://img.shields.io/github/watchers/AheheXx1982/SilentX?style=social)
 
-**让我们一起构建更好的投资社区！**
+**让我们一起构建更好的技术社区！**
 
-**Let's build a better investment community together!**
+**Let's build a better tech community together!**
 
 [🔝 Back to Top](#-silentx)
 
