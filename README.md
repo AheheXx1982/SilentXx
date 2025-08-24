@@ -173,7 +173,7 @@ export const SUPPORTED_LANGUAGES = [
 
 新文章放在 [src/content/blog/](src/content/blog/):
 
-```markdown
+```plain
 ---
 title: '文章标题 / Title'
 description: '文章描述 / Description'
