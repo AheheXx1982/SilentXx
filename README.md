@@ -70,6 +70,7 @@ _数据来源 / Source: [Lighthouse Performance Test](https://developers.google.
 ## 📁 项目结构 / Project Structure
 
 ```plaintext
+
 SilentX/
 ├── src/                    # 源代码 / Source Code
 │   ├── components/         # 组件库 / Component library
@@ -101,6 +102,7 @@ SilentX/
 
 ```bash
 # 开发环境 / Development
+
 pnpm dev              # 启动开发服务器 / Start dev server
 pnpm build            # 构建生产版本 / Build production
 pnpm preview          # 预览构建结果 / Preview build
@@ -166,7 +168,7 @@ export const SUPPORTED_LANGUAGES = [
 ---
 title: '文章标题 / Title'
 description: '文章描述 / Description'
-date: 2024-01-01
+date: 2025-01-01
 category: '分类名称 / Category'
 tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 ---
@@ -195,7 +197,6 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 ### 核心灵感 / Inspiration
 
 - [余弦の博客](https://space.cosine.ren/)
-- [cosine/cos-space](https://github.com/cosname/cos-space)
 - [Hexo Shoka](https://github.com/amehime/hexo-theme-shoka)
 
 ### 技术支持 / Tech Support
