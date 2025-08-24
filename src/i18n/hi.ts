@@ -71,9 +71,10 @@ export const hi: Translations = {
     copyright: 'सर्वाधिकार सुरक्षित',
   },
   seo: {
-    defaultTitle: 'हमारे ब्लॉग में आपका स्वागत है',
-    defaultDescription: 'हमारे ब्लॉग में रोचक लेख और अपडेट पढ़ें',
-    titleTemplate: '%s - हमारा ब्लॉग',
+    defaultTitle: 'SilentX - विकल्प एवं क्रिप्टो ट्रेडिंग',
+    defaultDescription:
+      'अमेरिकी स्टॉक विकल्प और क्रिप्टोकरेंसी ट्रेडिंग पर केंद्रित, वास्तविक, कम जोखिम, प्रतिकृति योग्य नकदी प्रवाह निवेश रणनीतियों को साझा करना',
+    titleTemplate: '%s | SilentX',
   },
   featuredCategories: {
     optionsInstitute: 'विकल्प संस्थान',

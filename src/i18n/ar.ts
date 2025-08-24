@@ -1,4 +1,4 @@
-import type { Translations } from '@types/i18n';
+import type { Translations } from '../types/i18n';
 
 export const ar: Translations = {
   nav: {
@@ -57,6 +57,13 @@ export const ar: Translations = {
     postsInYear: 'مقالة في',
     postsInMonth: 'مقالة في',
     noPostsInPeriod: 'لا توجد مقالات في هذه الفترة',
+  },
+  article: {
+    noTranslation: 'هذه المقالة غير متوفرة باللغة العربية. عرض المحتوى الأصلي.',
+    availableIn: 'متوفر باللغة',
+    originalLanguage: 'الأصل',
+    translatedFrom: 'مترجم من',
+    readOriginal: 'اقرأ الأصل',
   },
   footer: {
     poweredBy: 'مدعوم من',

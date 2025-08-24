@@ -1,4 +1,4 @@
-import type { SupportedLanguage } from '@types/i18n';
+import type { SupportedLanguage } from '../types/i18n';
 import { siteConfig as baseSiteConfig } from './site-config';
 import { getTranslations } from '@i18n/index';
 
@@ -148,6 +148,13 @@ export const multilingualSiteConfig: Record<SupportedLanguage, typeof baseSiteCo
     subtitle: 'تداول الخيارات والعملات المشفرة · نظام التدفق النقدي العقلاني',
     description:
       'التركيز على خيارات الأسهم الأمريكية وتداول العملات المشفرة، مشاركة استراتيجيات الاستثمار النقدي الحقيقية منخفضة المخاطر والقابلة للتكرار.',
+  },
+  hi: {
+    ...baseSiteConfig,
+    title: '寂静猎手',
+    subtitle: 'विकल्प एवं क्रिप्टो ट्रेडिंग · तर्कसंगत नकदी प्रवाह प्रणाली',
+    description:
+      'अमेरिकी स्टॉक विकल्प और क्रिप्टोकरेंसी ट्रेडिंग पर केंद्रित, वास्तविक, कम जोखिम, प्रतिकृति योग्य नकदी प्रवाह निवेश रणनीतियों को साझा करना।',
   },
   'zh-TW': {
     ...baseSiteConfig,

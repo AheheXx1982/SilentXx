@@ -1,4 +1,4 @@
-import type { Translations } from '@types/i18n';
+import type { Translations } from '../types/i18n';
 
 export const ru: Translations = {
   nav: {
@@ -57,6 +57,13 @@ export const ru: Translations = {
     postsInYear: 'статей в',
     postsInMonth: 'статей в',
     noPostsInPeriod: 'Нет статей в этом периоде',
+  },
+  article: {
+    noTranslation: 'Эта статья недоступна на русском языке. Отображается оригинальное содержание.',
+    availableIn: 'Доступно на',
+    originalLanguage: 'Оригинал',
+    translatedFrom: 'Переведено с',
+    readOriginal: 'Читать Оригинал',
   },
   footer: {
     poweredBy: 'Работает на',
