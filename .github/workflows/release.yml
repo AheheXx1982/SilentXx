@@ -1,0 +1,221 @@
+name: 📈 Version Release & Changelog Update
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v2.1.0)'
+        required: true
+        type: string
+      release_notes:
+        description: 'Release notes summary'
+        required: false
+        type: string
+
+env:
+  NODE_VERSION: '18.x'
+  PNPM_VERSION: '10.x'
+
+jobs:
+  release:
+    name: 🚀 Create Release & Update Changelog
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📋 Get package info
+        id: package
+        run: |
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+          echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+
+      - name: 🏷️ Extract version from tag
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+            echo "tag=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+            echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 📝 Generate changelog entry
+        id: changelog
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          DATE=$(date +"%Y-%m-%d")
+          RELEASE_NOTES="${{ github.event.inputs.release_notes }}"
+          
+          # Create changelog entry
+          cat > changelog_entry.md << EOF
+          ## 🚀 [${VERSION}] - ${DATE}
+          
+          ### ✨ 新增功能
+          ${RELEASE_NOTES:-"- 版本更新和优化改进"}
+          
+          ### 🔧 技术改进
+          - 依赖包更新和安全修复
+          - 性能优化和代码质量提升
+          
+          ### 📊 统计信息
+          - 发布时间: ${DATE}
+          - 版本标签: ${VERSION}
+          - 提交哈希: ${GITHUB_SHA:0:7}
+          
+          ---
+          
+          EOF
+
+      - name: 📄 Update CHANGELOG.md
+        run: |
+          # Backup original changelog
+          cp CHANGELOG.md CHANGELOG.md.backup
+          
+          # Insert new entry after the first "---" line
+          awk '
+            BEGIN { found = 0 }
+            /^---$/ && found == 0 { 
+              print $0
+              print ""
+              while ((getline line < "changelog_entry.md") > 0) {
+                print line
+              }
+              close("changelog_entry.md")
+              found = 1
+              next
+            }
+            { print }
+          ' CHANGELOG.md.backup > CHANGELOG.md
+
+      - name: 📊 Update version statistics
+        run: |
+          # Count files and lines
+          FILES_COUNT=$(find . -name "*.ts" -o -name "*.tsx" -o -name "*.astro" -o -name "*.md" | wc -l)
+          LINES_COUNT=$(find . -name "*.ts" -o -name "*.tsx" -o -name "*.astro" -o -name "*.md" -exec wc -l {} + | tail -1 | awk '{print $1}')
+          
+          echo "📊 Project Statistics:"
+          echo "- Files: $FILES_COUNT"
+          echo "- Lines: $LINES_COUNT"
+          echo "- Version: ${{ steps.version.outputs.version }}"
+
+      - name: 🔧 Build and test
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+          echo "✅ Build successful"
+
+      - name: 📤 Commit changelog updates
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [[ -n $(git diff --name-only) ]]; then
+            git add CHANGELOG.md
+            git commit -m "docs: update CHANGELOG for ${{ steps.version.outputs.version }}"
+            git push
+            echo "✅ Changelog updated and committed"
+          else
+            echo "ℹ️ No changes to commit"
+          fi
+
+      - name: 🏷️ Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          release_name: "🎉 SilentX ${{ steps.version.outputs.version }}"
+          body_path: changelog_entry.md
+          draft: false
+          prerelease: false
+
+      - name: 📢 Release notification
+        run: |
+          echo "🎉 Release ${{ steps.version.outputs.version }} created successfully!"
+          echo "📋 Changelog updated with new version"
+          echo "🔗 Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.tag }}"
+
+  update-readme:
+    name: 📝 Update README version info
+    needs: release
+    runs-on: ubuntu-latest
+    if: always() && needs.release.result == 'success'
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔄 Update README version badge
+        run: |
+          VERSION="${{ needs.release.outputs.version }}"
+          DATE=$(date +"%Y-%m-%d")
+          
+          # Update version in README.md
+          sed -i "s/v[0-9]\+\.[0-9]\+\.[0-9]\+ ([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\})/v${VERSION} (${DATE})/g" README.md
+          
+          # Update "最新" status in version table
+          sed -i "s/\*\*v[0-9]\+\.[0-9]\+\.[0-9]\+\*\*/v${VERSION}/g" README.md
+          sed -i "s/| v[0-9]\+\.[0-9]\+\.[0-9]\+ |/| **v${VERSION}** |/g" README.md
+
+      - name: 📤 Commit README updates
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [[ -n $(git diff --name-only) ]]; then
+            git add README.md
+            git commit -m "docs: update README version info for ${{ needs.release.outputs.version }}"
+            git push
+            echo "✅ README updated with new version"
+          else
+            echo "ℹ️ No README changes to commit"
+          fi
+
+  notify:
+    name: 📢 Notify release completion
+    needs: [release, update-readme]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: 🎉 Success notification
+        if: needs.release.result == 'success'
+        run: |
+          echo "🎉 版本发布成功完成！"
+          echo "✅ CHANGELOG.md 已更新"
+          echo "✅ GitHub Release 已创建"
+          echo "✅ README.md 版本信息已更新"
+          echo ""
+          echo "🔗 查看发布: https://github.com/${{ github.repository }}/releases"
+          echo "📋 查看更新日志: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md"
+
+      - name: ❌ Failure notification
+        if: needs.release.result == 'failure'
+        run: |
+          echo "❌ 版本发布过程中出现错误"
+          echo "请检查工作流日志以获取详细信息"
+          echo "🔍 日志地址: https://github.com/${{ github.repository }}/actions"

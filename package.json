@@ -12,7 +12,13 @@
     "lint-md:fix": "lint-md ./src/content/**/*.{md,mdx} --fix",
     "lint-staged": "lint-staged",
     "change": "git cliff -o CHANGELOG.md",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "node scripts/release.js",
+    "release:patch": "npm version patch && npm run update:changelog",
+    "release:minor": "npm version minor && npm run update:changelog",
+    "release:major": "npm version major && npm run update:changelog",
+    "update:changelog": "node scripts/release.js --update-only",
+    "version:check": "node -p \"require('./package.json').version\""
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
