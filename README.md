@@ -201,7 +201,7 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 ✅ 短链接优化 / SEO friendly URLs
 
-[📋 查看完整更新历史 → CHANGELOG1.md](CHANGELOG1.md)
+[📋 查看完整更新历史 → CHANGELOG.md](CHANGELOG.md)
 
 ---
 
@@ -230,4 +230,4 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 [🔝 Back to Top](#top)
 
 _Made with ❤️ by SilentXx Team_  
-_Copyright © 2025 SilentXx.COM. All rights reserved._
+_Copyright © 2025 SilentX. All rights reserved._
