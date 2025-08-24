@@ -134,15 +134,18 @@ export const SUPPORTED_LANGUAGES = [
 
 ## 🎨 主题定制 / Theme Customization
 
-``css :root { --primary: 351 77% 62%; --primary-foreground: 355.7 100% 97.3%; }
-
-```plain
+```css
+:root {
+  --primary: 351 77% 62%;
+  --primary-foreground: 355.7 100% 97.3%;
+}
+```
 
 ## 📝 内容管理 / Content Management
 
 新文章放在 [src/content/blog/](src/content/blog/):
 
-```
+````plain
 
 ---
 
@@ -175,7 +178,7 @@ title: '文章标题 / Title' description: '文章描述 / Description' date: 20
 
 ### 核心灵感 / Inspiration
 
-- [余弦の博客](hhttps://space.cosine.ren/)
+- [余弦の博客](https://space.cosine.ren/)
 - [cosine/cos-space](https://github.com/cosname/cos-space)
 - [Hexo Shoka](https://github.com/amehime/hexo-theme-shoka)
 
@@ -187,7 +190,7 @@ title: '文章标题 / Title' description: '文章描述 / Description' date: 20
 
 ### AI 助手 / AI Assistant
 
-- [Qoder](hhttps://qoder.com/)
+- [Qoder](https://qoder.com/)
 - [ChatGPT](https://chatgpt.com/)
 - [通义灵码](https://tongyi.aliyun.com/lingma)
 - [Gemini](https://gemini.google.com/)
@@ -198,4 +201,4 @@ title: '文章标题 / Title' description: '文章描述 / Description' date: 20
 
 _Made with ❤️ by SilentXx Team_
 _Copyright © 2025 SilentX. All rights reserved._
-```
+````
