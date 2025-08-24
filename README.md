@@ -2,7 +2,7 @@
 
 # 🚀 SilentX / 寂静猎手
 
-_Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_  
+_Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_<br>  
 _基于 Astro 的现代化静态站点生成器，集成先进的多语言支持和组件架构_
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -11,7 +11,7 @@ _基于 Astro 的现代化静态站点生成器，集成先进的多语言支持
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.0.0-38b2ac?logo=tailwind-css)](https://tailwindcss.com/)
 [![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)](https://reactjs.org/)
 
-[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [📖 English Docs](#english-overview) •
+[🌍 Live Demo](https://www.silentxx.com) • [📖 中文文档](#中文简介) • [📖 English Docs](#english-overview) •<br>
 [🚀 Quick Start](#快速开始) • [🏗️ Architecture](#系统架构)
 
 </div>
@@ -90,7 +90,7 @@ SilentX/
 └── tsconfig.json          # TypeScript 配置 / TypeScript configuration
 ```
 
-````plain
+````plaintext
 
 ## 📋 环境要求 / Requirements
 
@@ -130,27 +130,10 @@ pnpm preview
 
 ## 🌐 一键部署 / One-Click Deploy
 
-- <div align="center">
+<div align="center">
 
-# 🚀 SilentXx ｜ 寂静猎手
-
-_基于 Astro 的现代静态站点生成器 · Modern Static Site Generator based on Astro_
-
----
-
-## ⚡ 一键部署 · One-click Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/你的用户名/你的仓库名)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/你的用户名/你的仓库名)
-
----
-
-### 📖 使用说明 · Usage
-
-- 点击上方按钮即可一键部署到 **Netlify** 或 **Vercel**
-- Click the buttons above to deploy to **Netlify** or **Vercel** instantly
-- 部署前请确认仓库内的 **Build 命令** 与 **输出目录** 配置正确
-- Make sure your **build command** and **output directory** are set correctly in the repo
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AheheXx1982/SilentXx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AheheXx1982/SilentXx)
 
 </div>
 
