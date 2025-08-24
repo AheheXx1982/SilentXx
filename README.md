@@ -162,20 +162,19 @@ export const SUPPORTED_LANGUAGES = [
 
 新文章放在 [src/content/blog/](src/content/blog/):
 
-````plain
-
+```markdown
 ---
-
-title: '文章标题 / Title' description: '文章描述 / Description' date: 2024-01-01 category: '分类名称 / Category' tags: ['标签 1
-/ Tag1', '标签 2 / Tag2']
-
+title: '文章标题 / Title'
+description: '文章描述 / Description'
+date: 2024-01-01
+category: '分类名称 / Category'
+tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 ---
 
 # 文章内容 / Content
 
 你的 Markdown 内容...
-
-```plain
+```
 
 ## 📈 更新日志 / Changelog
 
@@ -208,7 +207,7 @@ title: '文章标题 / Title' description: '文章描述 / Description' date: 20
 ### AI 助手 / AI Assistant
 
 - [Qoder](https://qoder.com/)
-- [ChatGPT](https://chatgpt.com/)
+- [ChatGPT](https://chat.openai.com/)
 - [通义灵码](https://tongyi.aliyun.com/lingma)
 - [Gemini](https://gemini.google.com/)
 
@@ -218,4 +217,3 @@ title: '文章标题 / Title' description: '文章描述 / Description' date: 20
 
 _Made with ❤️ by SilentXx Team_
 _Copyright © 2025 SilentX. All rights reserved._
-````
