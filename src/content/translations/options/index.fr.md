@@ -1,7 +1,7 @@
 ---
-title: 'Introduction à l'Institut des Options'
-description: 'Bienvenue à l'Institut des Options, le domaine central pour la recherche sur les stratégies d'options'
-subtitle: 'Votre Porte d'Entrée vers le Trading Professionnel d'Options'
+title: "Introduction à l'Institut des Options"
+description: "Bienvenue à l'Institut des Options, le domaine central pour la recherche sur les stratégies d'options"
+subtitle: "Votre Porte d'Entrée vers le Trading Professionnel d'Options"
 ---
 
 Bienvenue à l'Institut des Options ! Ceci est une zone dédiée à la recherche sur les stratégies d'options, au partage d'expériences pratiques et à la fourniture d'instructions de cours.
