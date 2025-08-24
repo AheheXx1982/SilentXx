@@ -1,5 +1,7 @@
 <div align="center">
 
+<span id="top"></span>
+
 # 🚀 SilentX / 寂静猎手
 
 _Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_<br>  
@@ -31,7 +33,7 @@ system performance. Roughly estimating, my level of innovation could be rated fi
 感谢原作者和余弦的贡献与指导，也感谢勤劳又学习意志超强的自己，坦白讲，半个月前我还不懂怎么使用 GitHub 和 VS Code.
 
 I am grateful to the original author and to Cosine for their contributions and guidance, and also to my own hardworking and
-strong-willed self. Honestly, half a month ago, I didn’t even know how to use GitHub or VS Code.
+strong-willed self. Honestly, half a month ago, I didn't even know how to use GitHub or VS Code.
 
 特别感谢 ChatGPT、Gemini，通义灵码以及他的小兄弟 Qoder，在我的亲情关怀与悉心指导下，它们相互配合，最终完成了卓有成效的工作，也让我的智商从 250 瞬间飙升至 250+，实现了我多年以来当一名程序员的梦想，这种感觉恰似某年某月某日单身几十年后的我又与初恋不期而遇一般，纯洁而美好~
 
@@ -42,7 +44,7 @@ being single—pure and beautiful.
 
 ---
 
-## 🏆 核心特性 / Key Features
+## 🏆 栋梁特色 / Key Features
 
 | 特性 / Feature                        | 说明 / Description                   | 优势 / Advantage                             |
 | ------------------------------------- | ------------------------------------ | -------------------------------------------- |
@@ -70,7 +72,6 @@ _数据来源 / Source: [Lighthouse Performance Test](https://developers.google.
 ## 📁 项目结构 / Project Structure
 
 ```plaintext
-
 SilentX/
 ├── src/                    # 源代码 / Source Code
 │   ├── components/         # 组件库 / Component library
@@ -85,12 +86,10 @@ SilentX/
 │   ├── fonts/              # 字体文件 / Font files
 │   └── img/                # 图片资源 / Image assets
 ├── astro.config.mjs        # Astro 配置 / Astro configuration
-├── tailwind.config.mjs    # Tailwind CSS 配置 / Tailwind CSS configuration
-├── package.json           # 项目依赖 / Project dependencies
-└── tsconfig.json          # TypeScript 配置 / TypeScript configuration
+├── tailwind.config.mjs     # Tailwind CSS 配置 / Tailwind CSS configuration
+├── package.json            # 项目依赖 / Project dependencies
+└── tsconfig.json           # TypeScript 配置 / TypeScript configuration
 ```
-
-````plaintext
 
 ## 📋 环境要求 / Requirements
 
@@ -106,7 +105,7 @@ SilentX/
 pnpm dev              # 启动开发服务器 / Start dev server
 pnpm build            # 构建生产版本 / Build production
 pnpm preview          # 预览构建结果 / Preview build
-````
+```
 
 ## 🔧 安装部署 / Installation & Deployment
 
@@ -130,9 +129,8 @@ pnpm preview
 
 ## 🌐 一键部署 / One-Click Deploy
 
-<div align="center">
-
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AheheXx1982/SilentXx)
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AheheXx1982/SilentXx)
 
 </div>
@@ -168,7 +166,7 @@ export const SUPPORTED_LANGUAGES = [
 
 新文章放在 [src/content/blog/](src/content/blog/):
 
-```markdown
+```plain
 ---
 title: '文章标题 / Title'
 description: '文章描述 / Description'
@@ -218,7 +216,7 @@ tags: ['标签 1 / Tag1', '标签 2 / Tag2']
 
 让我们一起构建更好的技术社区！ / Let's build a better tech community together!
 
-[🔝 Back to Top](#)
+[🔝 Back to Top](#top)
 
 _Made with ❤️ by SilentXx Team_
 _Copyright © 2025 SilentX. All rights reserved._
