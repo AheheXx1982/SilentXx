@@ -26,17 +26,38 @@ _Modern Static Site Generator with Advanced Multi-language Support and Component
 
 特别感谢 ChatGPT，Gemini，通义灵码，在我的英明领导下还悉心指导下，它们相互配合，最终完成了卓有成效的工作，也让我的智商从 250 瞬间飙升至 250+，终于实现了多年以来当一名程序员的梦想，这种感觉恰似某年某月某日单身几十年后我又与初恋不期而遇一般，纯洁而美好，堪称爱的双向奔赴~
 
----
-
-## 🌟 核心特性
-
-🏗️ 模块化架构 • 🌐 12 语言支持 • ⚡ 高性能优化 • 📱 响应式设计 • 🎨 现代化组件
-
----
-
 ## 🛠️ 技术栈
 
-[Astro 5.13.2](https://astro.build/) • [React 19.1.1](https://reactjs.org/) • [TypeScript 5.9.2](https://www.typescriptlang.org/) • [Tailwind CSS 4.0.0](https://tailwindcss.com/) • [shadcn/ui](https://ui.shadcn.com/) • [pnpm](https://pnpm.io/)
+## [Astro 5.13.2](https://astro.build/) • [React 19.1.1](https://reactjs.org/) • [TypeScript 5.9.2](https://www.typescriptlang.org/) • [Tailwind CSS 4.0.0](https://tailwindcss.com/) • [shadcn/ui](https://ui.shadcn.com/) • [pnpm](https://pnpm.io/)
+
+## 🏆 核心特性
+
+<div align="center">
+
+| 特性               | 说明            | 优势                 |
+| ------------------ | --------------- | -------------------- |
+| 🚀 **Astro SSG**   | 静态站点生成    | 极速加载，SEO 友好   |
+| ⚡ **部分水合**    | 按需 JavaScript | 减少包大小，提升性能 |
+| 🎨 **shadcn/ui**   | 现代化组件库    | 一致的设计语言       |
+| 🌐 **12 语言支持** | 国际化覆盖      | 全球用户友好         |
+| 📱 **响应式设计**  | 多设备适配      | 完美的移动端体验     |
+
+---
+
+</div>
+
+---
+
+## 📁 项目结构
+
+```plain
+SilentX/
+├── src/         # 源代码
+├── public/      # 静态资源
+└── package.json # 项目配置
+```
+
+---
 
 ---
 
@@ -78,19 +99,6 @@ pnpm preview
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAheheXx1982%2FSilentX&project-name=my-SilentX&repository-name=my-SilentX)
 
----
-
-## 📁 项目结构
-
-```plain
-SilentX/
-├── src/         # 源代码
-├── public/      # 静态资源
-└── package.json # 项目配置
-```
-
----
-
 ## 📚 使用指南
 
 ### 🛠️ 开发命令
@@ -114,22 +122,6 @@ export const SUPPORTED_LANGUAGES = [
   // 添加新语言代码
 ] as const;
 ```
-
----
-
-#### 📚 **技术文档必读**
-
-- 📖 **Astro 官方文档** - 静态站点生成器最佳实践
-- 📖 **React 开发指南** - 现代 React 开发模式
-- 📖 **TypeScript 手册** - 类型安全的 JavaScript 开发
-- 📖 **Tailwind CSS 指南** - 原子化 CSS 设计系统
-
-#### 🛠️ **开发工具推荐**
-
-- 🔧 **VS Code + Astro 插件** - 最佳开发体验
-- 🔧 **Lighthouse** - 网站性能分析工具
-- 🔧 **Figma** - 现代化设计协作平台
-- 🔧 **GitHub Actions** - CI/CD 自动化部署
 
 ## 🎨 配置指南
 
@@ -271,39 +263,19 @@ tags: ['标签1', '标签2']
 
 感谢所有为开源社区做出贡献的开发者们，是你们让这个世界变得更美好！
 
----
+#### 📚 **技术文档必读**
 
-## 📊 项目统计
+- 📖 **Astro 官方文档** - 静态站点生成器最佳实践
+- 📖 **React 开发指南** - 现代 React 开发模式
+- 📖 **TypeScript 手册** - 类型安全的 JavaScript 开发
+- 📖 **Tailwind CSS 指南** - 原子化 CSS 设计系统
 
-<div align="center">
+#### 🛠️ **开发工具推荐**
 
-![GitHub Repo Size](https://img.shields.io/github/repo-size/AheheXx1982/SilentX?style=flat-square&logo=github&color=blue)
-![GitHub Commit Activity](https://img.shields.io/github/commit-activity/m/AheheXx1982/SilentX?style=flat-square&logo=github&color=green)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/AheheXx1982/SilentX?style=flat-square&logo=github&color=orange)
-![GitHub Issues](https://img.shields.io/github/issues/AheheXx1982/SilentX?style=flat-square&logo=github&color=red)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/AheheXx1982/SilentX?style=flat-square&logo=github&color=purple)
-
-</div>
-
----
-
-## 🏆 项目亮点
-
-### 🌟 **技术创新**
-
-<div align="center">
-
-| 特性               | 说明            | 优势                 |
-| ------------------ | --------------- | -------------------- |
-| 🚀 **Astro SSG**   | 静态站点生成    | 极速加载，SEO 友好   |
-| ⚡ **部分水合**    | 按需 JavaScript | 减少包大小，提升性能 |
-| 🎨 **shadcn/ui**   | 现代化组件库    | 一致的设计语言       |
-| 🌐 **12 语言支持** | 国际化覆盖      | 全球用户友好         |
-| 📱 **响应式设计**  | 多设备适配      | 完美的移动端体验     |
-
-</div>
-
----
+- 🔧 **VS Code + Astro 插件** - 最佳开发体验
+- 🔧 **Lighthouse** - 网站性能分析工具
+- 🔧 **Figma** - 现代化设计协作平台
+- 🔧 **GitHub Actions** - CI/CD 自动化部署
 
 ## ❓ 常见问题
 
