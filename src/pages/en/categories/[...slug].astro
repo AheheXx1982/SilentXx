@@ -13,6 +13,25 @@ import type { SupportedLanguage } from '@types/i18n';
 const currentLanguage: SupportedLanguage = 'en';
 const translations = getTranslations(currentLanguage);
 
+// 定义分类翻译映射
+const categoryTranslations: Record<string, string> = {
+  // 主分类
+  加密实验室: translations.featuredCategories?.cryptoLab || 'Crypto Lab',
+  期权研究院: translations.featuredCategories?.optionsInstitute || 'Options Institute',
+  现金流乌托邦: translations.featuredCategories?.cashflowUtopia || 'Cashflow Utopia',
+
+  // 子分类
+  网格策略: translations.featuredCategories?.gridStrategy || 'Grid Strategy',
+  合约交易: translations.featuredCategories?.futuresTrading || 'Futures Trading',
+  加密风向标: translations.featuredCategories?.cryptoNews || 'Crypto News',
+  期权课程: translations.featuredCategories?.optionsCourse || 'Options Course',
+  策略分析: translations.featuredCategories?.strategyAnalysis || 'Strategy Analysis',
+  实盘分享: translations.featuredCategories?.tradingJournal || 'Trading Journal',
+  期权卖方策略: translations.featuredCategories?.optionSelling || 'Option Selling',
+  全球高息股轮动: translations.featuredCategories?.dividendStocks || 'Dividend Stocks',
+  税务优化: translations.featuredCategories?.taxOptimization || 'Tax Optimization',
+};
+
 export async function getStaticPaths() {
   const { categories } = await getCategoryList();
   const allPosts = await getSortedPosts();
@@ -235,7 +254,7 @@ if (!isIndex && categoryLink) {
     }
   });
 
-  // 获取显示用的分类名称
+  // 获取显示用的分类名称（使用翻译后的名称）
   if (posts.length > 0) {
     const firstPost = posts[0];
     const postCategories = firstPost.data.categories;
@@ -245,7 +264,7 @@ if (!isIndex && categoryLink) {
         if (categoryLink.includes('/')) {
           const targetCategoryArray = categoryAliases[categoryLink];
           if (targetCategoryArray && Array.isArray(targetCategoryArray)) {
-            displayCategoryName = targetCategoryArray[1]; // 显示子分类
+            displayCategoryName = categoryTranslations[targetCategoryArray[1]] || targetCategoryArray[1]; // 显示翻译后的子分类
           }
         } else {
           const targetCategory = categoryAliases[categoryLink] || categoryLink;
@@ -253,13 +272,14 @@ if (!isIndex && categoryLink) {
           const firstCategory = postCategories[0][0];
 
           if (secondCategory === targetCategory || secondCategory?.toLowerCase().replace(/\s+/g, '-') === categoryLink) {
-            displayCategoryName = secondCategory;
+            displayCategoryName = categoryTranslations[secondCategory] || secondCategory;
           } else {
-            displayCategoryName = firstCategory;
+            displayCategoryName = categoryTranslations[firstCategory] || firstCategory;
           }
         }
       } else {
-        displayCategoryName = postCategories[0];
+        const categoryName = postCategories[0];
+        displayCategoryName = categoryTranslations[categoryName] || categoryName;
       }
     }
   } else {
@@ -267,15 +287,16 @@ if (!isIndex && categoryLink) {
     if (categoryLink.includes('/')) {
       const targetCategoryArray = categoryAliases[categoryLink];
       if (targetCategoryArray && Array.isArray(targetCategoryArray)) {
-        displayCategoryName = targetCategoryArray[1]; // 显示子分类
+        displayCategoryName = categoryTranslations[targetCategoryArray[1]] || targetCategoryArray[1]; // 显示翻译后的子分类
       } else {
         displayCategoryName =
           categoryLink.split('/').pop()?.charAt(0).toUpperCase() + categoryLink.split('/').pop()?.slice(1).replace(/-/g, ' ') ||
           categoryLink;
       }
     } else {
-      displayCategoryName =
+      const categoryName =
         categoryAliases[categoryLink] || categoryLink.charAt(0).toUpperCase() + categoryLink.slice(1).replace(/-/g, ' ');
+      displayCategoryName = categoryTranslations[categoryName] || categoryName;
     }
   }
 
@@ -339,7 +360,12 @@ const postsWithTranslations = posts.map((post: any) => {
                   </span>
                   {post.data.categories && post.data.categories.length > 0 && (
                     <span>
-                      Category: {Array.isArray(post.data.categories[0]) ? post.data.categories[0][0] : post.data.categories[0]}
+                      Category:{' '}
+                      {Array.isArray(post.data.categories[0])
+                        ? categoryTranslations[post.data.categories[0][1]] ||
+                          categoryTranslations[post.data.categories[0][0]] ||
+                          post.data.categories[0][0]
+                        : categoryTranslations[post.data.categories[0]] || post.data.categories[0]}
                     </span>
                   )}
                 </div>

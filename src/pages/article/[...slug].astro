@@ -7,9 +7,11 @@ import { siteConfig } from '@constants/site-config';
 import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import { getCategoryArr, getSortedPosts, getCategoryLink } from '@lib/content';
-import { getPostTranslation, getAvailableLanguages, markdownToHtml } from '@lib/article-i18n';
+import { getPostTranslation, getAvailableLanguages, getSmartArticleContent } from '@lib/article-i18n';
+import { getLanguageFromUrl } from '@lib/i18n';
 import { parseDate } from '@lib/datetime';
 import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const postCollections = await getSortedPosts();
@@ -28,7 +30,7 @@ export async function getStaticPaths() {
     }
 
     // 检查文章是否有内容
-    if (!post.body && !post.data.content) {
+    if (!post.body) {
       continue; // 跳过没有内容的文章
     }
     // 确保 post 和 post.slug 存在
@@ -80,33 +82,35 @@ if (!post) {
   throw new Error('未找到文章内容');
 }
 
-// 直接创建Content函数，避免使用post.render()
-const Content = () => {
-  const htmlContent = markdownToHtml(post.body || '');
-  return `<div class="prose prose-lg max-w-none dark:prose-invert">${htmlContent}</div>`;
-};
+// 获取当前语言
+const currentLanguage = getLanguageFromUrl(Astro.url) || 'zh-CN';
 
-const { title, description, categories = [], tags = [], date } = post?.data ?? {};
+// 获取智能文章内容（根据当前语言显示翻译或原文）
+const smartContent = await getSmartArticleContent(post as CollectionEntry<'blog'>, currentLanguage);
+const Content = smartContent.Content;
 
 // 使用翻译后的标题和描述（如果有的话）
-const displayTitle = title;
-const displayDescription = description;
-const availableLanguages = getAvailableLanguages(post);
+const postTranslation = getPostTranslation(post as CollectionEntry<'blog'>, currentLanguage);
+const displayTitle = postTranslation.title;
+const displayDescription = postTranslation.description;
+
+const availableLanguages = getAvailableLanguages(post as CollectionEntry<'blog'>);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: displayTitle,
   description: displayDescription || (post.body ? post.body.slice(0, 100) : ''),
-  keywords: categories?.length ? tags.concat(categories[0]) : tags,
+  keywords:
+    post.data?.categories?.length && post.data?.tags ? post.data.tags.concat(post.data.categories[0]) : post.data?.tags || [],
   author: {
     '@type': 'Person',
     name: siteConfig.author ?? siteConfig.name,
     url: Astro.site?.href ?? '',
   },
-  datePublished: parseDate(date, 'YYYY-MM-DD'),
+  datePublished: parseDate(post.data?.date, 'YYYY-MM-DD'),
 };
 
-const categoryArr = getCategoryArr(categories?.[0]);
+const categoryArr = getCategoryArr(post.data?.categories?.[0]);
 const categoryStr = categoryArr?.length ? ` | ${categoryArr.join(' / ')}` : '';
 
 // Generate breadcrumb data for categories
@@ -115,8 +119,10 @@ if (categoryArr?.length) {
   for (let i = 0; i < categoryArr.length; i++) {
     const partialCategories = categoryArr.slice(0, i + 1);
     const link = await getCategoryLink(partialCategories);
+    // 获取翻译后的分类名称
+    const translatedName = getTranslatedCategoryName(categoryArr[i], currentLanguage);
     breadcrumbCategories.push({
-      name: categoryArr[i],
+      name: translatedName,
       link: `/categories/${link}`,
     });
   }

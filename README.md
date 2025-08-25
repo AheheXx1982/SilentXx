@@ -1,4 +1,3 @@
-<div align="center">
 # 🚀 SilentX / 寂静猎手
 
 _Modern Static Site Generator with Advanced Multi-language Support and Component Architecture_  
@@ -14,8 +13,6 @@ _基于 Astro 的现代化静态站点生成器，集成先进的多语言支持
 [🚀 Quick Start](#快速开始) • [🏗️ Architecture](#系统架构)
 
 ---
-
-</div>
 
 ## 📖 项目前言 / Project Overview
 

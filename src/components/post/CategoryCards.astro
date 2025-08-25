@@ -9,6 +9,8 @@ import { getLanguageFromUrl, getLocalizedUrl } from '@lib/i18n';
 import { getTranslations } from '@i18n/index';
 import { routeBuilder } from '@lib/route';
 import { cn } from '@lib/utils';
+import { getPostTranslation, hasTranslation } from '@lib/article-i18n';
+import { getTranslatedCategoryName } from '@lib/category-i18n';
 import type { CollectionEntry } from 'astro:content';
 import FlippedCard from './FlippedCard.astro';
 import { Icon } from 'astro-icon/components';
@@ -32,14 +34,16 @@ const { categories } = await getCategoryList();
 const categoryPosts: CategoryWithPosts[] = await Promise.all(
   siteConfig.featuredCategories?.map(async (category) => {
     const categoryInfo = getCategoryByLink(categories, category?.link);
-    const posts = await getPostsByCategory(categoryInfo?.name ?? '');
+    const allPosts = await getPostsByCategory(categoryInfo?.name ?? '');
+    // 根据当前语言筛选支持翻译的文章
+    const filteredPosts = allPosts.filter((post) => hasTranslation(post, currentLanguage));
     return {
       link: category.link,
       label: category?.label,
       image: category.image,
       category: categoryInfo,
       parentCategory: getParentCategory(categoryInfo, categories),
-      posts: posts,
+      posts: filteredPosts,
     };
   }) || [],
 );
@@ -66,10 +70,12 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
               class="absolute inset-0 -z-10 h-full w-full rounded-md object-cover"
             />
             <div class="bg-shoka-card-mask absolute inset-0 -z-10 h-full w-full rounded-md opacity-25" />
-            <h2 class="text-2xl text-white">{category?.label ?? categoryInfo?.name}</h2>
+            <h2 class="text-2xl text-white">
+              {category?.label ?? (categoryInfo ? getTranslatedCategoryName(categoryInfo.name, currentLanguage) : '')}
+            </h2>
             {parentCategory?.name ? (
               <Badge variant="shoka-tag" className="absolute right-3 top-2.5 text-xs text-white opacity-80 shadow-sm">
-                {parentCategory.name}
+                {getTranslatedCategoryName(parentCategory.name, currentLanguage)}
               </Badge>
             ) : null}
           </div>
@@ -82,29 +88,32 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
               )}
             >
               <a class="hover:animate-shake mt-1.5 block text-base/4 text-white" href={categoryLink}>
-                {category?.label || categoryInfo?.name}
+                {category?.label || (categoryInfo ? getTranslatedCategoryName(categoryInfo.name, currentLanguage) : '')}
               </a>
             </div>
             <div class="grid grid-cols-2 gap-x-5 gap-y-3">
               {categoryInfo?.children?.length
                 ? categoryInfo.children.map((child) => {
+                    // 修复：直接拼接链接，避免重复添加语言前缀
+                    const childLink = categoryLink + '/' + categoryMap[child?.name];
                     return (
                       <a
-                        href={getLocalizedUrl(categoryLink + '/' + categoryMap[child?.name], currentLanguage)}
+                        href={childLink}
                         class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
                       >
-                        {child.name}
+                        {getTranslatedCategoryName(child.name, currentLanguage)}
                       </a>
                     );
                   })
                 : null}
               {posts.map((post) => {
+                // 获取文章的翻译信息
+                const postTranslation = getPostTranslation(post, currentLanguage);
+                // 使用当前URL生成本地化的文章链接
+                const postHref = routeBuilder(Routes.Post, post, Astro.url);
                 return (
-                  <a
-                    href={routeBuilder(Routes.Post, post)}
-                    class="text-primary hover:text-blue truncate text-left transition-colors duration-300"
-                  >
-                    {post.data.title}
+                  <a href={postHref} class="text-primary hover:text-blue truncate text-left transition-colors duration-300">
+                    {postTranslation.title}
                   </a>
                 );
               })}
@@ -116,7 +125,7 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
                   class="group hover:text-blue mr-1 flex cursor-pointer items-center transition duration-300"
                 >
                   <Icon name="ri:flag-fill" class="mr-0.5 text-base" />
-                  <span class="mr-2">{parentCategory.name}</span>
+                  <span class="mr-2">{getTranslatedCategoryName(parentCategory.name, currentLanguage)}</span>
                 </a>
               ) : null}
               <>
