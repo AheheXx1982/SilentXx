@@ -11,6 +11,10 @@ import { getCategoryByLink, getCategoryLinks, getCategoryList } from '@lib/conte
 export async function getStaticPaths() {
   const { categories } = await getCategoryList();
   const links = getCategoryLinks(categories, '');
+
+  // 添加调试信息
+  console.log('Generated category links:', links);
+
   return links.map((link) => {
     const category = getCategoryByLink(categories, link);
     const slug = link.endsWith('/') ? link.slice(0, -1) : link;
@@ -23,6 +27,10 @@ export async function getStaticPaths() {
 
 const { category } = Astro.props;
 const { categories: allCategories, countMap } = await getCategoryList();
+
+// 添加调试信息
+console.log('Requested slug:', Astro.params.slug);
+console.log('Found category:', category);
 
 // 如果请求的路径不对应任何实际分类，则返回404
 if (!category) {

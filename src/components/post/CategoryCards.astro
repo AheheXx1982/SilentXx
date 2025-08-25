@@ -94,8 +94,11 @@ const categoryPosts: CategoryWithPosts[] = await Promise.all(
             <div class="grid grid-cols-2 gap-x-5 gap-y-3">
               {categoryInfo?.children?.length
                 ? categoryInfo.children.map((child) => {
-                    // 修复：直接拼接链接，避免重复添加语言前缀
-                    const childLink = categoryLink + '/' + categoryMap[child?.name];
+                    // 修复：使用正确的分类链接生成方式
+                    const childLink = getLocalizedUrl(
+                      Routes.Categories + '/' + (category?.link ?? '') + '/' + categoryMap[child?.name],
+                      currentLanguage,
+                    );
                     return (
                       <a
                         href={childLink}

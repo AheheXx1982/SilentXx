@@ -8,7 +8,9 @@ import Layout from '@layouts/Layout.astro';
 import TwoColumnLayout from '@layouts/TwoColumnLayout.astro';
 import { getCategoryArr, getSortedPosts, getCategoryLink } from '@lib/content';
 import { getPostTranslation, getAvailableLanguages, getSmartArticleContent } from '@lib/article-i18n';
-import { getLanguageFromUrl } from '@lib/i18n';
+import { getLanguageFromUrl, getLocalizedUrl } from '@lib/i18n';
+import { getTranslatedCategoryName } from '@lib/category-i18n';
+import { Routes } from '@constants/router';
 import { parseDate } from '@lib/datetime';
 import { Icon } from 'astro-icon/components';
 import type { CollectionEntry } from 'astro:content';
@@ -121,9 +123,11 @@ if (categoryArr?.length) {
     const link = await getCategoryLink(partialCategories);
     // 获取翻译后的分类名称
     const translatedName = getTranslatedCategoryName(categoryArr[i], currentLanguage);
+    // 生成本地化的分类链接
+    const localizedLink = getLocalizedUrl(`${Routes.Categories}/${link}`, currentLanguage);
     breadcrumbCategories.push({
       name: translatedName,
-      link: `/categories/${link}`,
+      link: localizedLink,
     });
   }
 }
