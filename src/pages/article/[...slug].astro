@@ -2,6 +2,7 @@
 import HomeSider from '@components/layout/HomeSider.astro';
 import Cover from '@components/ui/cover/Cover.astro';
 import CustomContent from '@components/common/CustomContent.astro';
+import ArticleLanguageSelector from '@components/article/ArticleLanguageSelector.astro';
 import { HomeSiderType } from '@constants/enum';
 import { siteConfig } from '@constants/site-config';
 import Layout from '@layouts/Layout.astro';
@@ -14,6 +15,8 @@ import { Routes } from '@constants/router';
 import { parseDate } from '@lib/datetime';
 import { Icon } from 'astro-icon/components';
 import type { CollectionEntry } from 'astro:content';
+import { getTranslations } from '@i18n/index';
+import { LANGUAGE_PATH_MAP } from '@constants/i18n';
 
 export async function getStaticPaths() {
   const postCollections = await getSortedPosts();
@@ -86,6 +89,7 @@ if (!post) {
 
 // 获取当前语言
 const currentLanguage = getLanguageFromUrl(Astro.url) || 'zh-CN';
+const translations = getTranslations(currentLanguage);
 
 // 获取智能文章内容（根据当前语言显示翻译或原文）
 const smartContent = await getSmartArticleContent(post as CollectionEntry<'blog'>, currentLanguage);
@@ -122,7 +126,8 @@ if (categoryArr?.length) {
     const partialCategories = categoryArr.slice(0, i + 1);
     const link = await getCategoryLink(partialCategories);
     // 获取翻译后的分类名称
-    const translatedName = getTranslatedCategoryName(categoryArr[i], currentLanguage);
+    const originalName = categoryArr[i];
+    const translatedName = getTranslatedCategoryName(originalName, currentLanguage);
     // 生成本地化的分类链接
     const localizedLink = getLocalizedUrl(`${Routes.Categories}/${link}`, currentLanguage);
     breadcrumbCategories.push({
@@ -148,8 +153,8 @@ if (categoryArr?.length) {
         <div class="flex items-center gap-1">
           <!-- Home Icon and Link -->
           <Icon name="fa6-solid:house-chimney" class="h-4 w-4" />
-          <a href="/" aria-label="返回首页">
-            <span class="hover:text-blue transition-colors duration-300">首页</span>
+          <a href={getLocalizedUrl('/', currentLanguage)} aria-label={translations.nav.home}>
+            <span class="hover:text-blue transition-colors duration-300">{translations.nav.home}</span>
           </a>
         </div>
         <!-- Category Breadcrumbs -->
@@ -161,7 +166,7 @@ if (categoryArr?.length) {
                   <a
                     href={category.link || '#'}
                     class={`hover:text-blue transition-colors duration-300 ${index === breadcrumbCategories.length - 1 ? 'text-primary bg-primary/10 hover:text-primary hover:bg-primary/20 rounded-full px-2.5 py-1' : ''}`}
-                    aria-label={`前往${category.name}分类`}
+                    aria-label={`${translations.common.goToCategory} ${category.name}`}
                   >
                     {category.name}
                   </a>
@@ -175,6 +180,8 @@ if (categoryArr?.length) {
       >
         <CustomContent Content={Content} />
       </article>
+      <!-- Article Language Selector -->
+      <ArticleLanguageSelector post={post} />
     </div>
   </TwoColumnLayout>
 </Layout>

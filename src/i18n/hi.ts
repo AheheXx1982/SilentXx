@@ -29,6 +29,9 @@ export const hi: Translations = {
     childrenCategory: 'उपश्रेणियाँ, ',
     articlesCount: ' लेख',
     more: 'अधिक...',
+    siteOverview: 'साइट अवलोकन',
+    articleDirectory: 'लेख निर्देशिका',
+    goToCategory: 'श्रेणी पर जाएं',
   },
   post: {
     publishedOn: 'प्रकाशित किया गया',

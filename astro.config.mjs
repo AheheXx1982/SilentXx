@@ -65,5 +65,5 @@ export default defineConfig({
   vite: {
     plugins: [svgr(), tailwindcss()],
   },
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
 });

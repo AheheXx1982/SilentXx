@@ -52,6 +52,9 @@ export interface Translations {
     childrenCategory: string;
     articlesCount: string;
     more: string;
+    siteOverview: string;
+    articleDirectory: string;
+    goToCategory: string;
   };
   post: {
     publishedOn: string;

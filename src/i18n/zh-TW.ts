@@ -1,4 +1,4 @@
-import type { Translations } from '@types/i18n';
+import type { Translations } from '../types/i18n';
 
 export const zhTW: Translations = {
   nav: {
@@ -29,6 +29,9 @@ export const zhTW: Translations = {
     childrenCategory: '個子分類，',
     articlesCount: '篇文章',
     more: 'more...',
+    siteOverview: '站點概覽',
+    articleDirectory: '文章目錄',
+    goToCategory: '前往分類',
   },
   post: {
     publishedOn: '發布於',

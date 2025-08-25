@@ -29,6 +29,9 @@ export const zhCN: Translations = {
     childrenCategory: '个子分类，',
     articlesCount: '篇文章',
     more: 'more...',
+    siteOverview: '站点概览',
+    articleDirectory: '文章目录',
+    goToCategory: '前往分类',
   },
   post: {
     publishedOn: '发布于',

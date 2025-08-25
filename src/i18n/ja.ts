@@ -29,6 +29,9 @@ export const ja: Translations = {
     childrenCategory: '個のサブカテゴリー、',
     articlesCount: '本の記事',
     more: 'more...',
+    siteOverview: 'サイト概要',
+    articleDirectory: '記事目次',
+    goToCategory: 'カテゴリーへ移動',
   },
   post: {
     publishedOn: '公開日',

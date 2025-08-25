@@ -29,6 +29,9 @@ export const en: Translations = {
     childrenCategory: ' subcategories, ',
     articlesCount: ' articles',
     more: 'more...',
+    siteOverview: 'Site Overview',
+    articleDirectory: 'Article Directory',
+    goToCategory: 'Go to category',
   },
   post: {
     publishedOn: 'Published on',

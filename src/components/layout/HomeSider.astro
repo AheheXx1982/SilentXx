@@ -4,6 +4,8 @@ import { cn } from '@lib/utils';
 import HomeInfo from './HomeInfo.astro';
 import { TableOfContents } from './TableOfContents';
 import HomeSiderSegmented from '@components/ui/segmented/HomeSiderSegmented';
+import { getLanguageFromUrl } from '@lib/i18n';
+import { getTranslations } from '@i18n/index';
 
 interface Props {
   type?: HomeSiderType;
@@ -13,6 +15,10 @@ interface Props {
 
 const { type = HomeSiderType.HOME, className, isDrawer = false } = Astro.props;
 const defaultSegmentType = type === HomeSiderType.POST ? HomeSiderSegmentType.DIRECTORY : HomeSiderSegmentType.INFO;
+
+// 获取当前语言和翻译
+const currentLanguage = getLanguageFromUrl(Astro.url);
+const translations = getTranslations(currentLanguage);
 ---
 
 <div
@@ -26,8 +32,8 @@ const defaultSegmentType = type === HomeSiderType.POST ? HomeSiderSegmentType.DI
         className="mb-5 flex w-full justify-between text-sm/6"
         itemClass="grow"
         options={[
-          { label: '站点概览', value: HomeSiderSegmentType.INFO },
-          { label: '文章目录', value: HomeSiderSegmentType.DIRECTORY },
+          { label: translations.common.siteOverview, value: HomeSiderSegmentType.INFO },
+          { label: translations.common.articleDirectory, value: HomeSiderSegmentType.DIRECTORY },
         ]}
         defaultValue={defaultSegmentType}
         id="inner-home-sider"
@@ -64,8 +70,8 @@ const defaultSegmentType = type === HomeSiderType.POST ? HomeSiderSegmentType.DI
 
     // 如果是文章页面，添加事件监听器
     if (segmentControl && infoContent && directoryContent) {
-      segmentControl.addEventListener('change', (e) => {
-        const value = e.detail.value;
+      const handleChange = (e) => {
+        const value = e.detail?.value;
         if (value === HomeSiderSegmentType.DIRECTORY) {
           infoContent.classList.add('hidden');
           directoryContent.classList.remove('hidden');
@@ -73,7 +79,9 @@ const defaultSegmentType = type === HomeSiderType.POST ? HomeSiderSegmentType.DI
           infoContent.classList.remove('hidden');
           directoryContent.classList.add('hidden');
         }
-      });
+      };
+
+      segmentControl.addEventListener('change', handleChange);
     }
   }
 </script>
